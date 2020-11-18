@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   siteMetadata: {
     title: `HS Bespoke Features Starter`,
@@ -10,6 +12,16 @@ module.exports = {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`${__dirname}/src/layouts/index.js`),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          react: require.resolve(`${__dirname}/node_modules/react`),
+          "@hs-specials": path.resolve(`../hs-specials`),
+        },
+        extensions: [],
       },
     },
     {
@@ -34,4 +46,4 @@ module.exports = {
       },
     },
   ],
-}
+};

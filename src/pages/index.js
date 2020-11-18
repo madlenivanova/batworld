@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import story from "../data/story";
 import { SECTIONS, ELEMENTS } from "../data/app";
-import Specials from "hs-specials";
+import Specials from "@hs-specials";
 
 const renderStory = () => {
   // render sections
@@ -35,6 +35,11 @@ const renderStory = () => {
   });
 };
 
-const IndexPage = () => <div>{renderStory()}</div>;
+const IndexPage = () => (
+  <div>
+    <Specials.ScrollIndicator />
+    {renderStory()}
+  </div>
+);
 
 export default IndexPage;
