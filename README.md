@@ -59,4 +59,21 @@ Deploy to HS
 
 ## Using hs-specials
 
-// to do
+Run inside hs-specials (or however it's called in your local setup)
+
+```shell
+    npm link
+```
+
+Run inside root
+
+```shell
+    npm link hs-specials
+```
+
+Use like this:
+
+```shell
+  import Specials from 'hs-specials';
+  // console.log to see what's up :)
+```
