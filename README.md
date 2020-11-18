@@ -59,21 +59,25 @@ Deploy to HS
 
 ## Using hs-specials
 
-Run inside hs-specials (or however it's called in your local setup)
+Install gatsby-plugin-alias-imports and add this to gatsby-config.
+The react alias is necessary to avoid conflicting react versions in hs-specials and the template.
 
 ```shell
-    npm link
-```
-
-Run inside root
-
-```shell
-    npm link hs-specials
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          react: require.resolve(`${__dirname}/node_modules/react`),
+          "@hs-specials": path.resolve(`../hs-specials`),
+        },
+        extensions: [],
+      },
+    },
 ```
 
 Use like this:
 
 ```shell
-  import Specials from 'hs-specials';
+  import Specials from '@hs-specials';
   // console.log to see what's up :)
 ```
