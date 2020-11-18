@@ -1,22 +1,38 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
+import story from "../data/story";
+import { SECTIONS, ELEMENTS } from "../data/app";
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const renderStory = () => {
+  // render sections
+  return story.sections.map((section, index) => {
+    const Section = SECTIONS[section.type] || null;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+    if (Section) {
+      return (
+        <Section key={`section--${index}`} {...section.data}>
+          {section.elements.map((element, elementIndex) => {
+            const Element = ELEMENTS[element.type] || null;
 
-export default IndexPage
+            if (Element) {
+              return (
+                <Element
+                  key={`section--${index}--element--${elementIndex}`}
+                  {...element.data}
+                />
+              );
+            } else {
+              console.log("No element found for " + element.type);
+            }
+          })}
+        </Section>
+      );
+    } else {
+      console.log("No section found for " + section.type);
+    }
+  });
+};
+
+const IndexPage = () => <div>{renderStory()}</div>;
+
+export default IndexPage;

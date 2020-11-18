@@ -1,99 +1,62 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# HS Bespoke Features Starter
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+a starter template to speed up development of bespoke features and making stuff reusable
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1.  **Create a new BF page.**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
-
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+    clone repo and
 
     ```shell
-    cd my-default-starter/
+    npm install
     gatsby develop
     ```
 
-1.  **Open the source code and start editing!**
-
     Your site is now running at `http://localhost:8000`!
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+## Suggested workflow
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+1. **Setup fonts, styles and data**
 
-## 🧐 What's inside?
+Upload WOFF/WOFF2 versions of your fonts to **`/src/fonts`** and replace names and urls in fonts.js.
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+Setup your initial story data in **`/src/data/story`** page data in **`/src/data/app`**. Those can be edited later but the page needs them to build anything.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+Setup your main typographic styles in **`/src/components/Typography`**
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+2. **Setup your components**
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+Setup your main components in **`/src/components`**.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+Build main page elements like Header and Footer.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+## 🧐 A few notes on special components
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+The starter includes some helpful utilities to speed up development.
+Those are:
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+1. **LoadProvider** in **`/src/providers/LoadProvider`**
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+A utility to let your components know when fonts and images have loaded.
+Useful if you need to setup GSAP animations or calculate component heights for some reason.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+2. **ResizeProvider** in **`/src/providers/ResizeProvider`**
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+A utility to let your components know when the window has been resized.
+See notes on how to use it inside the file.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+3. **On scroll / trigger animation effects** in **`/src/effects`**
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+You can wrap your components inside those to create effects on scroll (fade in, zoom in, anything else that can be animated with GSAP).
 
 ## 💫 Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
+Deploy to HS
+// to do
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+## Using hs-specials
+
+// to do
