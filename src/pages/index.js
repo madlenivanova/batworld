@@ -38,6 +38,7 @@ const renderStory = () => {
 const IndexPage = () => (
   <div>
     <Specials.ScrollIndicator />
+    <Specials.ImageSlide />
     {renderStory()}
   </div>
 );
