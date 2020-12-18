@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import story from "../data/story";
 import { SECTIONS, ELEMENTS } from "../data/app";
 //import Specials from "@hs-specials";
+import Layout from "../components/Layout";
 
 const renderStory = () => {
   // render sections
@@ -34,6 +35,6 @@ const renderStory = () => {
   });
 };
 
-const IndexPage = () => <div>{renderStory()}</div>;
+const IndexPage = () => <Layout>{renderStory()}</Layout>;
 
 export default IndexPage;
