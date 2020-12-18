@@ -19,6 +19,14 @@ const HSHeader = () => (
       align-items: center;
       justify-content: center;
       z-index: 20;
+
+      @media (min-width: 768px) {
+        height: 72px;
+      }
+
+      @media (min-width: 992px) {
+        height: 97px;
+      }
     `}
   >
     <h4
@@ -86,6 +94,14 @@ const Layout = ({ children }) => {
           <main
             css={css`
               padding-top: 60px;
+
+              @media (min-width: 768px) {
+                padding-top: 72px;
+              }
+
+              @media (min-width: 992px) {
+                padding-top: 97px;
+              }
             `}
           >
             <Header />
