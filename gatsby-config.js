@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
+    `@wardpeet/gatsby-plugin-static-site`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {},
