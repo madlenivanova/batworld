@@ -14,12 +14,6 @@ module.exports = {
       options: {},
     },
     {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`${__dirname}/src/layouts/index.js`),
-      },
-    },
-    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {

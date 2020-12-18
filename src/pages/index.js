@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "gatsby";
 import story from "../data/story";
 import { SECTIONS, ELEMENTS } from "../data/app";
-import Specials from "@hs-specials";
+//import Specials from "@hs-specials";
 
 const renderStory = () => {
   // render sections
-  console.log(Specials);
   return story.sections.map((section, index) => {
     const Section = SECTIONS[section.type] || null;
 
@@ -35,12 +34,6 @@ const renderStory = () => {
   });
 };
 
-const IndexPage = () => (
-  <div>
-    <Specials.ScrollIndicator />
-    <Specials.ImageSlide />
-    {renderStory()}
-  </div>
-);
+const IndexPage = () => <div>{renderStory()}</div>;
 
 export default IndexPage;

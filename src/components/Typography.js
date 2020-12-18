@@ -28,12 +28,10 @@ export const Title = styled("h2")`
 
 Title.propTypes = {
   size: PropTypes.string,
-  children: PropTypes.any,
 };
 
 Title.defaultProps = {
   size: "lg", // sm, md, lg, xl?
-  children: "Lorem Ipsum",
 };
 
 // to use elements with animation on scroll (react-visibility-sensor),
@@ -81,12 +79,10 @@ export const Heading = styled("h3")`
 
 Heading.propTypes = {
   size: PropTypes.string,
-  children: PropTypes.any,
 };
 
 Heading.defaultProps = {
   size: "md", // sm, md, lg, xl?
-  children: "Lorem Ipsum",
 };
 
 // PARAGRAPH
@@ -108,10 +104,8 @@ export const Paragraph = styled("p")`
 
 Paragraph.propTypes = {
   size: PropTypes.string,
-  children: PropTypes.any,
 };
 
 Paragraph.defaultProps = {
   size: "md", // sm, md, lg, xl?
-  children: "Lorem Ipsum",
 };
