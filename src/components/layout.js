@@ -5,6 +5,36 @@ import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
 
+const HSHeader = () => (
+  <div
+    css={css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: white;
+      border-bottom: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    `}
+  >
+    <h4
+      css={css`
+        font-family: "Univers", sans-serif;
+        text-transform: uppercase;
+        font-size: 24px;
+        display: inline;
+        margin: 0px;
+      `}
+    >
+      highsnobiety header
+    </h4>
+  </div>
+);
+
 const GlobalStyles = () => (
   <Global
     styles={css`
@@ -12,15 +42,15 @@ const GlobalStyles = () => (
         box-sizing: border-box;
         margin: 0;
       }
-      html,
-      body {
+      #___gatsby {
         margin: 0;
         font-size: 16px;
-        font-family: "lunch-22-regular", sans-serif;
+        font-family: "Univers", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
+        color: rgba(33, 23, 3, 1);
       }
 
       a,
@@ -48,16 +78,17 @@ const GlobalStyles = () => (
 const Layout = ({ children }) => {
   return (
     <div>
+      <HSHeader />
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
         <ResizeProvider>
-          <Header />
           <main
             css={css`
-              padding-top: 50px;
+              padding-top: 60px;
             `}
           >
+            <Header />
             {children}
           </main>
         </ResizeProvider>
