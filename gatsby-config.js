@@ -1,4 +1,5 @@
 const path = require("path");
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -6,6 +7,9 @@ module.exports = {
     description: `quick & not so dirty`,
     author: `@gatsbyjs`,
   },
+
+  assetPrefix: process.env.ASSET_PREFIX,
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
@@ -19,7 +23,7 @@ module.exports = {
       options: {
         alias: {
           react: require.resolve(`${__dirname}/node_modules/react`),
-          "@hs-specials": path.resolve(`../hs-specials`),
+          // "@hs-specials": path.resolve(`../hs-specials`),
         },
         extensions: [],
       },

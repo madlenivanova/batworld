@@ -27,8 +27,6 @@ function defaultOutput(props) {
 }
 
 export default function HTML(props) {
-  console.log('GATSBY_OUTPUT_JSON', process.env.GATSBY_OUTPUT_JSON)
-
   const head = props.headComponents.map(({ props, type }) => ({
     ...props,
     type,
