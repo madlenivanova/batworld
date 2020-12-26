@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
 import story from "../data/story";
 import { SECTIONS, ELEMENTS } from "../data/app";
-//import Specials from "@hs-specials";
+import { DrawShape } from '@titelmedia/hs-specials'
 import Layout from "../components/Layout";
 
 const renderStory = () => {
@@ -27,6 +26,7 @@ const renderStory = () => {
               console.log("No element found for " + element.type);
             }
           })}
+          <DrawShape shape="Circular" />
         </Section>
       );
     } else {

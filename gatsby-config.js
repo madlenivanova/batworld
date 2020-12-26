@@ -23,7 +23,6 @@ module.exports = {
       options: {
         alias: {
           react: require.resolve(`${__dirname}/node_modules/react`),
-          // "@hs-specials": path.resolve(`../hs-specials`),
         },
         extensions: [],
       },
