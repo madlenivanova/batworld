@@ -46,7 +46,8 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "build:export": "cross-env GATSBY_OUTPUT_JSON=true gatsby build --prefix-paths",
+    "build:export:json": "cross-env GATSBY_OUTPUT_JSON=true gatsby build --prefix-paths",
+    "build:export": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
