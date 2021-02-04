@@ -6,7 +6,6 @@ import Layout from "../components/Layout";
 import datoToBF from "../utilities/dato";
 
 const addProps = ({ id }) => {
-  console.log(id);
   let props = {};
   if (id === "artist-one") {
     props.color = "cyan";
@@ -14,14 +13,24 @@ const addProps = ({ id }) => {
   return props;
 };
 
-const renderSection = ({ id, c, data, title, elements, children }) => {
+const addPropsElement = ({ element, index }) => {
+  let props = {};
+  if (element.type === "ImageText" && index % 2) {
+    props.alignReverse = true;
+  }
+  return props;
+};
+
+const renderSection = ({ id, c, data, title, elements }) => {
   const Section = c;
   addProps({ id });
   return (
     <Section {...data} {...addProps({ id })}>
-      {elements.map(element => {
+      {elements.map((element, index) => {
         const Element = element.c;
-        return <Element {...element.data} />;
+        return (
+          <Element {...element.data} {...addPropsElement({ element, index })} />
+        );
       })}
     </Section>
   );
@@ -40,9 +49,8 @@ const IndexPage = ({ data }) => {
           white-space: pre-wrap;
         `}
       >
-        {JSON.stringify(content, null, 2)}
         {content.map(section => renderSection({ ...section }))}
-        {JSON.stringify(storyContent, null, 2)}
+        {JSON.stringify(content, null, 2)}
       </div>
     </Layout>
   );
@@ -83,6 +91,17 @@ export const query = graphql`
               providerUid
             }
             ... on DatoCmsImage {
+              id
+              items {
+                alt
+                fluid {
+                  src
+                  srcSet
+                  aspectRatio
+                }
+              }
+            }
+            ... on DatoCmsGallery {
               id
               items {
                 alt

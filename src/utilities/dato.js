@@ -1,27 +1,6 @@
 import React from "react";
 import { forEach, omit, includes } from "lodash";
-import styled from "styled-components";
-import Paragraph from "../components/Paragraph";
-import Highlight from "../components/Highlight";
-import Video from "../components/Video";
-import Images from "../components/Images";
-import SectionArtist from "../components/SectionArtist";
-
-const IntroSection = styled("section")`
-  background-color: red;
-  padding: 120px 0px;
-`;
-
-const ArtistSection = styled("section")`
-  background: ${props => props.color};
-  padding: 90px 0px;
-`;
-
-const ImageText = () => {
-  return <div>Image Text</div>;
-};
-
-const Elements = { Paragraph, Highlight, Video, Images, ImageText };
+import { SECTIONS, ELEMENTS } from "./story";
 
 const mapDatoKeysToISF = {
   DatoCmsParagraph: "Paragraph",
@@ -52,7 +31,7 @@ export const datoToBF = ({ content }) => {
       }
       let layout = {};
       layout.id = item.sectionId;
-      layout.c = SectionArtist;
+      layout.c = SECTIONS.SectionArtist;
       layout.data = omit(item, ["id", "__typename"]);
       layout.elements = [];
       console.log(layout);
@@ -62,7 +41,7 @@ export const datoToBF = ({ content }) => {
         currentLayout = 0;
         let layout = {};
         layout.id = "section-0-default";
-        layout.c = IntroSection;
+        layout.c = SECTIONS.IntroSection;
         layout.data = {
           sectionTitle: "Intro section",
           sectionId: "intro-section",
@@ -73,17 +52,18 @@ export const datoToBF = ({ content }) => {
       let elType = mapDatoKeysToISF[t];
       let element = {};
       element.type = elType;
-      element.c = Elements[elType];
+      element.c = ELEMENTS[elType];
+      console.log("t", item);
       element.data = omit(item, ["id", "__typename"]);
 
-      if (item.items) {
-        let elItems = [];
-        forEach(item.items, imageItem => {
-          let newImageItem = imageItem.fluid;
-          elItems.push(newImageItem);
-        });
-        element.data.items = elItems;
-      }
+      // if (item.items) {
+      //   let elItems = [];
+      //   forEach(item.items, imageItem => {
+      //     let newImageItem = imageItem.fluid;
+      //     elItems.push(newImageItem);
+      //   });
+      //   element.data.items = elItems;
+      // }
       storyContent[currentLayout].elements.push(element);
     }
   });
