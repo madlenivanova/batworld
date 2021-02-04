@@ -22,7 +22,6 @@ export const datoToBF = ({ content }) => {
     // check if first layout, and if so, init
 
     const t = item.__typename;
-    console.log("type is ", t);
     if (includes(t, "Section")) {
       if (currentLayout === null) {
         currentLayout = 0;
@@ -34,7 +33,6 @@ export const datoToBF = ({ content }) => {
       layout.c = SECTIONS.SectionArtist;
       layout.data = omit(item, ["id", "__typename"]);
       layout.elements = [];
-      console.log(layout);
       storyContent.push(layout);
     } else {
       if (index === 0) {
@@ -53,17 +51,8 @@ export const datoToBF = ({ content }) => {
       let element = {};
       element.type = elType;
       element.c = ELEMENTS[elType];
-      console.log("t", item);
       element.data = omit(item, ["id", "__typename"]);
 
-      // if (item.items) {
-      //   let elItems = [];
-      //   forEach(item.items, imageItem => {
-      //     let newImageItem = imageItem.fluid;
-      //     elItems.push(newImageItem);
-      //   });
-      //   element.data.items = elItems;
-      // }
       storyContent[currentLayout].elements.push(element);
     }
   });

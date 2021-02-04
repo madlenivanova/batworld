@@ -38,7 +38,7 @@ const withAnimation = ({ from, to, duration }) => WrappedComponent => {
         <div
           ref={wrapperRef}
           css={css`
-            height: 100%;
+            position: relative;
           `}
         >
           <WrappedComponent {...props} />

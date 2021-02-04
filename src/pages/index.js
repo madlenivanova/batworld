@@ -1,59 +1,15 @@
 import React from "react";
-import story from "../data/story";
-import { css } from "@emotion/react";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
 import datoToBF from "../utilities/dato";
-
-const addProps = ({ id }) => {
-  let props = {};
-  if (id === "artist-one") {
-    props.color = "cyan";
-  }
-  return props;
-};
-
-const addPropsElement = ({ element, index }) => {
-  let props = {};
-  if (element.type === "ImageText" && index % 2) {
-    props.alignReverse = true;
-  }
-  return props;
-};
-
-const renderSection = ({ id, c, data, title, elements }) => {
-  const Section = c;
-  addProps({ id });
-  return (
-    <Section {...data} {...addProps({ id })}>
-      {elements.map((element, index) => {
-        const Element = element.c;
-        return (
-          <Element {...element.data} {...addPropsElement({ element, index })} />
-        );
-      })}
-    </Section>
-  );
-};
+import Story from "../components/Story";
 
 const IndexPage = ({ data }) => {
   const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
   const content = datoToBF({
-    content: data.allDatoCmsBespokeStory.edges[0].node.content,
+    content: storyContent,
   });
-
-  return (
-    <Layout>
-      <div
-        css={css`
-          white-space: pre-wrap;
-        `}
-      >
-        {content.map(section => renderSection({ ...section }))}
-        {JSON.stringify(content, null, 2)}
-      </div>
-    </Layout>
-  );
+  //{JSON.stringify(content, null, 2)}
+  return <Story content={content} />;
 };
 
 export default IndexPage;

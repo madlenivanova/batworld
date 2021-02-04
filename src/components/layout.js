@@ -1,6 +1,5 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
-import Header from "../components/Header";
 import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
@@ -104,7 +103,6 @@ const Layout = ({ children }) => {
               }
             `}
           >
-            <Header />
             {children}
           </main>
         </ResizeProvider>
