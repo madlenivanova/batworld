@@ -38,6 +38,7 @@
     "@wardpeet/gatsby-plugin-static-site": "^0.2.3",
     "cross-env": "^7.0.3",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-source-datocms": "2.5.8",
     "prettier": "2.1.2"
   },
   "keywords": [

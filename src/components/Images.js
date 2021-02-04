@@ -1,51 +1,69 @@
-import { jsx, css } from "@emotion/react";
-import PropTypes from "prop-types";
-import { Div } from "./Markup";
 import React from "react";
+import { css } from "@emotion/react";
+import PropTypes from "prop-types";
 
-const Images = ({ items }) => (
-  <Div
-    pt="sm"
-    pb="sm"
-    flex
-    css={css`
-      margin: 0px -5px;
-    `}
-  >
-    {items.map((item, index) => {
-      const { imageUrl } = item;
-      return (
-        <Div
-          key={`item--${index}`}
-          css={css`
-            flex-basis: 0;
-            flex-grow: 1;
-            padding: 0px 5px;
-          `}
-        >
-          <img src={imageUrl} />
-        </Div>
-      );
-    })}
-  </Div>
-);
+import { setPadding } from "../styles/utilities";
 
-Images.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      caption: PropTypes.string, // do we need this???
-    })
-  ).isRequired,
+const Images = ({ items }) => {
+  return (
+    <div
+      css={css`
+        ${setPadding(["top", "bottom"], "md")}
+        max-width: 1200px;
+        margin: 0 auto;
+      `}
+    >
+      <div
+        css={css`
+          display: flex;
+          margin: 0px -5px;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        `}
+      >
+        {items &&
+          items.map((item, index) => (
+            <div
+              key={`item--${index}`}
+              css={css`
+                display: block;
+                overflow: hidden;
+                padding: 5px;
+                flex-basis: 0;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                  max-width: 100%;
+                  max-height: 130vh;
+                  object-fit: contain;
+                }
+              `}
+            >
+              <img srcSet={item.srcSet} src={item.src} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 };
 
 Images.defaultProps = {
   items: [
     {
-      imageUrl:
-        "https://interactive-development.hsnb.io/xpr/2020-10-beats/mcnzi.jpg",
+      src: "https://interactive-development.hsnb.io/hsnbisf/assets/bowie4.jpg",
+    },
+    {
+      src: "https://interactive-development.hsnb.io/hsnbisf/assets/bowie8.jpg",
     },
   ],
+};
+
+Images.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 export default Images;

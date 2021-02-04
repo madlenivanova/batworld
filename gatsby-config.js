@@ -1,5 +1,5 @@
 const path = require("path");
-require("dotenv").config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
@@ -46,6 +46,15 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `301e42ddbf53a95a63eee3f3b8ee40`,
+        environment: `main`,
+        previewMode: true,
+        disableLiveReload: false,
       },
     },
   ],
