@@ -1,4 +1,3 @@
-import React from "react";
 import { forEach, omit, includes } from "lodash";
 import { SECTIONS, ELEMENTS } from "./story";
 
@@ -39,7 +38,7 @@ export const datoToBF = ({ content }) => {
         currentLayout = 0;
         let layout = {};
         layout.id = "section-0-default";
-        layout.c = SECTIONS.IntroSection;
+        layout.c = SECTIONS.SectionIntro;
         layout.data = {
           sectionTitle: "Intro section",
           sectionId: "intro-section",

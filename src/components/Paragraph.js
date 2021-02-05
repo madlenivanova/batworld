@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setPadding, setMargin } from "../styles/utilities";
+import { P } from "../styles/Typography";
 
 import Container from "../styles/Container";
 
@@ -14,7 +15,7 @@ const Paragraph = ({ text }) => {
       `}
     >
       <Container size="sm">
-        <p dangerouslySetInnerHTML={{ __html: text }} />
+        <P dangerouslySetInnerHTML={{ __html: text }} />
       </Container>
     </div>
   );

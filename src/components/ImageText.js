@@ -28,7 +28,6 @@ const Image = withAnimation(defaultAnimation)(({ image }) => (
 ));
 
 const ImageText = ({ image, text, alignReverse }) => {
-  console.log(image.fluid.aspectRatio, alignReverse);
   return (
     <div
       css={css`

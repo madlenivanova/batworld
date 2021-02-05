@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 
 const widths = {
-  sm: 460,
+  sm: 620,
   md: 700,
   lg: 1000,
   xl: 2400,

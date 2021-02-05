@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Global, css } from "@emotion/react";
-import RecklessWoff2 from "./reckless-thin.woff2";
-import UniversExtendedWoff2 from "./univers-extended.woff2";
+import MonumentExtendedWoff from "./monumentextended-bold-webfont.woff";
+import MonumentExtendedWoff2 from "./monumentextended-bold-webfont.woff2";
+import UniversLightWoff from "./univers-light.woff";
+import UniversLightWoff2 from "./univers-light.woff2";
 import { LoadContext } from "../providers/LoadProvider";
 
 const GlobalFonts = () => {
@@ -10,7 +12,7 @@ const GlobalFonts = () => {
   // load fonts listener
   useEffect(() => {
     if (typeof loadFonts === "function") {
-      loadFonts({ families: ["reckless-thin", "univers-extended"] });
+      loadFonts({ families: ["univers-light", "monument"] });
     }
   }, [loadFonts]);
 
@@ -18,14 +20,15 @@ const GlobalFonts = () => {
     <Global
       styles={css`
         @font-face {
-          font-family: "reckless-thin";
-          src: local("reckless-thin"), url(${RecklessWoff2}) format("woff2");
+          font-family: "univers-light";
+          src: local("univers-light"), url(${UniversLightWoff2}) format("woff2"),
+            url(${UniversLightWoff}) format("woff");
         }
 
         @font-face {
-          font-family: "univers-extended";
-          src: local("univers-extended"),
-            url(${UniversExtendedWoff2}) format("woff2");
+          font-family: "monument";
+          src: local("monument"), url(${MonumentExtendedWoff2}) format("woff2"),
+            url(${MonumentExtendedWoff}) format("woff");
         }
       `}
     />

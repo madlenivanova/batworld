@@ -35,7 +35,7 @@ function reducer(state, action) {
 
 const Gallery = ({ items }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(JSON.stringify(items), null, 2);
+
   return (
     <div
       className="gallery"

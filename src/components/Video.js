@@ -72,7 +72,6 @@ const Video = ({ providerUid }) => {
         border: 2px solid green;
       `}
     >
-      <Stickers stickers={stickers} />
       <Container size="lg">
         <div
           css={css`

@@ -30,7 +30,7 @@ const HSHeader = () => (
   >
     <h4
       css={css`
-        font-family: "Univers", sans-serif;
+        font-family: "univers-light", sans-serif;
         text-transform: uppercase;
         font-size: 24px;
         display: inline;
@@ -52,7 +52,7 @@ const GlobalStyles = () => (
       #___gatsby {
         margin: 0;
         font-size: 16px;
-        font-family: "Univers", sans-serif;
+        font-family: "univers-light", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -93,6 +93,8 @@ const Layout = ({ children }) => {
           <main
             css={css`
               padding-top: 60px;
+              position: relative;
+              overflow: hidden;
 
               @media (min-width: 768px) {
                 padding-top: 72px;

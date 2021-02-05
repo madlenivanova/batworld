@@ -6,14 +6,10 @@ import Video from "../components/Video";
 import Images from "../components/Images";
 import ImageText from "../components/ImageText";
 import SectionArtist from "../components/SectionArtist";
+import SectionIntro from "../components/SectionIntro";
 import Gallery from "../components/Gallery";
 
-const IntroSection = styled("section")`
-  background-color: red;
-  padding: 120px 0px;
-`;
-
-export const SECTIONS = { IntroSection, SectionArtist };
+export const SECTIONS = { SectionIntro, SectionArtist };
 export const ELEMENTS = {
   Paragraph,
   Highlight,
