@@ -6,6 +6,10 @@ const Clouds = forwardRef((props, ref) => (
     ref={ref}
     css={css`
       height: 300px;
+      border: 3px solid blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     `}
   >
     <h1>clouds</h1>

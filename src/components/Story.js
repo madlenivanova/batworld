@@ -36,16 +36,21 @@ const Story = ({ content }) => {
 
   useEffect(() => {
     if (story.length > 1) {
+      const lastSection = story[story.length - 1].id;
+
       gsap.to(cloudsRef.current, {
         height: "100vh",
-        duration: 1,
+        duration: 2,
         onComplete: () => {
-          gsap.to(window, { scrollTo: "max", duration: 1 });
+          gsap.to(window, {
+            scrollTo: `#${lastSection}`,
+            duration: 1,
+            delay: 0.25,
+          });
         },
       });
     }
     console.log("story", story);
-    filterContent();
   }, [story]);
 
   const filterContent = () => {
@@ -57,37 +62,66 @@ const Story = ({ content }) => {
     return _content;
   };
 
+  const navItems = filterContent().map((section, index) => ({
+    name: section.data.sectionTitle,
+  }));
+
   return (
     <Layout>
-      {story.map(section => {
-        const { c, id, data, elements } = section;
-        const Section = c;
-        addProps({ id });
-        // const navElements = story.map((section, index) => {
-        //   if (index > 0) return { name: section.sectionTitle };
-        // });
-        // console.log("nav elements", navElements);
-        console.log("filtered", filterContent());
-        const nnn = slice(story, 1).map((section, index) => {
-          //console.log("section? ", section);
-          return { name: section.data.sectionTitle };
-        });
-        return (
-          <Section {...data} {...addProps({ id })}>
-            {elements.map((element, index) => {
-              const Element = element.c;
-              return (
-                <Element
-                  {...element.data}
-                  {...addPropsElement({ element, index })}
-                />
-              );
-            })}
-            <Nav onArtistClick={addSection} />
-          </Section>
-        );
-      })}
       <div
+        css={css`
+          padding-bottom: 300px;
+        `}
+      >
+        {story.map(section => {
+          const { c, id, data, elements } = section;
+          const Section = c;
+          addProps({ id });
+
+          const props = { ...data, ...addProps({ id }) };
+          console.log("props", props);
+          return (
+            <Section {...props}>
+              {elements.map((element, index) => {
+                const Element = element.c;
+                return (
+                  <Element
+                    {...element.data}
+                    {...addPropsElement({ element, index })}
+                  />
+                );
+              })}
+            </Section>
+          );
+        })}
+        <Nav items={navItems} onArtistClick={addSection} />
+        <div
+          ref={cloudsRef}
+          css={css`
+            height: 300px;
+            border: 3px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+          `}
+        >
+          <h1>clouds</h1>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+//<Clouds />
+
+export default Story;
+/* 
+<div
         ref={cloudsRef}
         css={css`
           position: absolute;
@@ -99,6 +133,7 @@ const Story = ({ content }) => {
           border: 3px solid green;
           display: flex;
           align-items: flex-end;
+          display: none;
 
           svg {
             width: 100%;
@@ -106,11 +141,4 @@ const Story = ({ content }) => {
         `}
       >
         <h1>clouds</h1>
-      </div>
-    </Layout>
-  );
-};
-
-//<Clouds />
-
-export default Story;
+      </div>*/

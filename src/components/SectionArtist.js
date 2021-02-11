@@ -10,13 +10,10 @@ const SectionHeader = ({ headerImage }) => {
   return <Img fluid={headerImage.fluid} />;
 };
 
-const SectionArtist = ({ color, headerImage, children }) => {
+const SectionArtist = ({ sectionId, color, headerImage, children }) => {
   const cloudsRef = useRef(null);
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
-  // useEffect(() => {
-  //   console.log("is it active", isActive);
-  // }, [isActive]);
 
   useEffect(() => {
     playTlOnLoad();
@@ -24,49 +21,38 @@ const SectionArtist = ({ color, headerImage, children }) => {
 
   const playTlOnLoad = () => {
     // gsap.set(sectionRef.current, { maxHeight: 150 });
+    console.log("our nice section start playing");
     let tl = gsap.timeline({ paused: true }).to(sectionRef.current, {
       maxHeight: "100vh",
-      duration: 0.25,
+      duration: 2,
     });
     tl.play();
   };
 
   return (
     <section
-      id="artist-one"
+      id={sectionId}
       ref={sectionRef}
       css={css`
         position: relative;
         max-height: 0px;
         margin-top: 0;
         background: green;
+        overflow: hidden;
       `}
     >
       <div
         ref={headerRef}
         css={css`
           height: 100vh;
-          background: red;
+          background: pink;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid blue;
         `}
       >
-        <div
-          ref={cloudsRef}
-          css={css`
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-            border: 1px solid blue;
-
-            svg {
-              width: 100%;
-            }
-          `}
-        >
-          <Clouds />
-        </div>
+        <h1>{sectionId}</h1>
       </div>
       <div
         css={css`
