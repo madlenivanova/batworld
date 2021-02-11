@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Layout from "./Layout";
 import { css } from "@emotion/react";
 import Stickers from "./Stickers";
-import { cloneDeep, findIndex } from "lodash";
+import { cloneDeep, findIndex, forEach, pull, slice, remove } from "lodash";
 import Clouds from "./Clouds";
+import Nav from "./Nav";
 import { gsap, ScrollToPlugin } from "gsap/all";
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -30,7 +31,6 @@ const Story = ({ content }) => {
   const cloudsRef = useRef(null);
 
   const addSection = index => {
-    let _story = cloneDeep(story).push(content[index]);
     setStory([...story, content[index]]);
   };
 
@@ -44,7 +44,18 @@ const Story = ({ content }) => {
         },
       });
     }
+    console.log("story", story);
+    filterContent();
   }, [story]);
+
+  const filterContent = () => {
+    let _content = cloneDeep(content);
+    forEach(story, (section, index) => {
+      remove(_content, { id: section.id });
+      //console.log("oj i", _content, section.id);
+    });
+    return _content;
+  };
 
   return (
     <Layout>
@@ -52,7 +63,15 @@ const Story = ({ content }) => {
         const { c, id, data, elements } = section;
         const Section = c;
         addProps({ id });
-
+        // const navElements = story.map((section, index) => {
+        //   if (index > 0) return { name: section.sectionTitle };
+        // });
+        // console.log("nav elements", navElements);
+        console.log("filtered", filterContent());
+        const nnn = slice(story, 1).map((section, index) => {
+          //console.log("section? ", section);
+          return { name: section.data.sectionTitle };
+        });
         return (
           <Section {...data} {...addProps({ id })}>
             {elements.map((element, index) => {
@@ -64,13 +83,7 @@ const Story = ({ content }) => {
                 />
               );
             })}
-            <button
-              onClick={() => {
-                addSection(1);
-              }}
-            >
-              set active
-            </button>
+            <Nav onArtistClick={addSection} />
           </Section>
         );
       })}
