@@ -96,9 +96,6 @@ const Gallery = ({ items }) => {
               >
                 <div
                   css={css`
-                    /* display: flex !important;
-                    align-items: center;
-                    justify-content: center; */
                     width: 100%;
                     padding: 15px;
                   `}

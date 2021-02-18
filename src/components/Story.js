@@ -1,18 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Layout from "./Layout";
 import { css } from "@emotion/react";
 import Stickers from "./Stickers";
 import { cloneDeep, findIndex, forEach, pull, slice, remove } from "lodash";
-import Clouds from "./Clouds";
+import Cursor from "./Cursor";
 import Nav from "./Nav";
 import { gsap, ScrollToPlugin } from "gsap/all";
+import { LoadContext } from "../providers/LoadProvider";
+import ImagesLoaded from "react-images-loaded";
 gsap.registerPlugin(ScrollToPlugin);
 
 const addProps = ({ id }) => {
   let props = {};
-  if (id === "artist-one") {
-    props.color = "#D9F56A";
+  switch (id) {
+    case "artist-one":
+      props.color = "#D9F56A";
+      break;
+    case "artist-two":
+      props.color = "#F15BB5";
+      break;
+    case "artist-three":
+      props.color = "#F0B7B3";
+      break;
+    case "artist-four":
+      props.color = "#9B5DE5";
+      break;
+    case "artist-five":
+      props.color = "#4ECD67";
+      break;
   }
+
   return props;
 };
 
@@ -30,6 +47,12 @@ const Story = ({ content }) => {
   const [sections, setSections] = useState([0]);
   const cloudsRef = useRef(null);
 
+  const { images } = useContext(LoadContext);
+
+  useEffect(() => {
+    console.log("images are?? ", images);
+  }, [images]);
+
   const addSection = index => {
     setStory([...story, content[index]]);
   };
@@ -38,16 +61,10 @@ const Story = ({ content }) => {
     if (story.length > 1) {
       const lastSection = story[story.length - 1].id;
 
-      gsap.to(cloudsRef.current, {
-        height: "100vh",
-        duration: 2,
-        onComplete: () => {
-          gsap.to(window, {
-            scrollTo: `#${lastSection}`,
-            duration: 1,
-            delay: 0.25,
-          });
-        },
+      gsap.to(window, {
+        scrollTo: `#${lastSection}`,
+        duration: 0.5,
+        delay: 1,
       });
     }
     console.log("story", story);
@@ -67,78 +84,33 @@ const Story = ({ content }) => {
   }));
 
   return (
-    <Layout>
-      <div
-        css={css`
-          padding-bottom: 300px;
-        `}
-      >
-        {story.map(section => {
-          const { c, id, data, elements } = section;
-          const Section = c;
-          addProps({ id });
+    <div className="bf-story">
+      {story.map(section => {
+        const { c, id, data, elements } = section;
+        const Section = c;
+        addProps({ id });
+        const props = { ...data, ...addProps({ id }) };
 
-          const props = { ...data, ...addProps({ id }) };
-          console.log("props", props);
-          return (
-            <Section {...props}>
-              {elements.map((element, index) => {
-                const Element = element.c;
-                return (
-                  <Element
-                    {...element.data}
-                    {...addPropsElement({ element, index })}
-                  />
-                );
-              })}
-            </Section>
-          );
-        })}
-        <Nav items={navItems} onArtistClick={addSection} />
-        <div
-          ref={cloudsRef}
-          css={css`
-            height: 300px;
-            border: 3px solid blue;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            pointer-events: none;
-          `}
-        >
-          <h1>clouds</h1>
-        </div>
-      </div>
-    </Layout>
+        return (
+          <Section {...props}>
+            {elements.map((element, index) => {
+              const Element = element.c;
+              return (
+                <Element
+                  {...element.data}
+                  {...addPropsElement({ element, index })}
+                />
+              );
+            })}
+          </Section>
+        );
+      })}
+      <Nav items={navItems} onArtistClick={addSection} />
+      {images && <Cursor containerClass="bf-story" clickableClass="handle" />}
+    </div>
   );
 };
 
 //<Clouds />
 
 export default Story;
-/* 
-<div
-        ref={cloudsRef}
-        css={css`
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 150px;
-          overflow: hidden;
-          border: 3px solid green;
-          display: flex;
-          align-items: flex-end;
-          display: none;
-
-          svg {
-            width: 100%;
-          }
-        `}
-      >
-        <h1>clouds</h1>
-      </div>*/

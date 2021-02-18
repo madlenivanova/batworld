@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import datoToBF from "../utilities/dato";
 import Story from "../components/Story";
+import Layout from "../components/Layout";
 
 const IndexPage = ({ data }) => {
   const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
@@ -9,7 +10,11 @@ const IndexPage = ({ data }) => {
     content: storyContent,
   });
   //{JSON.stringify(content, null, 2)}
-  return <Story content={content} />;
+  return (
+    <Layout>
+      <Story content={content} />
+    </Layout>
+  );
 };
 
 export default IndexPage;

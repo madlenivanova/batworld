@@ -12,6 +12,7 @@ const LoadProvider = ({ children }) => {
   const [fonts, setFonts] = useState(false);
 
   const onImagesLoaded = () => {
+    console.log("so loaded");
     setImages(true);
   };
 

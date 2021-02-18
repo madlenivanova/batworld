@@ -8,15 +8,14 @@ const Nav = ({ items, onArtistClick }) => {
   useEffect(() => {
     console.log("items ", items.length);
     if (items.length < 5) {
-      // means do animation?
-      console.log("ANIMATE ITEMS!!!");
-      let tl = gsap
-        .timeline({ paused: true })
-        .to(wrapperRef.current, { maxHeight: "0px", duration: 0.5 })
-        .to(innerRef.current, { opacity: 0, duration: 0.1 }, "-=0.5")
-        .to(wrapperRef.current, { maxHeight: 300, duration: 0.5, delay: 4 })
-        .to(innerRef.current, { opacity: 1, duration: 0.1 }, "-=0.5");
-      tl.play();
+      // // means do animation?
+      // let tl = gsap
+      //   .timeline({ paused: true })
+      //   //.to(wrapperRef.current, { maxHeight: "0px", duration: 0.5 })
+      //   .to(innerRef.current, { opacity: 0, duration: 0.1 }, "-=0.5")
+      //   //.to(wrapperRef.current, { maxHeight: 300, duration: 0.5, delay: 1 })
+      //   .to(innerRef.current, { opacity: 1, duration: 0.1 }, "-=0.5");
+      // tl.play();
     }
   }, [items.length]);
   return (

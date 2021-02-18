@@ -10,7 +10,13 @@ const SectionHeader = ({ headerImage }) => {
   return <Img fluid={headerImage.fluid} />;
 };
 
-const SectionArtist = ({ sectionId, color, headerImage, children }) => {
+const SectionArtist = ({
+  sectionId,
+  sectionTitle,
+  color,
+  headerImage,
+  children,
+}) => {
   const cloudsRef = useRef(null);
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
@@ -20,11 +26,10 @@ const SectionArtist = ({ sectionId, color, headerImage, children }) => {
   }, []);
 
   const playTlOnLoad = () => {
-    // gsap.set(sectionRef.current, { maxHeight: 150 });
-    console.log("our nice section start playing");
     let tl = gsap.timeline({ paused: true }).to(sectionRef.current, {
-      maxHeight: "100vh",
-      duration: 2,
+      maxHeight: 6000,
+      duration: 1,
+      delay: 0.25,
     });
     tl.play();
   };
@@ -37,7 +42,6 @@ const SectionArtist = ({ sectionId, color, headerImage, children }) => {
         position: relative;
         max-height: 0px;
         margin-top: 0;
-        background: green;
         overflow: hidden;
       `}
     >
@@ -45,21 +49,24 @@ const SectionArtist = ({ sectionId, color, headerImage, children }) => {
         ref={headerRef}
         css={css`
           height: 100vh;
-          background: pink;
+          //max-height: 0px;
+          background: url("${headerImage.fluid.src}");
+          background-size: cover;
+          background-position: center center;
           display: flex;
           align-items: center;
           justify-content: center;
           border: 2px solid blue;
         `}
       >
-        <h1>{sectionId}</h1>
+        <h1>{sectionTitle}</h1>
       </div>
       <div
         css={css`
           background-color: ${color};
           z-index: 5;
           position: relative;
-          max-height: 0px;
+          //max-height: 0px;
           overflow: hidden;
         `}
       >

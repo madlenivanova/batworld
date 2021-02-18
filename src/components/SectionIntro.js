@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { css } from "@emotion/react";
 import Img from "gatsby-image";
 import Stickers from "./Stickers";
 import curated from "../assets/curated.jpg";
+import { LoadContext } from "../providers/LoadProvider";
 
 const Heading = () => {
   return (
@@ -116,6 +117,13 @@ const SectionHeader = ({ headerImage }) => {
     { name: "crocs", x: 30, y: 35 },
     { name: "blm", x: 65, y: 80 },
   ];
+  const [useStickers, setUseStickers] = useState(false);
+  const { images } = useContext(LoadContext);
+
+  useEffect(() => {
+    setUseStickers(true);
+  }, [images]);
+
   return (
     <div
       ref={containerRef}
@@ -129,7 +137,9 @@ const SectionHeader = ({ headerImage }) => {
         justify-content: center;
       `}
     >
-      <Stickers stickers={stickers} container={containerRef.current} />
+      {useStickers && (
+        <Stickers stickers={stickers} container={containerRef.current} />
+      )}
       <Heading />
     </div>
   );

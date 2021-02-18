@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { css } from "@emotion/react";
 import Draggable from "react-draggable"; // Both at the same time
 import blm from "../assets/blm.png";
@@ -27,6 +27,8 @@ import scafander from "../assets/scafander.png";
 import star from "../assets/star.png";
 import w from "../assets/w.png";
 import yinyang from "../assets/yinyang.png";
+import { CursorContext } from "../providers/CursorProvider";
+import { forEach } from "lodash";
 
 const STICKERS = {
   blm,
@@ -57,33 +59,47 @@ const STICKERS = {
   yinyang,
 };
 
-const getRelativeCoords = () => {
-  const parentPos = document
-      .getElementById("parent-id")
-      .getBoundingClientRect(),
-    childPos = document.getElementById("child-id").getBoundingClientRect(),
-    relativePos = {};
+// const getRelativeCoords = () => {
+//   const parentPos = document
+//       .getElementById("parent-id")
+//       .getBoundingClientRect(),
+//     childPos = document.getElementById("child-id").getBoundingClientRect(),
+//     relativePos = {};
 
-  relativePos.top = childPos.top - parentPos.top;
-  relativePos.right = childPos.right - parentPos.right;
-  relativePos.bottom = childPos.bottom - parentPos.bottom;
-  relativePos.left = childPos.left - parentPos.left;
+//   relativePos.top = childPos.top - parentPos.top;
+//   relativePos.right = childPos.right - parentPos.right;
+//   relativePos.bottom = childPos.bottom - parentPos.bottom;
+//   relativePos.left = childPos.left - parentPos.left;
 
-  console.log(relativePos);
-  return relativePos;
-};
+//   console.log(relativePos);
+//   return relativePos;
+// };
 
 const StickersMachine = ({ stickers, container }) => {
   const [s, setS] = useState([]);
+  const { switchIcon } = useContext(CursorContext);
+
   const handleStart = e => {
-    console.log("start ", e);
+    switchIcon("close");
   };
-  const handleDrag = e => {
-    console.log("drag ", e);
-  };
+  // const handleDrag = e => {
+  //   console.log("drag ", e);
+  // };
   const handleStop = e => {
-    console.log("stop ", e);
+    switchIcon("peace");
   };
+
+  useEffect(() => {
+    const handles = Array.from(document.querySelectorAll(".handle"));
+    forEach(handles, handle => {
+      handle.addEventListener("mouseover", () => {
+        switchIcon("open");
+      });
+      handle.addEventListener("mouseout", () => {
+        switchIcon("peace");
+      });
+    });
+  }, []);
 
   useEffect(() => {
     if (container) {

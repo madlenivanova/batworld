@@ -3,6 +3,7 @@ import { Global, css } from "@emotion/react";
 import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
+import CursorProvider from "../providers/CursorProvider";
 
 const HSHeader = () => (
   <div
@@ -89,25 +90,27 @@ const Layout = ({ children }) => {
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
-        <ResizeProvider>
-          <main
-            css={css`
-              padding-top: 60px;
-              position: relative;
-              overflow: hidden;
+        <CursorProvider>
+          <ResizeProvider>
+            <main
+              css={css`
+                padding-top: 60px;
+                position: relative;
+                overflow: hidden;
 
-              @media (min-width: 768px) {
-                padding-top: 72px;
-              }
+                @media (min-width: 768px) {
+                  padding-top: 72px;
+                }
 
-              @media (min-width: 992px) {
-                padding-top: 97px;
-              }
-            `}
-          >
-            {children}
-          </main>
-        </ResizeProvider>
+                @media (min-width: 992px) {
+                  padding-top: 97px;
+                }
+              `}
+            >
+              {children}
+            </main>
+          </ResizeProvider>
+        </CursorProvider>
       </LoadProvider>
     </div>
   );
