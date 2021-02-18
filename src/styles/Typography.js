@@ -11,8 +11,8 @@ export const H4 = styled("h4")`
 `;
 
 export const P = styled("p")`
-  font-family: "univers-light";
+  font-family: "univers-roman";
   font-size: 24px;
-  line-height: 1.2em;
+  line-height: 1.3em;
   white-space: pre-wrap;
 `;

@@ -86,13 +86,14 @@ const StickersMachine = ({ stickers, container }) => {
   //   console.log("drag ", e);
   // };
   const handleStop = e => {
-    switchIcon("peace");
+    switchIcon("open");
   };
 
   useEffect(() => {
     const handles = Array.from(document.querySelectorAll(".handle"));
     forEach(handles, handle => {
       handle.addEventListener("mouseover", () => {
+        console.log("open");
         switchIcon("open");
       });
       handle.addEventListener("mouseout", () => {

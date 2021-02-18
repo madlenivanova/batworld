@@ -1,5 +1,5 @@
 import React from "react";
-import { useReducer } from "react";
+import { useReducer, useContext, useEffect } from "react";
 import { css } from "@emotion/core";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,9 +7,11 @@ import "slick-carousel/slick/slick-theme.css";
 // import { NextArrow, PrevArrow } from './_Arrows';
 //import Cursor from './Cursor';
 import Img from "gatsby-image";
+import { CursorContext } from "../providers/CursorProvider";
+import { forEach } from "lodash";
 
 const defaultSettings = {
-  dots: false,
+  dots: true,
   centerMode: true,
   variableWidth: true,
   slidesToScroll: 1,
@@ -35,10 +37,27 @@ function reducer(state, action) {
 
 const Gallery = ({ items }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { switchIcon } = useContext(CursorContext);
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll(".item"));
+    forEach(items, item => {
+      item.addEventListener("mouseover", () => {
+        switchIcon("open");
+      });
+      item.addEventListener("mouseout", () => {
+        switchIcon("peace");
+      });
+      item.addEventListener("mousedown", () => {
+        switchIcon("close");
+      });
+      item.addEventListener("mouseup", () => {
+        switchIcon("open");
+      });
+    });
+  }, []);
 
   return (
     <div
-      className="gallery"
       css={css`
         padding: 30px 0px 90px;
         position: relative;
@@ -56,13 +75,40 @@ const Gallery = ({ items }) => {
           dispatch({ transition: true });
         }}
         afterChange={index => {
-          // console.log('after change');
           dispatch({ current: index });
-          // setCurrent(index);
         }}
         css={css`
           .slick-dots {
-            bottom: 12px;
+            //bottom: 12px;
+
+            li {
+              padding: 0px;
+              height: 30px;
+              width: 30px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0px;
+              button {
+                height: 20px;
+                width: 20px;
+                border-radius: 10px;
+                transition: 0.1s all;
+                background: black;
+                &:before {
+                  display: none;
+                }
+              }
+
+              &.slick-active {
+                button {
+                  height: 30px;
+                  width: 30px;
+                  background: #fee440;
+                  border-radius: 15px;
+                }
+              }
+            }
           }
 
           .slick-track {
@@ -100,46 +146,12 @@ const Gallery = ({ items }) => {
                     padding: 15px;
                   `}
                 >
-                  <Img fluid={item.fluid} />
+                  <img src={item.fluid.src} srcset={item.fluid.srcSet} />
                 </div>
               </div>
             </div>
           ))}
       </Slider>
-
-      <div
-        css={css`
-          width: 100%;
-        `}
-      >
-        <div
-          css={css`
-            height: 5px;
-            width: 100%;
-            max-width: 600px;
-            border: 1px solid black;
-            position: relative;
-            margin: 0 auto;
-            margin: 30px auto 15px;
-
-            @media (min-width: 768px) {
-              margin: 30px auto;
-            }
-          `}
-        >
-          <span
-            css={css`
-              position: absolute;
-              top: 0;
-              left: ${state.current * (100 / items.length)}%;
-              width: ${100 / items.length}%;
-              height: 100%;
-              transition: all 0.1s;
-              background-color: black;
-            `}
-          />
-        </div>
-      </div>
     </div>
   );
 };

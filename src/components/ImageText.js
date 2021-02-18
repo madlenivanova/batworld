@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 import Img from "gatsby-image";
 import withAnimation from "../effects/withAnimation";
+import { P } from "../styles/Typography";
 
 const defaultAnimation = {
   from: {
@@ -16,10 +17,10 @@ const defaultAnimation = {
 const Text = withAnimation(defaultAnimation)(({ text }) => (
   <div
     css={css`
-      border: 1px solid red;
+      /* border: 1px solid red; */
     `}
   >
-    <p>{text}</p>
+    <P>{text}</P>
   </div>
 ));
 
@@ -34,9 +35,9 @@ const ImageText = ({ image, text, alignReverse }) => {
         max-width: 1200px;
         margin: 0 auto;
 
-        &:nth-child(2) {
+        /* &:nth-child(2) {
           background: red;
-        }
+        } */
       `}
     >
       <div
