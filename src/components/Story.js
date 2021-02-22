@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createRef, useContext } from "react";
-import Layout from "./Layout";
+
 import { css } from "@emotion/react";
 import { cloneDeep, findIndex, forEach, pull, slice, remove } from "lodash";
 import Cursor from "./Cursor";

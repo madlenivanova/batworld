@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import datoToBF from "../utilities/dato";
 import Story from "../components/Story";
-import Layout from "../components/Layout";
+import Layout from "../components/MyLayout";
 
 const IndexPage = ({ data }) => {
   const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
