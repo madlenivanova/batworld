@@ -42,8 +42,8 @@ const Video = ({ providerUid }) => {
     const { top, left } = getRelativeCoords();
 
     // 20% of video width
-    let stickerBLM = { url: blm, x: left + 0.2 * width };
-    console.log(width, y, x, videoContainer.current.getBoundingClientRect());
+    // let stickerBLM = { url: blm, x: left + 0.2 * width };
+    // console.log(width, y, x, videoContainer.current.getBoundingClientRect());
     let _stickers = [
       { url: blm, x: x + 0.2 * width, y: top },
       { url: shook, x: x + 0.6 * width, y: top },

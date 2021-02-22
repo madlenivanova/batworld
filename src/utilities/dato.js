@@ -51,6 +51,7 @@ export const datoToBF = ({ content }) => {
       element.type = elType;
       element.c = ELEMENTS[elType];
       element.data = omit(item, ["id", "__typename"]);
+      //console.log("item?? ", item);
 
       storyContent[currentLayout].elements.push(element);
     }

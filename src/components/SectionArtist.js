@@ -43,6 +43,7 @@ const SectionArtist = ({
         max-height: 0px;
         margin-top: 0;
         overflow: hidden;
+        background-color: ${color};
       `}
     >
       <div
@@ -56,14 +57,12 @@ const SectionArtist = ({
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 2px solid blue;
         `}
       >
         <h1>{sectionTitle}</h1>
       </div>
       <div
         css={css`
-          background-color: ${color};
           z-index: 5;
           position: relative;
           //max-height: 0px;

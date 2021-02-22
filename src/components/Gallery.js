@@ -1,13 +1,11 @@
-import React from "react";
-import { useReducer, useContext, useEffect } from "react";
+import React, { useReducer, useContext, useEffect } from "react";
 import { css } from "@emotion/core";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import { NextArrow, PrevArrow } from './_Arrows';
-//import Cursor from './Cursor';
-import Img from "gatsby-image";
+
 import { CursorContext } from "../providers/CursorProvider";
+import { ResizeContext } from "../providers/ResizeProvider";
 import { forEach } from "lodash";
 
 const defaultSettings = {
@@ -38,6 +36,12 @@ function reducer(state, action) {
 const Gallery = ({ items }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { switchIcon } = useContext(CursorContext);
+  const { images } = useContext(ResizeContext);
+
+  useEffect(() => {
+    console.log("images", images);
+  }, [images]);
+
   useEffect(() => {
     const items = Array.from(document.querySelectorAll(".item"));
     forEach(items, item => {
@@ -123,34 +127,31 @@ const Gallery = ({ items }) => {
         `}
       >
         {items &&
-          items.map((item, index) => (
-            <div className="item" key={`image--${index}`}>
+          items.map((item, index) => {
+            return (
               <div
+                key={`image--${index}`}
                 css={css`
-                  /* background-color: #ebebeb;     */
-                  /* height: 360px; */
-                  width: 90vw !important;
-                  @media (min-width: 768px) {
-                    /* height: 60vw; */
-                    width: 60vw !important;
-                  }
-                  /* @media (min-width: 1200px) {
-                    height: 600px;
-                    width: 600px !important;
-                  } */
+                  padding: 8px 16px;
                 `}
               >
                 <div
+                  className="item"
                   css={css`
-                    width: 100%;
-                    padding: 15px;
+                    height: 50vw;
+                    width: ${item.fluid.aspectRatio * 50}vw;
+
+                    @media (min-width: 768px) {
+                      /* height: 60vw; */
+                      // width: 60vw !important;
+                    }
                   `}
                 >
                   <img src={item.fluid.src} srcSet={item.fluid.srcSet} />
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
       </Slider>
     </div>
   );

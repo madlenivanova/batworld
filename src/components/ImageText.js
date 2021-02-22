@@ -15,11 +15,7 @@ const defaultAnimation = {
 };
 
 const Text = withAnimation(defaultAnimation)(({ text }) => (
-  <div
-    css={css`
-      /* border: 1px solid red; */
-    `}
-  >
+  <div>
     <P>{text}</P>
   </div>
 ));
@@ -51,7 +47,6 @@ const ImageText = ({ image, text, alignReverse }) => {
             flex-basis: 0;
             flex-grow: 1;
             display: flex;
-            border: 1px solid red;
             padding: 90px 60px;
             height: 100vh;
             @media (min-width: 768px) {
@@ -63,10 +58,10 @@ const ImageText = ({ image, text, alignReverse }) => {
             css={css`
               width: 100%;
               height: 100%;
-              background: pink;
+              //background: pink;
               overflow: hidden;
               position: relative;
-              padding-top: ${image.fluid.aspectRatio * 100}%;
+              //padding-top: ${image.fluid.aspectRatio * 100}%;
             `}
           >
             <div

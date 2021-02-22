@@ -47,6 +47,11 @@ export const query = graphql`
               id
               text
             }
+            ... on DatoCmsQuote {
+              id
+              text
+              source
+            }
             ... on DatoCmsVideo {
               id
               providerUid

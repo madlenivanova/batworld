@@ -79,9 +79,14 @@ const Story = ({ content }) => {
     return _content;
   };
 
-  const navItems = filterContent().map((section, index) => ({
-    name: section.data.sectionTitle,
-  }));
+  const navItems = filterContent().map((section, index) => {
+    const { color } = addProps({ id: section.id });
+    return {
+      name: section.data.sectionTitle,
+      image: section.data.headerImage,
+      color: color,
+    };
+  });
 
   return (
     <div className="bf-story">
@@ -95,7 +100,6 @@ const Story = ({ content }) => {
           <Section {...props}>
             {elements.map((element, index) => {
               const Element = element.c;
-              console.log(element);
               return (
                 <Element
                   {...element.data}
@@ -106,7 +110,11 @@ const Story = ({ content }) => {
           </Section>
         );
       })}
-      <Nav items={navItems} onArtistClick={addSection} />
+      <Nav
+        items={navItems}
+        onArtistClick={addSection}
+        bgColor={addProps({ id: story[story.length - 1].id }).color}
+      />
       {images && <Cursor containerClass="bf-story" clickableClass="handle" />}
     </div>
   );
