@@ -146,7 +146,7 @@ const Gallery = ({ items }) => {
                     padding: 15px;
                   `}
                 >
-                  <img src={item.fluid.src} srcset={item.fluid.srcSet} />
+                  <img src={item.fluid.src} srcSet={item.fluid.srcSet} />
                 </div>
               </div>
             </div>

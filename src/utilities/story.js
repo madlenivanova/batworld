@@ -8,6 +8,7 @@ import ImageText from "../components/ImageText";
 import SectionArtist from "../components/SectionArtist";
 import SectionIntro from "../components/SectionIntro";
 import Gallery from "../components/Gallery";
+import Quote from "../components/Quote";
 
 export const SECTIONS = { SectionIntro, SectionArtist };
 export const ELEMENTS = {
@@ -17,4 +18,5 @@ export const ELEMENTS = {
   Images,
   ImageText,
   Gallery,
+  Quote,
 };

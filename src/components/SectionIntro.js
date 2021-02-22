@@ -111,12 +111,16 @@ const Heading = () => {
   );
 };
 
-const SectionHeader = ({ headerImage }) => {
+const SectionHeader = () => {
   const containerRef = useRef(null);
   const stickers = [
     { name: "crocs", x: 30, y: 35 },
     { name: "blm", x: 65, y: 80 },
+    { name: "bandaid", x: 25, y: 70 },
+    { name: "skull", x: 85, y: 60 },
+    { name: "alien", x: 15, y: 80 },
   ];
+
   const [useStickers, setUseStickers] = useState(false);
   const { images } = useContext(LoadContext);
 

@@ -95,6 +95,7 @@ const Story = ({ content }) => {
           <Section {...props}>
             {elements.map((element, index) => {
               const Element = element.c;
+              console.log(element);
               return (
                 <Element
                   {...element.data}

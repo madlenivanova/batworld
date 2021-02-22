@@ -16,3 +16,12 @@ export const P = styled("p")`
   line-height: 1.3em;
   white-space: pre-wrap;
 `;
+
+export const QUOTE = styled("h5")`
+  font-size: 48px;
+  text-align: center;
+  font-family: "monument";
+  font-weight: normal;
+  text-transform: none;
+  line-height: 1.2em;
+`;

@@ -145,7 +145,6 @@ const StickersMachine = ({ stickers, container }) => {
                 css={css`
                   max-width: 120px;
                   height: 120px;
-                  border: 3px solid red;
                   position: absolute;
                   pointer-events: all !important;
                 `}
