@@ -1,10 +1,6 @@
 import React, { createContext, useState } from "react";
 import ImagesLoaded from "react-images-loaded";
 
-// Global Load Context providing info to components
-// on whether images and fonts are loaded
-// so they can do what they do accordingly
-
 export const LoadContext = createContext({ images: false, fonts: false });
 
 const LoadProvider = ({ children }) => {

@@ -8,6 +8,8 @@ import { CursorContext } from "../providers/CursorProvider";
 import { ResizeContext } from "../providers/ResizeProvider";
 import { forEach } from "lodash";
 
+import stickers from "../data/stickers";
+
 const defaultSettings = {
   dots: true,
   centerMode: true,
@@ -39,7 +41,7 @@ const Gallery = ({ items }) => {
   const { images } = useContext(ResizeContext);
 
   useEffect(() => {
-    console.log("images", images);
+    console.log("images", stickers);
   }, [images]);
 
   useEffect(() => {

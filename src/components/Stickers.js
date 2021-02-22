@@ -82,9 +82,6 @@ const StickersMachine = ({ stickers, container }) => {
   const handleStart = e => {
     switchIcon("close");
   };
-  // const handleDrag = e => {
-  //   console.log("drag ", e);
-  // };
   const handleStop = e => {
     switchIcon("open");
   };

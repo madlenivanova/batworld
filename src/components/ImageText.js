@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 import { css } from "@emotion/react";
 import Img from "gatsby-image";
 import withAnimation from "../effects/withAnimation";
 import { P } from "../styles/Typography";
+import s from "../data/stickers";
+import Stickers from "./Stickers";
+import { LoadContext } from "../providers/LoadProvider";
 
 const defaultAnimation = {
   from: {
@@ -24,18 +27,29 @@ const Image = withAnimation(defaultAnimation)(({ image }) => (
   <Img fluid={image.fluid} />
 ));
 
-const ImageText = ({ image, text, alignReverse }) => {
+const ImageText = ({ id, image, text, alignReverse }) => {
+  console.log("id ", id, s[id]);
+  const [useStickers, setUseStickers] = useState(false);
+  const stickers = s[id];
+  const myRef = useRef(null);
+  const { images } = useContext(LoadContext);
+
+  useEffect(() => {
+    setUseStickers(true);
+  }, [images]);
+
   return (
     <div
+      ref={myRef}
       css={css`
         max-width: 1200px;
         margin: 0 auto;
-
-        /* &:nth-child(2) {
-          background: red;
-        } */
+        position: relative;
       `}
     >
+      {stickers && stickers.length > 0 && (
+        <Stickers stickers={stickers} container={myRef.current} />
+      )}
       <div
         css={css`
           display: flex;

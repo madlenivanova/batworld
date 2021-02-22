@@ -78,7 +78,6 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
           `}
         >
           {items.map((artist, index) => {
-            console.log("artist", artist);
             return (
               <div
                 key={`artist--${artist.name}`}
