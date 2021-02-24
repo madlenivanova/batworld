@@ -30,6 +30,17 @@ import yinyang from "../assets/yinyang.png";
 import { CursorContext } from "../providers/CursorProvider";
 import { forEach } from "lodash";
 
+function makeid(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 const STICKERS = {
   blm,
   shook,
@@ -132,7 +143,7 @@ const StickersMachine = ({ stickers, container }) => {
           const url = STICKERS[item.name];
           return (
             <Draggable
-              key={item.url}
+              key={`${item.url}-${makeid(5)}`}
               defaultPosition={{ x: item.x, y: item.y }}
               onStart={handleStart}
               onStop={handleStop}

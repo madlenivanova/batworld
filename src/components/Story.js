@@ -51,6 +51,7 @@ const Story = ({ content }) => {
   useEffect(() => {
     if (story.length > 1) {
       const lastSection = story[story.length - 1].id;
+      console.log("last section ", lastSection, story.length);
 
       gsap.to(window, {
         scrollTo: `#${lastSection}`,
@@ -92,7 +93,7 @@ const Story = ({ content }) => {
         const props = { ...data, ...addProps({ id }) };
 
         return (
-          <Section {...props}>
+          <Section key={`${section.id}`} {...props}>
             {elements.map((element, index) => {
               const Element = element.c;
               const id = `${section.id}--${index}`;

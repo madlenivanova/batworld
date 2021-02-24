@@ -8,6 +8,7 @@ import Clouds from "./Clouds";
 import { H2 } from "../styles/Typography";
 import { forEach } from "lodash";
 import SplitText from "../plugins/SplitText";
+import ImagesLoaded from "react-images-loaded";
 gsap.registerPlugin(SplitText);
 
 const SectionHeader = ({ headerImage }) => {
@@ -32,6 +33,7 @@ const SectionArtist = ({
   const curatedSplitRef = useRef(null);
   const headlineRef = useRef(null);
   const headlineSplitRef = useRef(null);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     playTlOnLoad();
@@ -52,6 +54,14 @@ const SectionArtist = ({
       });
     });
   }, []);
+
+  const onImagesLoaded = () => {
+    console.log("loaded");
+    gsap.to(overlayRef.current, {
+      opacity: 0,
+      duration: 1,
+    });
+  };
 
   const playTlOnLoad = () => {
     let tl = gsap.timeline({ paused: true }).to(sectionRef.current, {
@@ -74,43 +84,70 @@ const SectionArtist = ({
         background-color: ${color};
       `}
     >
-      <div
-        ref={headerRef}
-        css={css`
-          height: 100vh;
-          //max-height: 0px;
-          background: url("${headerImage.fluid.src}");
-          background-size: cover;
-          background-position: center center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        <div>
-          <H2
-            ref={curatedRef}
-            mb="sm"
+      <ImagesLoaded done={onImagesLoaded}>
+        <div
+          ref={headerRef}
+          css={css`
+            height: 100vh;
+            //max-height: 0px;
+            background: url("${headerImage.fluid.src}");
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+          `}
+        >
+          <Img
+            fluid={headerImage.fluid}
             css={css`
-              font-size: 7vw;
-              color: #fee440;
-              letter-spacing: 4%;
-              margin-bottom: 15px;
+              min-width: 100%;
+              border: 10px solid red;
+            `}
+          />
+          <div
+            ref={overlayRef}
+            css={css`
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: ${color};
+              opacity: 0.5;
+            `}
+          />
+          <div
+            css={css`
+              position: relative;
+              z-index: 5;
             `}
           >
-            curated by
-          </H2>
-          <H2
-            ref={headlineRef}
-            css={css`
-              font-size: 9vw;
-              color: #fee440;
-            `}
-          >
-            {sectionTitle}
-          </H2>
+            <H2
+              ref={curatedRef}
+              mb="sm"
+              css={css`
+                font-size: 7vw;
+                color: #fee440;
+                letter-spacing: 4%;
+                margin-bottom: 15px;
+              `}
+            >
+              curated by
+            </H2>
+            <H2
+              ref={headlineRef}
+              css={css`
+                font-size: 9vw;
+                color: #fee440;
+              `}
+            >
+              {sectionTitle}
+            </H2>
+          </div>
         </div>
-      </div>
+      </ImagesLoaded>
       <div
         css={css`
           z-index: 5;
