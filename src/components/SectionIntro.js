@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { css } from "@emotion/react";
+import Img from "gatsby-image";
 import Stickers from "./Stickers";
 import curated from "../assets/curated.jpg";
 import { LoadContext } from "../providers/LoadProvider";

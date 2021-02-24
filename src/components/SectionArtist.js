@@ -5,9 +5,17 @@ import { setPadding } from "../styles/utilities";
 import Img from "gatsby-image";
 import { gsap } from "gsap/all";
 import Clouds from "./Clouds";
+import { H2 } from "../styles/Typography";
+import { forEach } from "lodash";
+import SplitText from "../plugins/SplitText";
+gsap.registerPlugin(SplitText);
 
 const SectionHeader = ({ headerImage }) => {
   return <Img fluid={headerImage.fluid} />;
+};
+
+const getRandomArbitrary = (min, max) => {
+  return Math.random() * (max - min) + min;
 };
 
 const SectionArtist = ({
@@ -17,17 +25,37 @@ const SectionArtist = ({
   headerImage,
   children,
 }) => {
-  const cloudsRef = useRef(null);
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
+
+  const curatedRef = useRef(null);
+  const curatedSplitRef = useRef(null);
+  const headlineRef = useRef(null);
+  const headlineSplitRef = useRef(null);
 
   useEffect(() => {
     playTlOnLoad();
   }, []);
 
+  useEffect(() => {
+    curatedSplitRef.current = new SplitText(curatedRef.current, {
+      type: ["chars"],
+    });
+    // headlineSplitRef.current = new SplitText(headlineRef.current, {
+    //   type: ["words", "chars"],
+    // });
+
+    forEach(curatedSplitRef.current.chars, ch => {
+      gsap.set(ch, {
+        rotate: getRandomArbitrary(-15, 15),
+        y: getRandomArbitrary(-20, 20),
+      });
+    });
+  }, []);
+
   const playTlOnLoad = () => {
     let tl = gsap.timeline({ paused: true }).to(sectionRef.current, {
-      maxHeight: 6000,
+      maxHeight: 20000,
       duration: 1,
       delay: 0.25,
     });
@@ -59,7 +87,29 @@ const SectionArtist = ({
           justify-content: center;
         `}
       >
-        <h1>{sectionTitle}</h1>
+        <div>
+          <H2
+            ref={curatedRef}
+            mb="sm"
+            css={css`
+              font-size: 7vw;
+              color: #fee440;
+              letter-spacing: 4%;
+              margin-bottom: 15px;
+            `}
+          >
+            curated by
+          </H2>
+          <H2
+            ref={headlineRef}
+            css={css`
+              font-size: 9vw;
+              color: #fee440;
+            `}
+          >
+            {sectionTitle}
+          </H2>
+        </div>
       </div>
       <div
         css={css`

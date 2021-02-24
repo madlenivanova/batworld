@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+export const H2 = styled("h2")`
+  text-align: center;
+  font-family: "monument";
+  font-size: 10vw;
+  text-transform: uppercase;
+  line-height: 1em;
+`;
+
 export const H4 = styled("h4")`
   font-size: 36px;
   text-align: center;
