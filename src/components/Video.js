@@ -28,14 +28,12 @@ const Video = ({ providerUid }) => {
         id: providerUid,
         controls: true,
         autoplay: true,
-        muted: false,
       });
     }
   }, [providerUid]);
 
   return (
     <div
-      id="parent-id"
       css={css`
         ${setPadding(["top", "bottom"], "md")}
         position: relative;
@@ -54,7 +52,6 @@ const Video = ({ providerUid }) => {
           `}
         >
           <div
-            id="child-id"
             ref={videoContainer}
             css={css`
               position: relative;

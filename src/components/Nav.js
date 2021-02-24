@@ -78,6 +78,7 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
           `}
         >
           {items.map((artist, index) => {
+            console.log("artist", JSON.stringify(artist));
             return (
               <div
                 key={`artist--${artist.name}`}
@@ -97,7 +98,7 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
                   name={artist.name}
                   image={artist.image}
                   onClick={() => {
-                    onArtistClick(index + 1);
+                    onArtistClick(artist.originalIndex);
                   }}
                   onMouseover={() => {
                     onArtistHover({ color: artist.color });

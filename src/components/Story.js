@@ -51,7 +51,7 @@ const Story = ({ content }) => {
   useEffect(() => {
     if (story.length > 1) {
       const lastSection = story[story.length - 1].id;
-      console.log("last section ", lastSection, story.length);
+      console.log("last section ", lastSection, story, story.length);
 
       gsap.to(window, {
         scrollTo: `#${lastSection}`,
@@ -62,6 +62,7 @@ const Story = ({ content }) => {
   }, [story]);
 
   const addSection = index => {
+    console.log(index);
     setStory([...story, content[index]]);
   };
 
@@ -76,6 +77,7 @@ const Story = ({ content }) => {
   const navItems = filterContent().map((section, index) => {
     const { color } = addProps({ id: section.id });
     return {
+      originalIndex: findIndex(content, { id: section.id }),
       name: section.data.sectionTitle,
       image: section.data.headerImage,
       color: color,

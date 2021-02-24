@@ -60,6 +60,7 @@ const SectionArtist = ({
     gsap.to(overlayRef.current, {
       opacity: 0,
       duration: 1,
+      ease: "power2.easeInOut",
     });
   };
 
@@ -90,7 +91,8 @@ const SectionArtist = ({
           css={css`
             height: 100vh;
             //max-height: 0px;
-            background: url("${headerImage.fluid.src}");
+            //background: url("${headerImage.fluid.src}");
+            background-color: ${color};
             background-size: cover;
             background-position: center center;
             display: flex;
@@ -103,7 +105,9 @@ const SectionArtist = ({
             fluid={headerImage.fluid}
             css={css`
               min-width: 100%;
-              border: 10px solid red;
+              position: absolute !important;
+              bottom: 0;
+              left: 0;
             `}
           />
           <div
@@ -115,7 +119,7 @@ const SectionArtist = ({
               width: 100%;
               height: 100%;
               background-color: ${color};
-              opacity: 0.5;
+              opacity: 1;
             `}
           />
           <div

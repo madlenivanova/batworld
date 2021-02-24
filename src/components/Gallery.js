@@ -38,11 +38,10 @@ function reducer(state, action) {
 const Gallery = ({ items }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { switchIcon } = useContext(CursorContext);
-  const { images } = useContext(ResizeContext);
 
-  useEffect(() => {
-    console.log("images", stickers);
-  }, [images]);
+  // useEffect(() => {
+  //   console.log("images", stickers);
+  // }, [images]);
 
   useEffect(() => {
     const items = Array.from(document.querySelectorAll(".item"));
