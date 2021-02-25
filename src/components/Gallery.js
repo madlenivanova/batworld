@@ -146,6 +146,11 @@ const Gallery = ({ items }) => {
                       /* height: 60vw; */
                       // width: 60vw !important;
                     }
+
+                    @media (min-width: 1200px) {
+                      height: 40vw;
+                      width: ${item.fluid.aspectRatio * 40}vw;
+                    }
                   `}
                 >
                   <img src={item.fluid.src} srcSet={item.fluid.srcSet} />

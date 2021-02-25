@@ -12,6 +12,10 @@ const Paragraph = ({ text }) => {
       css={css`
         ${setPadding(["left", "right"], "sm")}
         ${setMargin(["top", "bottom"], "md")}
+
+        a {
+          border-bottom: 1px solid black;
+        }
       `}
     >
       <Container size="sm">

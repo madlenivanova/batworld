@@ -99,15 +99,24 @@ const StickersMachine = ({ stickers, container }) => {
 
   useEffect(() => {
     const handles = Array.from(document.querySelectorAll(".handle"));
+    console.log("handles", handles);
+    const onMouseover = () => {
+      switchIcon("open");
+    };
+    const onMouseout = () => {
+      switchIcon("peace");
+    };
     forEach(handles, handle => {
-      handle.addEventListener("mouseover", () => {
-        console.log("open");
-        switchIcon("open");
-      });
-      handle.addEventListener("mouseout", () => {
-        switchIcon("peace");
-      });
+      handle.addEventListener("mouseover", onMouseover);
+      handle.addEventListener("mouseout", onMouseout);
     });
+    const cleanup = () => {
+      forEach(handles, handle => {
+        handle.removeEventListener("mouseover", onMouseover);
+        handle.removeEventListener("mouseout", onMouseout);
+      });
+    };
+    return cleanup;
   }, []);
 
   useEffect(() => {

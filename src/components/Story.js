@@ -62,7 +62,6 @@ const Story = ({ content }) => {
   }, [story]);
 
   const addSection = index => {
-    console.log(index);
     setStory([...story, content[index]]);
   };
 
@@ -119,7 +118,6 @@ const Story = ({ content }) => {
         onArtistClick={addSection}
         bgColor={addProps({ id: story[story.length - 1].id }).color}
       />
-      {images && <Cursor containerClass="bf-story" clickableClass="handle" />}
     </div>
   );
 };

@@ -14,7 +14,8 @@ const ElementWrapper = ({ id, children }) => {
   const stickers = s[id] || null;
 
   useEffect(() => {
-    setUseStickers(true);
+    console.log("images are loaded ", images);
+    images && setUseStickers(true);
   }, [images]);
 
   return (

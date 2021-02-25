@@ -27,7 +27,7 @@ const Video = ({ providerUid }) => {
       player.current = new Player(videoContainer.current, {
         id: providerUid,
         controls: true,
-        autoplay: true,
+        autoplay: false,
       });
     }
   }, [providerUid]);

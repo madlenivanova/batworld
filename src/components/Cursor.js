@@ -13,14 +13,6 @@ const Cursor = ({ containerClass, clickableClass }) => {
   const { images } = useContext(LoadContext);
   const { icon } = useContext(CursorContext);
 
-  const onMouseover = () => {
-    containerRef.current.addEventListener("mousemove", onMousemove);
-  };
-
-  const onMouseout = () => {
-    containerRef.current.removeEventListener("mousemove", onMousemove);
-  };
-
   const onMousemove = e => {
     gsap.to(cursorInner.current, {
       duration: 0.25,
@@ -33,9 +25,14 @@ const Cursor = ({ containerClass, clickableClass }) => {
   useEffect(() => {
     if (images) {
       containerRef.current = document.querySelector(`.${containerClass}`);
-      containerRef.current.addEventListener("mouseover", onMouseover);
-      containerRef.current.addEventListener("mouseout", onMouseout);
+      containerRef.current.addEventListener("mousemove", onMousemove);
     }
+
+    const cleanup = () => {
+      containerRef.current.removeEventListener("mousemove", onMousemove);
+    };
+
+    return cleanup;
   }, [images]);
 
   return (
