@@ -9,6 +9,7 @@ import { H2 } from "../styles/Typography";
 import { forEach } from "lodash";
 import SplitText from "../plugins/SplitText";
 import ImagesLoaded from "react-images-loaded";
+import { curatedBy } from "./SectionIntro";
 gsap.registerPlugin(SplitText);
 
 const SectionHeader = ({ headerImage }) => {
@@ -40,19 +41,18 @@ const SectionArtist = ({
   }, []);
 
   useEffect(() => {
-    curatedSplitRef.current = new SplitText(curatedRef.current, {
-      type: ["chars"],
-    });
-    // headlineSplitRef.current = new SplitText(headlineRef.current, {
-    //   type: ["words", "chars"],
+    // curatedSplitRef.current = new SplitText(curatedRef.current, {
+    //   type: ["chars"],
     // });
-
-    forEach(curatedSplitRef.current.chars, ch => {
-      gsap.set(ch, {
-        rotate: getRandomArbitrary(-15, 15),
-        y: getRandomArbitrary(-20, 20),
-      });
-    });
+    // // headlineSplitRef.current = new SplitText(headlineRef.current, {
+    // //   type: ["words", "chars"],
+    // // });
+    // forEach(curatedSplitRef.current.chars, ch => {
+    //   gsap.set(ch, {
+    //     rotate: getRandomArbitrary(-15, 15),
+    //     y: getRandomArbitrary(-20, 20),
+    //   });
+    // });
   }, []);
 
   const onImagesLoaded = () => {
@@ -128,18 +128,16 @@ const SectionArtist = ({
               z-index: 5;
             `}
           >
-            <H2
+            <div
               ref={curatedRef}
-              mb="sm"
+              dangerouslySetInnerHTML={{ __html: curatedBy }}
               css={css`
-                font-size: 7vw;
-                color: #fee440;
-                letter-spacing: 4%;
-                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
               `}
-            >
-              curated by
-            </H2>
+            ></div>
+
             <H2
               ref={headlineRef}
               css={css`

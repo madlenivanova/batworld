@@ -44,8 +44,6 @@ const addPropsElement = ({ element, index }) => {
 const Story = ({ content }) => {
   const [story, setStory] = useState([content[0]]);
 
-  const { images } = useContext(LoadContext);
-
   useEffect(() => {
     if (story.length > 1) {
       const lastSection = story[story.length - 1].id;

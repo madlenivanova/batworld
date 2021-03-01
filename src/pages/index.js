@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-  //{JSON.stringify(content, null, 2)}
+
   return (
     <Layout>
       <Story content={content} />

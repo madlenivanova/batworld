@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { setPadding, setMargin } from "../styles/utilities";
+import { setMargin } from "../styles/utilities";
 import { P } from "../styles/Typography";
+import { forEach } from "lodash";
 
 import Container from "../styles/Container";
 
 const Paragraph = ({ text }) => {
+  const [t, setT] = useState("");
+
+  useEffect(() => {
+    let _text = "";
+    let _counter = 0;
+    forEach(text, lt => {
+      if (lt === "*") {
+        _text += _counter % 2 ? "</span>" : "<span>";
+        _counter += 1;
+      } else {
+        _text += lt;
+      }
+    });
+
+    setT(_text);
+  }, []);
+
   return (
     <div
       css={css`
@@ -15,10 +33,14 @@ const Paragraph = ({ text }) => {
         a {
           border-bottom: 1px solid black;
         }
+
+        span {
+          font-style: italic;
+        }
       `}
     >
       <Container size="sm">
-        <P dangerouslySetInnerHTML={{ __html: text }} />
+        <P dangerouslySetInnerHTML={{ __html: t }} />
       </Container>
     </div>
   );

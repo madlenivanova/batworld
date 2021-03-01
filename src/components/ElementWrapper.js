@@ -14,7 +14,7 @@ const ElementWrapper = ({ id, children }) => {
   const stickers = s[id] || null;
 
   useEffect(() => {
-    console.log("images are loaded ", images);
+    //console.log("images are loaded ", images);
     images && setUseStickers(true);
   }, [images]);
 
@@ -23,7 +23,6 @@ const ElementWrapper = ({ id, children }) => {
       ref={elRef}
       css={css`
         position: relative;
-        border: 1px solid red;
       `}
     >
       {children}
