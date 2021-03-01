@@ -10,7 +10,6 @@ const Paragraph = ({ text }) => {
   return (
     <div
       css={css`
-        ${setPadding(["left", "right"], "sm")}
         ${setMargin(["top", "bottom"], "md")}
 
         a {

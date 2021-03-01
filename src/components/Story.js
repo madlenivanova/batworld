@@ -6,9 +6,7 @@ import Cursor from "./Cursor";
 import Nav from "./Nav";
 import { gsap, ScrollToPlugin } from "gsap/all";
 import { LoadContext } from "../providers/LoadProvider";
-import ImagesLoaded from "react-images-loaded";
-import s from "../data/stickers";
-import Stickers from "./Stickers";
+
 import ElementWrapper from "./ElementWrapper";
 gsap.registerPlugin(ScrollToPlugin);
 

@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setPadding, setMargin } from "../styles/utilities";
 import { P, QUOTE } from "../styles/Typography";
-
 import Container from "../styles/Container";
 
 const Quote = ({ text, source }) => {

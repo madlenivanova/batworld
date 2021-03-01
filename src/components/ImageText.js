@@ -39,6 +39,11 @@ const ImageText = ({ id, image, text, alignReverse }) => {
         css={css`
           display: flex;
           width: 100%;
+          flex-direction: column;
+
+          @media (min-width: 768px) {
+            flex-direction: row;
+          }
         `}
       >
         <div
@@ -46,10 +51,13 @@ const ImageText = ({ id, image, text, alignReverse }) => {
             flex-basis: 0;
             flex-grow: 1;
             display: flex;
-            padding: 90px 60px;
-            height: 100vh;
+            padding: 42px 16px;
+            height: ${(1 / image.fluid.aspectRatio) * 100}vw;
+
             @media (min-width: 768px) {
               order: ${alignReverse ? "1" : "0"};
+              padding: 90px 60px;
+              height: 100vh;
             }
           `}
         >
@@ -81,13 +89,14 @@ const ImageText = ({ id, image, text, alignReverse }) => {
           css={css`
             flex-basis: 0;
             flex-grow: 1;
-            padding: 90px 60px;
+            padding: 30px 32px;
             display: flex;
             align-items: center;
             justify-content: center;
 
             @media (min-width: 768px) {
               order: ${alignReverse ? "0" : "1"};
+              padding: 90px 60px;
             }
           `}
         >

@@ -161,9 +161,13 @@ const StickersMachine = ({ stickers, container }) => {
                 className="handle"
                 css={css`
                   max-width: 120px;
-                  height: 120px;
+                  //height: 120px;
                   position: absolute;
                   pointer-events: all !important;
+
+                  @media (max-width: 767px) {
+                    max-width: 80px;
+                  }
                 `}
               >
                 <div

@@ -23,6 +23,7 @@ const ElementWrapper = ({ id, children }) => {
       ref={elRef}
       css={css`
         position: relative;
+        border: 1px solid red;
       `}
     >
       {children}

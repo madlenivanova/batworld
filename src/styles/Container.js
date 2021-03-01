@@ -14,7 +14,7 @@ const Container = ({ size, children }) => (
       width: 100%;
       max-width: ${widths[size] || widths["xl"]}px;
       margin: 0 auto;
-      padding: 0px {(size === 'xl') ? 0 : 15}px;
+      padding: 0px ${size === "xl" ? 0 : 16}px;
     `}
   >
     {children}

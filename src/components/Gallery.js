@@ -133,18 +133,24 @@ const Gallery = ({ items }) => {
               <div
                 key={`image--${index}`}
                 css={css`
-                  padding: 8px 16px;
+                  padding: 8px 4px;
+
+                  @media (min-width: 768px) {
+                    padding: 8px 16px;
+                  }
                 `}
               >
                 <div
                   className="item"
                   css={css`
-                    height: 50vw;
-                    width: ${item.fluid.aspectRatio * 50}vw;
+                    height: 70vw;
+                    width: ${item.fluid.aspectRatio * 70}vw;
 
                     @media (min-width: 768px) {
                       /* height: 60vw; */
                       // width: 60vw !important;
+                      height: 50vw;
+                      width: ${item.fluid.aspectRatio * 50}vw;
                     }
 
                     @media (min-width: 1200px) {
