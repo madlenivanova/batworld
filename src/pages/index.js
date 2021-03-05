@@ -5,10 +5,11 @@ import Story from "../components/Story";
 import Layout from "../components/MyLayout";
 
 const IndexPage = ({ data }) => {
-  const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
+  const storyContent = data.allDatoCmsBespokeStory.edges[1].node.content;
   const content = datoToBF({
     content: storyContent,
   });
+  console.log("data", data);
 
   return (
     <Layout>

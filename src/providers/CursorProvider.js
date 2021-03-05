@@ -93,8 +93,6 @@ const CursorProvider = ({ children }) => {
           css={css`
             pointer-events: none;
             z-index: 90;
-            display: none;
-            opacity: 0;
           `}
         >
           <div
