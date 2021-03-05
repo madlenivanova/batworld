@@ -40,6 +40,8 @@ const Cursor = ({ containerClass, clickableClass }) => {
       css={css`
         pointer-events: none;
         z-index: 90;
+        opacity: 0;
+        display: none;
       `}
     >
       <div
