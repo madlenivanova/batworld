@@ -67,13 +67,22 @@ const Heading = () => {
         }
 
         #crocs-logo {
-          max-width: 240px;
+          max-width: 100px;
+          @media (min-width: 768px) {
+            max-width: 240px;
+          }
+        }
+
+        #curated-by {
+          max-width: 80vw;
+
+          @media (min-width: 768px) {
+          }
         }
       `}
     >
       <svg
         id="crocs-logo"
-        dataName="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 593.52 110.74"
       >
@@ -90,15 +99,21 @@ const Heading = () => {
       <h1
         css={css`
           font-family: "monument";
-          font-size: 24px;
           font-weight: normal;
           text-transform: uppercase;
-          margin: 16px 0;
+          margin: 16px 0px 0px;
+          font-size: 16px;
+
+          @media (min-width: 768px) {
+            font-size: 24px;
+            margin: 16px 0;
+          }
         `}
       >
         Presents
       </h1>
       <svg
+        id="curated-by"
         width="821"
         height="129"
         viewBox="0 0 821 129"

@@ -1,14 +1,29 @@
-import React, { useState, useEffect, createRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  createRef,
+  useContext,
+} from "react";
 
 import { css } from "@emotion/react";
-import { cloneDeep, findIndex, forEach, pull, slice, remove } from "lodash";
+import {
+  cloneDeep,
+  debounce,
+  findIndex,
+  forEach,
+  pull,
+  slice,
+  remove,
+} from "lodash";
 import Cursor from "./Cursor";
 import Nav from "./Nav";
-import { gsap, ScrollToPlugin } from "gsap/all";
+import { gsap, ScrollToPlugin, ScrollTrigger } from "gsap/all";
 import { LoadContext } from "../providers/LoadProvider";
 
 import ElementWrapper from "./ElementWrapper";
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const addProps = ({ id }) => {
   let props = {};
@@ -43,12 +58,41 @@ const addPropsElement = ({ element, index }) => {
 
 const Story = ({ content }) => {
   const [story, setStory] = useState([content[0]]);
+  const storyLengthRef = useRef(null);
+  const storyRef = useRef(null);
+
+  const onScroll = ev => {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+      const lastSectionIndex = storyLengthRef.current - 1;
+      if (lastSectionIndex < content.length - 1) {
+        storyLengthRef.current = storyLengthRef.current + 1;
+        addSection(lastSectionIndex + 1);
+      }
+    }
+  };
+
+  const onScrollDebounced = debounce(onScroll, 1000);
 
   useEffect(() => {
+    console.log("set length and attach event listeners");
+    storyLengthRef.current = 1;
+    if (typeof window === "object") {
+      window.addEventListener("scroll", onScrollDebounced);
+    }
+
+    const cleanup = () => {
+      console.log("time to cleanup");
+      window.removeEventListener("scroll", onScrollDebounced);
+    };
+
+    return cleanup;
+  }, []);
+
+  useEffect(() => {
+    //console.log("story changed", story);
+    storyRef.current = story;
     if (story.length > 1) {
       const lastSection = story[story.length - 1].id;
-      console.log("last section ", lastSection, story, story.length);
-
       gsap.to(window, {
         scrollTo: `#${lastSection}`,
         duration: 0.5,
@@ -58,7 +102,8 @@ const Story = ({ content }) => {
   }, [story]);
 
   const addSection = index => {
-    setStory([...story, content[index]]);
+    //console.log("story? when you add section", storyRef.current);
+    setStory([...storyRef.current, content[index]]);
   };
 
   const filterContent = () => {

@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 import { setPadding } from "../styles/utilities";
 import Img from "gatsby-image";
 import { gsap } from "gsap/all";
-import Clouds from "./Clouds";
 import { H2 } from "../styles/Typography";
-import { forEach } from "lodash";
 import SplitText from "../plugins/SplitText";
 import ImagesLoaded from "react-images-loaded";
 import { curatedBy } from "./SectionIntro";
@@ -31,32 +29,14 @@ const SectionArtist = ({
   const headerRef = useRef(null);
 
   const curatedRef = useRef(null);
-  const curatedSplitRef = useRef(null);
   const headlineRef = useRef(null);
-  const headlineSplitRef = useRef(null);
   const overlayRef = useRef(null);
 
   useEffect(() => {
     playTlOnLoad();
   }, []);
 
-  useEffect(() => {
-    // curatedSplitRef.current = new SplitText(curatedRef.current, {
-    //   type: ["chars"],
-    // });
-    // // headlineSplitRef.current = new SplitText(headlineRef.current, {
-    // //   type: ["words", "chars"],
-    // // });
-    // forEach(curatedSplitRef.current.chars, ch => {
-    //   gsap.set(ch, {
-    //     rotate: getRandomArbitrary(-15, 15),
-    //     y: getRandomArbitrary(-20, 20),
-    //   });
-    // });
-  }, []);
-
   const onImagesLoaded = () => {
-    console.log("loaded");
     gsap.to(overlayRef.current, {
       opacity: 0,
       duration: 1,
@@ -105,6 +85,7 @@ const SectionArtist = ({
             fluid={headerImage.fluid}
             css={css`
               min-width: 100%;
+              min-height: 100%;
               position: absolute !important;
               bottom: 0;
               left: 0;
@@ -135,14 +116,26 @@ const SectionArtist = ({
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                svg {
+                  max-width: 80vw;
+
+                  @media (min-width: 768px) {
+                  }
+                }
               `}
             ></div>
 
             <H2
               ref={headlineRef}
               css={css`
-                font-size: 9vw;
+                font-size: 10vw;
                 color: #fee440;
+                margin-top: -30px;
+                @media (min-width: 768px) {
+                  font-size: 9vw;
+                  margin-top: 0px;
+                }
               `}
             >
               {sectionTitle}
