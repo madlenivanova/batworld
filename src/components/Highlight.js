@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setPadding, setMargin } from "../styles/utilities";
-import Container from "../styles/Container";
+import { Container } from "@components/Markup";
 import { H4 } from "../styles/Typography";
 
 const HighlightBlock = ({ text }) => (
@@ -21,7 +21,7 @@ const HighlightBlock = ({ text }) => (
           font-size: 24px;
 
           @media (min-width: 768px) {
-            font-size: 72px;
+            font-size: 40px;
           }
         `}
         dangerouslySetInnerHTML={{ __html: text }}

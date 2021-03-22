@@ -1,4 +1,5 @@
 import React from "react";
+import { css } from "@emotion/react";
 import { nanoid } from "nanoid";
 import { cloneDeep, findIndex } from "lodash";
 import Nav from "./Nav";
@@ -85,6 +86,48 @@ const Story = ({ content }) => {
                 </ElementWrapper>
               );
             })}
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              <a
+                href="https://www.crocs.com/c/shop-by/style/classic-sandals?adid=ts65501041221"
+                target="_blank"
+                rel="noreferrer"
+                css={css`
+                  margin: 30px 0px;
+                  font-family: "monument", sans-serif;
+                  font-size: 24px;
+                  color: #fee440;
+                  background-color: transparent;
+                  border: 3px solid #fee440;
+                  padding: 0px 32px;
+                  border-radius: 24px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 48px;
+                  transition: 0.2s all;
+
+                  &:hover {
+                    color: black;
+                    background-color: #fee440;
+                  }
+
+                  @media (min-width: 768px) {
+                    margin: 60px 0px;
+                    height: 64px;
+                    font-size: 32px;
+                    border-radius: 32px;
+                  }
+                `}
+              >
+                SHOP NOW
+              </a>
+            </div>
             {index !== content.length - 1 && (
               <Nav
                 items={navItems}

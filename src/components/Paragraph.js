@@ -8,8 +8,6 @@ import { forEach } from "lodash";
 import { Container } from "@components/Markup";
 
 const Paragraph = ({ text }) => {
-  const [t, setT] = useState("");
-
   const formatText = () => {
     let _text = "";
     let _counter = 0;
