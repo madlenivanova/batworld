@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { css } from "@emotion/react";
-import Img from "gatsby-image";
 import Stickers from "./Stickers";
 import curated from "../assets/curated.jpg";
 import { LoadContext } from "../providers/LoadProvider";
@@ -204,7 +203,10 @@ const SectionIntro = ({ children }) => {
     <section
       css={css`
         background-color: #00bbf9;
-        padding-bottom: 180px;
+
+        @media (min-width: 768px) {
+          //padding-bottom: 180px;
+        }
       `}
     >
       <SectionHeader />

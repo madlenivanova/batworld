@@ -4,6 +4,7 @@ import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
 import CursorProvider from "../providers/CursorProvider";
+import IntroAnimation from "@components/IntroAnimation";
 
 const HSHeader = () => (
   <div
@@ -18,7 +19,7 @@ const HSHeader = () => (
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 20;
+      z-index: 500;
 
       @media (min-width: 768px) {
         height: 72px;

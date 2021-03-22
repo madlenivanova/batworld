@@ -10,7 +10,7 @@ import { Container } from "@components/Markup";
 const Paragraph = ({ text }) => {
   const [t, setT] = useState("");
 
-  useEffect(() => {
+  const formatText = () => {
     let _text = "";
     let _counter = 0;
     forEach(text, lt => {
@@ -21,9 +21,8 @@ const Paragraph = ({ text }) => {
         _text += lt;
       }
     });
-
-    setT(_text);
-  }, []);
+    return _text;
+  };
 
   return (
     <div
@@ -40,7 +39,7 @@ const Paragraph = ({ text }) => {
       `}
     >
       <Container size="sm">
-        <P dangerouslySetInnerHTML={{ __html: t }} />
+        <P dangerouslySetInnerHTML={{ __html: formatText() }} />
       </Container>
     </div>
   );

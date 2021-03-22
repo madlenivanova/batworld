@@ -85,9 +85,10 @@ const Story = ({ content }) => {
                 </ElementWrapper>
               );
             })}
-            {index !== 0 && (
+            {index !== content.length - 1 && (
               <Nav
                 items={navItems}
+                activeItemIndex={index + 1 - 1}
                 onArtistClick={goToSection}
                 bgColor={addProps({ id: content[index].id }).color}
               />

@@ -49,6 +49,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+          "@providers": "src/providers",
+          "@styles": "src/styles",
+          "@assets": "src/assets",
+        },
+        extensions: [],
+      },
+    },
+    {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: `301e42ddbf53a95a63eee3f3b8ee40`,

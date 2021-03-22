@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Img from "gatsby-image";
+import { forEach } from "lodash";
 import withAnimation from "../effects/withAnimation";
 import { P } from "../styles/Typography";
 const defaultAnimation = {
@@ -14,8 +15,17 @@ const defaultAnimation = {
 };
 
 const Text = withAnimation(defaultAnimation)(({ text }) => (
-  <div>
-    <P>{text}</P>
+  <div
+    css={css`
+      a {
+        border-bottom: 1px solid black;
+      }
+      span {
+        font-style: italic;
+      }
+    `}
+  >
+    <P dangerouslySetInnerHTML={{ __html: text }} />
   </div>
 ));
 
@@ -25,6 +35,20 @@ const Image = withAnimation(defaultAnimation)(({ image }) => (
 
 const ImageText = ({ id, image, text, alignReverse }) => {
   const myRef = useRef(null);
+
+  const formatText = () => {
+    let _text = "";
+    let _counter = 0;
+    forEach(text, lt => {
+      if (lt === "*") {
+        _text += _counter % 2 ? "</span>" : "<span>";
+        _counter += 1;
+      } else {
+        _text += lt;
+      }
+    });
+    return _text;
+  };
 
   return (
     <div
@@ -100,7 +124,7 @@ const ImageText = ({ id, image, text, alignReverse }) => {
             }
           `}
         >
-          <Text text={text} />
+          <Text text={formatText()} />
         </div>
       </div>
     </div>

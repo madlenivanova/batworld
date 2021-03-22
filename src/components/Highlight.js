@@ -8,7 +8,6 @@ import { H4 } from "../styles/Typography";
 const HighlightBlock = ({ text }) => (
   <div
     css={css`
-      ${setPadding(["left", "right"], "sm")}
       ${setMargin(["top", "bottom"], "md")}
     `}
   >
@@ -16,10 +15,10 @@ const HighlightBlock = ({ text }) => (
       <H4
         css={css`
           color: rgba(254, 228, 64, 1);
-          font-family: "univers-roman", sans-serif;
+          font-family: "monument", sans-serif;
           text-transform: uppercase;
           line-height: 1.3em;
-          font-size: 36px;
+          font-size: 24px;
 
           @media (min-width: 768px) {
             font-size: 72px;

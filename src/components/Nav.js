@@ -4,7 +4,7 @@ import { gsap } from "gsap/all";
 import { nanoid } from "nanoid";
 
 const NavItem = ({
-  sectionId,
+  isActive,
   name,
   image,
   onClick,
@@ -12,7 +12,6 @@ const NavItem = ({
   onMouseout,
 }) => {
   const elRef = useRef(null);
-  console.log(sectionId);
   useEffect(() => {
     elRef.current.addEventListener("mouseover", onMouseover);
     elRef.current.addEventListener("mouseout", onMouseout);
@@ -31,6 +30,7 @@ const NavItem = ({
         border: none;
         box-shadow: none;
         cursor: pointer;
+        //border: 10px solid ${isActive ? "red" : "blue"};
 
         @media (min-width: 768px) {
           height: 180px;
@@ -54,7 +54,7 @@ const NavItem = ({
   );
 };
 
-const Nav = ({ items, onArtistClick, bgColor }) => {
+const Nav = ({ items, activeItemIndex, onArtistClick, bgColor }) => {
   const wrapperRef = useRef(null);
   const innerRef = useRef(null);
   const cloudsRef = useRef(null);
@@ -62,7 +62,7 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
   const onArtistHover = ({ color }) => {
     gsap.to(cloudsRef.current, { fill: color, duration: 1 });
   };
-
+  console.log("active item", activeItemIndex);
   return (
     <div
       ref={wrapperRef}
@@ -126,6 +126,7 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
               >
                 <NavItem
                   {...artist}
+                  isActive={index === activeItemIndex}
                   onClick={() => {
                     onArtistClick(artist.sectionId);
                   }}
