@@ -1,29 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  createRef,
-  useContext,
-} from "react";
-
-import { css } from "@emotion/react";
-import {
-  cloneDeep,
-  debounce,
-  findIndex,
-  forEach,
-  pull,
-  slice,
-  remove,
-} from "lodash";
-import Cursor from "./Cursor";
+import React from "react";
+import { nanoid } from "nanoid";
+import { cloneDeep, findIndex } from "lodash";
 import Nav from "./Nav";
-import { gsap, ScrollToPlugin, ScrollTrigger } from "gsap/all";
-import { LoadContext } from "../providers/LoadProvider";
+import { gsap, ScrollToPlugin } from "gsap/all";
 
 import ElementWrapper from "./ElementWrapper";
 gsap.registerPlugin(ScrollToPlugin);
-gsap.registerPlugin(ScrollTrigger);
 
 const addProps = ({ id }) => {
   let props = {};
@@ -57,66 +39,23 @@ const addPropsElement = ({ element, index }) => {
 };
 
 const Story = ({ content }) => {
-  const [story, setStory] = useState([content[0]]);
-  const storyLengthRef = useRef(null);
-  const storyRef = useRef(null);
-
-  const onScroll = ev => {
-    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
-      const lastSectionIndex = storyLengthRef.current - 1;
-      if (lastSectionIndex < content.length - 1) {
-        storyLengthRef.current = storyLengthRef.current + 1;
-        addSection(lastSectionIndex + 1);
-      }
-    }
-  };
-
-  const onScrollDebounced = debounce(onScroll, 1000);
-
-  useEffect(() => {
-    console.log("set length and attach event listeners");
-    storyLengthRef.current = 1;
+  const goToSection = id => {
     if (typeof window === "object") {
-      window.addEventListener("scroll", onScrollDebounced);
+      gsap.to(window, { duration: 2, scrollTo: `#${id}` });
     }
-
-    const cleanup = () => {
-      console.log("time to cleanup");
-      window.removeEventListener("scroll", onScrollDebounced);
-    };
-
-    return cleanup;
-  }, []);
-
-  useEffect(() => {
-    //console.log("story changed", story);
-    storyRef.current = story;
-    if (story.length > 1) {
-      const lastSection = story[story.length - 1].id;
-      gsap.to(window, {
-        scrollTo: `#${lastSection}`,
-        duration: 0.5,
-        delay: 1,
-      });
-    }
-  }, [story]);
-
-  const addSection = index => {
-    //console.log("story? when you add section", storyRef.current);
-    setStory([...storyRef.current, content[index]]);
   };
 
   const filterContent = () => {
     let _content = cloneDeep(content);
-    forEach(story, (section, index) => {
-      remove(_content, { id: section.id });
-    });
+    _content.splice(0, 1);
     return _content;
   };
 
-  const navItems = filterContent().map((section, index) => {
+  const navItems = filterContent().map(section => {
     const { color } = addProps({ id: section.id });
+
     return {
+      sectionId: section.id,
       originalIndex: findIndex(content, { id: section.id }),
       name: section.data.sectionTitle,
       image: section.data.headerImage,
@@ -124,26 +63,21 @@ const Story = ({ content }) => {
     };
   });
 
-  let rI = -1;
-
   return (
     <div className="bf-story">
-      {story.map((section, index) => {
+      {content.map((section, index) => {
         const { c, id, data, elements } = section;
         const Section = c;
         addProps({ id });
         const props = { ...data, ...addProps({ id }) };
 
         return (
-          <Section key={`${section.id}`} {...props}>
+          <Section key={nanoid()} {...props}>
             {elements.map((element, index) => {
               const Element = element.c;
               const id = `${section.id}--${index}`;
               return (
-                <ElementWrapper
-                  id={`${section.id}--${index}`}
-                  key={`${section.id}--${index}`}
-                >
+                <ElementWrapper id={id} key={nanoid()}>
                   <Element
                     {...element.data}
                     {...addPropsElement({ element, index })}
@@ -151,14 +85,16 @@ const Story = ({ content }) => {
                 </ElementWrapper>
               );
             })}
+            {index !== 0 && (
+              <Nav
+                items={navItems}
+                onArtistClick={goToSection}
+                bgColor={addProps({ id: content[index].id }).color}
+              />
+            )}
           </Section>
         );
       })}
-      <Nav
-        items={navItems}
-        onArtistClick={addSection}
-        bgColor={addProps({ id: story[story.length - 1].id }).color}
-      />
     </div>
   );
 };

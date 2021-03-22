@@ -15,10 +15,10 @@ export const Container = styled("div")`
   width: 100%;
   max-width: 880px;
   margin: 0 auto;
-  padding: 0px 15px;
+  padding: 0px 32px;
 
   @media (min-width: 768px) {
-    padding: 0px 30px;
+    padding: 0px 32px;
   }
 `;
 

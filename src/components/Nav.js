@@ -1,10 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/react";
 import { gsap } from "gsap/all";
+import { nanoid } from "nanoid";
 
-const NavItem = ({ name, image, onClick, onMouseover, onMouseout }) => {
+const NavItem = ({
+  sectionId,
+  name,
+  image,
+  onClick,
+  onMouseover,
+  onMouseout,
+}) => {
   const elRef = useRef(null);
-
+  console.log(sectionId);
   useEffect(() => {
     elRef.current.addEventListener("mouseover", onMouseover);
     elRef.current.addEventListener("mouseout", onMouseout);
@@ -13,14 +21,22 @@ const NavItem = ({ name, image, onClick, onMouseover, onMouseout }) => {
     <button
       ref={elRef}
       css={css`
-        height: 180px;
-        width: 180px;
+        height: 140px;
+        width: 140px;
+        min-width: 140px;
         border-radius: 50%;
         background: url("${image.fluid.src}");
         background-size: cover;
         background-position: center center;
         border: none;
         box-shadow: none;
+        cursor: pointer;
+
+        @media (min-width: 768px) {
+          height: 180px;
+          width: 180px;
+          min-width: 180px;
+        }
       `}
       onClick={onClick}
     >
@@ -52,52 +68,66 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
       ref={wrapperRef}
       css={css`
         overflow: hidden;
-        background-color: ${bgColor || "#00bbf9"};
+        background-color: transparent;
+        //background-color: ${bgColor || "#00bbf9"};
       `}
     >
       <div
         ref={innerRef}
         css={css`
           display: flex;
-          opacity: 1;
           align-items: center;
           justify-content: space-between;
-          padding: 32px 0px;
+          padding: 0px 0px 90px 0px;
           position: relative;
           z-index: 5;
+
+          @media (min-width: 768px) {
+            padding: 32px 0px;
+          }
         `}
       >
         <div
           css={css`
-            padding: 0px 16px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            height: 300px;
+            height: 100vh;
             width: 100%;
+            max-height: 450px;
+
+            @media (min-width: 768px) {
+              height: 300px;
+            }
           `}
         >
           {items.map((artist, index) => {
             return (
               <div
-                key={`artist--${artist.name}`}
+                key={nanoid()}
                 css={css`
                   position: absolute;
-                  top: ${index % 2 ? "0px" : "auto"};
-                  bottom: ${index % 2 ? "auto" : "0px"};
-                  left: ${index * 20}%;
+                  left: ${index % 2 ? "32px" : "auto"};
+                  right: ${index % 2 ? "auto" : "32px"};
+                  top: ${index * 20}%;
                   transform-origin: center center;
-                  width: 20%;
+
                   display: flex;
                   align-items: center;
                   justify-content: center;
+
+                  @media (min-width: 768px) {
+                    width: 20%;
+                    top: ${index % 2 ? "0px" : "auto"};
+                    bottom: ${index % 2 ? "auto" : "0px"};
+                    left: ${index * 20}%;
+                  }
                 `}
               >
                 <NavItem
-                  name={artist.name}
-                  image={artist.image}
+                  {...artist}
                   onClick={() => {
-                    onArtistClick(artist.originalIndex);
+                    onArtistClick(artist.sectionId);
                   }}
                   onMouseover={() => {
                     onArtistHover({ color: artist.color });
@@ -119,6 +149,12 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
             bottom: 0;
             width: 100%;
             left: 0;
+
+            display: none;
+
+            @media (min-width: 768px) {
+              display: block;
+            }
           }
         `}
       >
@@ -127,7 +163,7 @@ const Nav = ({ items, onArtistClick, bgColor }) => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 704 116.09"
         >
-          <g id="Layer_1-2">
+          <g>
             <path
               className="cls-1"
               d="M0,2.09s62-18,99,54c46-20,66-14,97,0,20-28,66-40,100-10,12-9,30-9,35,1,26-10,54-12,77,0,0-32,24-46,40-47s48,6,52,41c30-8,50-2,66,11,31-30,90-46,138-10v74H0Z"

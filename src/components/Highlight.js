@@ -13,7 +13,20 @@ const HighlightBlock = ({ text }) => (
     `}
   >
     <Container size="md">
-      <H4 dangerouslySetInnerHTML={{ __html: text }} />
+      <H4
+        css={css`
+          color: rgba(254, 228, 64, 1);
+          font-family: "univers-roman", sans-serif;
+          text-transform: uppercase;
+          line-height: 1.3em;
+          font-size: 36px;
+
+          @media (min-width: 768px) {
+            font-size: 72px;
+          }
+        `}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
     </Container>
   </div>
 );

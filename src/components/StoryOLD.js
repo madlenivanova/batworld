@@ -1,0 +1,159 @@
+import React, { useState, useEffect, useRef } from "react";
+
+import {
+  cloneDeep,
+  debounce,
+  findIndex,
+  forEach,
+  pull,
+  slice,
+  remove,
+} from "lodash";
+import Nav from "./Nav";
+import { gsap, ScrollToPlugin, ScrollTrigger } from "gsap/all";
+
+import ElementWrapper from "./ElementWrapper";
+gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
+
+const addProps = ({ id }) => {
+  let props = {};
+  switch (id) {
+    case "artist-one":
+      props.color = "#D9F56A";
+      break;
+    case "artist-two":
+      props.color = "#F15BB5";
+      break;
+    case "artist-three":
+      props.color = "#F0B7B3";
+      break;
+    case "artist-four":
+      props.color = "#9B5DE5";
+      break;
+    case "artist-five":
+      props.color = "#4ECD67";
+      break;
+  }
+
+  return props;
+};
+
+const addPropsElement = ({ element, index }) => {
+  let props = {};
+  if (element.type === "ImageText" && index % 2) {
+    props.alignReverse = true;
+  }
+  return props;
+};
+
+const Story = ({ content }) => {
+  const [story, setStory] = useState([content[0]]);
+  const storyLengthRef = useRef(null);
+  const storyRef = useRef(null);
+
+  const onScroll = ev => {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+      const lastSectionIndex = storyLengthRef.current - 1;
+      if (lastSectionIndex < content.length - 1) {
+        storyLengthRef.current = storyLengthRef.current + 1;
+        addSection(lastSectionIndex + 1);
+      }
+    }
+  };
+
+  const onScrollDebounced = debounce(onScroll, 1000);
+
+  useEffect(() => {
+    console.log("set length and attach event listeners");
+    storyLengthRef.current = 1;
+    if (typeof window === "object") {
+      window.addEventListener("scroll", onScrollDebounced);
+    }
+
+    const cleanup = () => {
+      console.log("time to cleanup");
+      window.removeEventListener("scroll", onScrollDebounced);
+    };
+
+    return cleanup;
+  }, []);
+
+  useEffect(() => {
+    //console.log("story changed", story);
+    storyRef.current = story;
+    if (story.length > 1) {
+      const lastSection = story[story.length - 1].id;
+      gsap.to(window, {
+        scrollTo: `#${lastSection}`,
+        duration: 0.5,
+        delay: 1,
+      });
+    }
+  }, [story]);
+
+  const addSection = index => {
+    //console.log("story? when you add section", storyRef.current);
+    setStory([...storyRef.current, content[index]]);
+  };
+
+  const filterContent = () => {
+    let _content = cloneDeep(content);
+    forEach(story, (section, index) => {
+      remove(_content, { id: section.id });
+    });
+    return _content;
+  };
+
+  const navItems = filterContent().map((section, index) => {
+    const { color } = addProps({ id: section.id });
+    return {
+      originalIndex: findIndex(content, { id: section.id }),
+      name: section.data.sectionTitle,
+      image: section.data.headerImage,
+      color: color,
+    };
+  });
+
+  let rI = -1;
+
+  return (
+    <div className="bf-story">
+      {story.map((section, index) => {
+        const { c, id, data, elements } = section;
+        const Section = c;
+        addProps({ id });
+        const props = { ...data, ...addProps({ id }) };
+
+        return (
+          <Section key={`${section.id}`} {...props}>
+            {elements.map((element, index) => {
+              const Element = element.c;
+              const id = `${section.id}--${index}`;
+              return (
+                <ElementWrapper
+                  id={`${section.id}--${index}`}
+                  key={`${section.id}--${index}`}
+                >
+                  <Element
+                    {...element.data}
+                    {...addPropsElement({ element, index })}
+                  />
+                </ElementWrapper>
+              );
+            })}
+          </Section>
+        );
+      })}
+      <Nav
+        items={navItems}
+        onArtistClick={addSection}
+        bgColor={addProps({ id: story[story.length - 1].id }).color}
+      />
+    </div>
+  );
+};
+
+//<Clouds />
+
+export default Story;

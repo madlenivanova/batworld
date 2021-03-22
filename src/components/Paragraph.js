@@ -5,7 +5,7 @@ import { setMargin } from "../styles/utilities";
 import { P } from "../styles/Typography";
 import { forEach } from "lodash";
 
-import Container from "../styles/Container";
+import { Container } from "@components/Markup";
 
 const Paragraph = ({ text }) => {
   const [t, setT] = useState("");

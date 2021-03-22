@@ -5,11 +5,10 @@ import Story from "../components/Story";
 import Layout from "../components/MyLayout";
 
 const IndexPage = ({ data }) => {
-  const storyContent = data.allDatoCmsBespokeStory.edges[1].node.content;
+  const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
   const content = datoToBF({
     content: storyContent,
   });
-  console.log("data", data);
 
   return (
     <Layout>
@@ -22,7 +21,9 @@ export default IndexPage;
 
 export const query = graphql`
   query StoryQuery {
-    allDatoCmsBespokeStory {
+    allDatoCmsBespokeStory(
+      filter: { id: { eq: "DatoCmsBespokeStory-18944056-en" } }
+    ) {
       edges {
         node {
           id
