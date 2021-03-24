@@ -93,6 +93,7 @@ const Layout = ({ children }) => {
       <LoadProvider>
         <CursorProvider>
           <ResizeProvider>
+            <IntroAnimation />
             <main
               css={css`
                 padding-top: 60px;

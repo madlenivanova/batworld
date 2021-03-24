@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { gsap } from "gsap/all";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { forEach } from "lodash";
 import { LoadContext } from "../providers/LoadProvider";
 import { CursorContext } from "../providers/CursorProvider";
 

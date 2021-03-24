@@ -13,10 +13,6 @@ import peace from "../assets/01_peace.png";
 import close from "../assets/02_close.png";
 import open from "../assets/02_open.png";
 
-import { forEach } from "lodash";
-
-//import Cursor from "../components/Cursor";
-
 export const CursorContext = createContext();
 
 const Cursor = forwardRef((props, ref) => {

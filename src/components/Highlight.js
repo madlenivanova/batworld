@@ -42,3 +42,5 @@ HighlightBlock.propTypes = {
 };
 
 export default HighlightBlock;
+
+// пиши на ленко, говори с мотко

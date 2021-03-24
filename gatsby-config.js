@@ -57,6 +57,7 @@ module.exports = {
           "@providers": "src/providers",
           "@styles": "src/styles",
           "@assets": "src/assets",
+          "@plugins": "src/plugins",
         },
         extensions: [],
       },
