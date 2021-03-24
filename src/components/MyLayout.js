@@ -5,6 +5,7 @@ import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
 import CursorProvider from "../providers/CursorProvider";
 import IntroAnimation from "@components/IntroAnimation";
+import IntroAnimationMobile from "@components/IntroAnimationMobile";
 
 const HSHeader = () => (
   <div
@@ -94,6 +95,7 @@ const Layout = ({ children }) => {
         <CursorProvider>
           <ResizeProvider>
             <IntroAnimation />
+            <IntroAnimationMobile />
             <main
               css={css`
                 padding-top: 60px;

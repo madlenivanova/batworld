@@ -18,8 +18,9 @@ const Hand = forwardRef((props, ref) => (
     css={css`
       position: absolute;
       transform: translate3d(-50%, -50%, 0);
-      top: 16%;
-      left: 42%;
+
+      top: 36%;
+      left: 92%;
       opacity: 0;
     `}
     src={open}
@@ -29,10 +30,10 @@ const Hand = forwardRef((props, ref) => (
 const Jibbitz = forwardRef((props, ref) => (
   <img
     css={css`
-      max-width: 180px;
+      max-width: 120px;
       position: absolute;
-      top: 0;
-      left: 18%;
+      top: 7%;
+      left: 45%;
       transform: translate3d(-50%, -50%, 0);
       opacity: 0;
     `}
@@ -106,7 +107,7 @@ const IntroAnimation = () => {
         align-items: center;
         justify-content: center;
 
-        @media (max-width: 991px) {
+        @media (min-width: 992px) {
           display: none;
         }
       `}
@@ -171,46 +172,47 @@ const IntroAnimation = () => {
       >
         <div
           css={css`
-            max-width: 60vw;
             position: relative;
             width: 100%;
+            margin-top: -300px;
+            padding: 16px;
           `}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912.91 511.1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 655.21 390.81">
             <path
               ref={handPathRef}
-              d="M740.5,277.5s-168,96-212-87"
-              transform="translate(-354.04 -190)"
+              d="M708,311S423.13,473.81,348.52,163.5"
+              transform="translate(-53.04 -163)"
             />
             <path
               ref={dragPathRef}
-              d="M528.5,190.5s-162,8-173,83c-13,88.79,112,70,52,147"
-              transform="translate(-354.04 -190)"
+              d="M348.52,163.5S73.82,177.07,55.17,304.24C33.09,454.8,245.08,422.94,143.34,553.5"
+              transform="translate(-53.04 -163)"
             />
           </svg>
           <Jibbitz ref={jibbitzRef} />
           <Hand ref={handRef} />
-          <img
-            css={css`
-              position: absolute;
-              transform: translate3d(-50%, -50%, 0);
-              top: 86%;
-              left: 92%;
-              max-width: 150px;
-            `}
-            src={shark}
-          />
-          <img
-            css={css`
-              position: absolute;
-              transform: translate3d(-50%, -50%, 0);
-              top: 6%;
-              left: 62%;
-              max-width: 150px;
-            `}
-            src={skull}
-          />
         </div>
+        <img
+          css={css`
+            position: absolute;
+            transform: translate3d(-50%, -50%, 0);
+            top: 86%;
+            left: 52%;
+            max-width: 100px;
+          `}
+          src={shark}
+        />
+        <img
+          css={css`
+            position: absolute;
+            transform: translate3d(-50%, -50%, 0);
+            top: 10%;
+            left: 82%;
+            max-width: 120px;
+          `}
+          src={skull}
+        />
       </div>
     </div>
   );
