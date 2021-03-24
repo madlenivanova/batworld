@@ -82,7 +82,7 @@ const IntroAnimation = () => {
         ease: "power1.inOut",
       })
       .to(loaderRef.current, {
-        //opacity: 0,
+        opacity: 0,
         pointerEvents: "none",
         duration: 1,
         delay: 1,
@@ -166,7 +166,6 @@ const IntroAnimation = () => {
 
           path {
             fill: none;
-            stroke: red;
           }
         `}
       >
