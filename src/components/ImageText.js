@@ -30,7 +30,7 @@ const Text = withAnimation(defaultAnimation)(({ text }) => (
 ));
 
 const Image = withAnimation(defaultAnimation)(({ image }) => (
-  <Img fluid={image.fluid} />
+  <img src={image.fluid.src} srcSet={image.fluid.srcSet} />
 ));
 
 const ImageText = ({ id, image, text, alignReverse }) => {

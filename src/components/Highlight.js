@@ -18,7 +18,7 @@ const HighlightBlock = ({ text }) => (
           font-family: "monument", sans-serif;
           text-transform: uppercase;
           line-height: 1.3em;
-          font-size: 24px;
+          font-size: 18px;
 
           @media (min-width: 768px) {
             font-size: 40px;

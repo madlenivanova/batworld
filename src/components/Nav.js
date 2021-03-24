@@ -44,8 +44,12 @@ const NavItem = ({
         css={css`
           font-family: "monument";
           text-transform: uppercase;
-          font-size: 16px;
+          font-size: 13px;
           color: rgba(252, 213, 54, 1);
+
+          @media (min-width: 768px) {
+            font-size: 16px;
+          }
         `}
       >
         {name}
@@ -62,7 +66,7 @@ const Nav = ({ items, activeItemIndex, onArtistClick, bgColor }) => {
   const onArtistHover = ({ color }) => {
     gsap.to(cloudsRef.current, { fill: color, duration: 1 });
   };
-  console.log("active item", activeItemIndex);
+
   return (
     <div
       ref={wrapperRef}
@@ -107,8 +111,8 @@ const Nav = ({ items, activeItemIndex, onArtistClick, bgColor }) => {
                 key={nanoid()}
                 css={css`
                   position: absolute;
-                  left: ${index % 2 ? "32px" : "auto"};
-                  right: ${index % 2 ? "auto" : "32px"};
+                  left: ${index % 2 ? "16px" : "auto"};
+                  right: ${index % 2 ? "auto" : "16px"};
                   top: ${index * 20}%;
                   transform-origin: center center;
 
