@@ -4,6 +4,8 @@ import { gsap } from "gsap/all";
 import { H4 } from "@styles/Typography";
 import open from "@assets/02_open.png";
 import crocs from "@assets/crocs.png";
+import shark from "../assets/shark.png";
+import skull from "../assets/skull.png";
 import MotionPathPlugin from "@plugins/MotionPathPlugin";
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -98,7 +100,7 @@ const IntroAnimation = () => {
         left: 0;
         height: 100vh;
         width: 100%;
-        background: #00bbf9;
+        background: #fee440;
         z-index: 500;
         display: flex;
         align-items: center;
@@ -164,7 +166,7 @@ const IntroAnimation = () => {
       >
         <div
           css={css`
-            max-width: 80vw;
+            max-width: 60vw;
             position: relative;
             width: 100%;
           `}
@@ -183,6 +185,26 @@ const IntroAnimation = () => {
           </svg>
           <Jibbitz ref={jibbitzRef} />
           <Hand ref={handRef} />
+          <img
+            css={css`
+              position: absolute;
+              transform: translate3d(-50%, -50%, 0);
+              top: 86%;
+              left: 92%;
+              max-width: 150px;
+            `}
+            src={shark}
+          />
+          <img
+            css={css`
+              position: absolute;
+              transform: translate3d(-50%, -50%, 0);
+              top: 6%;
+              left: 62%;
+              max-width: 150px;
+            `}
+            src={skull}
+          />
         </div>
       </div>
     </div>
