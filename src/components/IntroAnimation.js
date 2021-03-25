@@ -146,9 +146,10 @@ const IntroAnimation = () => {
         <H4
           css={css`
             font-family: "monument";
+            text-transform: uppercase;
           `}
         >
-          Click and drag the Jibbitz to move them around!
+          Click and drag the Jibbitz™ charms to move them around
         </H4>
       </div>
       <div
