@@ -48,19 +48,18 @@ const HSHeader = () => (
 const GlobalStyles = () => (
   <Global
     styles={css`
-      * {
-        box-sizing: border-box;
-        margin: 0;
-      }
+
       #___gatsby {
         margin: 0;
-        font-size: 16px;
+        font-size: 18px;
         font-family: "univers-light", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
         color: rgba(33, 23, 3, 1);
+        box-sizing: border-box;
+        margin: 0;
       }
 
       a,
@@ -92,10 +91,7 @@ const Layout = ({ children }) => {
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
-        <CursorProvider>
           <ResizeProvider>
-            <IntroAnimation />
-            <IntroAnimationMobile />
             <main
               css={css`
                 padding-top: 60px;
@@ -114,7 +110,6 @@ const Layout = ({ children }) => {
               {children}
             </main>
           </ResizeProvider>
-        </CursorProvider>
       </LoadProvider>
     </div>
   );

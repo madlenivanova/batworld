@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Global, css } from "@emotion/react";
-import MonumentExtendedWoff from "./monumentextended-bold-webfont.woff";
-import MonumentExtendedWoff2 from "./monumentextended-bold-webfont.woff2";
 import UniversLightWoff from "./univers-light.woff";
 import UniversLightWoff2 from "./univers-light.woff2";
 import UniversRomanWoff from "./univers-roman.woff";
@@ -33,11 +31,6 @@ const GlobalFonts = () => {
             url(${UniversRomanWoff}) format("woff");
         }
 
-        @font-face {
-          font-family: "monument";
-          src: local("monument"), url(${MonumentExtendedWoff2}) format("woff2"),
-            url(${MonumentExtendedWoff}) format("woff");
-        }
       `}
     />
   );

@@ -18,6 +18,14 @@ a starter template to speed up development of bespoke features and making stuff 
 ## Suggested workflow
 
 Replace storyId in src/pages/index.js.
+add conditionals for section dividers in story.js, components/ and dato.js.
+each section should include
+c (component)
+data
+elements.
+each element -
+c (component)
+data
 
 1. **Setup fonts, styles and data**
 

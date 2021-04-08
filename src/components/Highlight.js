@@ -18,10 +18,10 @@ const HighlightBlock = ({ text }) => (
           font-family: "monument", sans-serif;
           text-transform: uppercase;
           line-height: 1.3em;
-          font-size: 18px;
+          font-size: 40px;
 
           @media (min-width: 768px) {
-            font-size: 40px;
+            font-size: 64px;
           }
         `}
         dangerouslySetInnerHTML={{ __html: text }}

@@ -19,8 +19,9 @@ export const datoToBF = ({ content }) => {
 
   forEach(content, (item, index) => {
     // check if first layout, and if so, init
-
+    
     const t = item.__typename;
+    //console.log('typename ', t);
     if (includes(t, "Section")) {
       if (currentLayout === null) {
         currentLayout = 0;
@@ -28,30 +29,29 @@ export const datoToBF = ({ content }) => {
         currentLayout = currentLayout + 1;
       }
       let layout = {};
-      layout.id = item.sectionId;
-      layout.c = SECTIONS.SectionArtist;
-      layout.data = omit(item, ["id", "__typename"]);
+
+      if (includes(item.sectionId, 'feature')) {
+        layout.c = SECTIONS.SectionFeature;
+      } else if (includes(item.sectionId, 'intro')) {
+        layout.c = SECTIONS.SectionIntro;
+      }
+      //layout.id = item.sectionId;
+      
+      console.log('item ', item);
+      layout.data = omit(item, ["id", "__typename", "sectionId"]);
       layout.elements = [];
       storyContent.push(layout);
     } else {
+      // in case there's no intro section by mistake?
       if (index === 0) {
-        currentLayout = 0;
-        let layout = {};
-        layout.id = "section-0-default";
-        layout.c = SECTIONS.SectionIntro;
-        layout.data = {
-          sectionTitle: "Intro section",
-          sectionId: "intro-section",
-        };
-        layout.elements = [];
-        storyContent.push(layout);
+        console.log('add an intro section divider bitte!')
       }
       let elType = mapDatoKeysToISF[t];
       let element = {};
       element.type = elType;
       element.c = ELEMENTS[elType];
       element.data = omit(item, ["id", "__typename"]);
-      //console.log("item?? ", item);
+
 
       storyContent[currentLayout].elements.push(element);
     }
