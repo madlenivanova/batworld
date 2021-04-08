@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-
+  console.log('story content', storyContent);
   return (
     <Layout>
       <Story content={content} />
@@ -22,7 +22,7 @@ export default IndexPage;
 export const query = graphql`
   query StoryQuery {
     allDatoCmsBespokeStory(
-      filter: { id: { eq: "DatoCmsBespokeStory-18944056-en" } }
+      filter: { id: { eq: "DatoCmsBespokeStory-29571818-en" } }
     ) {
       edges {
         node {

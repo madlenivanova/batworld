@@ -17,6 +17,8 @@ a starter template to speed up development of bespoke features and making stuff 
 
 ## Suggested workflow
 
+Replace storyId in src/pages/index.js.
+
 1. **Setup fonts, styles and data**
 
 Upload WOFF/WOFF2 versions of your fonts to **`/src/fonts`** and replace names and urls in fonts.js.
