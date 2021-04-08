@@ -4,8 +4,6 @@ import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
 import CursorProvider from "../providers/CursorProvider";
-import IntroAnimation from "@components/IntroAnimation";
-import IntroAnimationMobile from "@components/IntroAnimationMobile";
 
 const HSHeader = () => (
   <div
