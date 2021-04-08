@@ -3,7 +3,6 @@ import { Global, css } from "@emotion/react";
 import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
-import CursorProvider from "../providers/CursorProvider";
 
 const HSHeader = () => (
   <div

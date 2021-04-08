@@ -35,14 +35,11 @@ export const datoToBF = ({ content }) => {
       } else if (includes(item.sectionId, 'intro')) {
         layout.c = SECTIONS.SectionIntro;
       }
-      //layout.id = item.sectionId;
-      
-      console.log('item ', item);
+
       layout.data = omit(item, ["id", "__typename", "sectionId"]);
       layout.elements = [];
       storyContent.push(layout);
     } else {
-      // in case there's no intro section by mistake?
       if (index === 0) {
         console.log('add an intro section divider bitte!')
       }
@@ -51,7 +48,6 @@ export const datoToBF = ({ content }) => {
       element.type = elType;
       element.c = ELEMENTS[elType];
       element.data = omit(item, ["id", "__typename"]);
-
 
       storyContent[currentLayout].elements.push(element);
     }

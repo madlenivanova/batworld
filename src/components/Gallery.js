@@ -8,7 +8,6 @@ import { CursorContext } from "../providers/CursorProvider";
 import { ResizeContext } from "../providers/ResizeProvider";
 import { forEach } from "lodash";
 
-import stickers from "../data/stickers";
 
 const defaultSettings = {
   dots: true,
