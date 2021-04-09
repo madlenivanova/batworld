@@ -1,11 +1,13 @@
 import React from "react";
 import { gsap, ScrollToPlugin } from "gsap/all";
+import {Title, Text} from "@components/Typography";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Story = ({ content }) => {
 
   return (
     <React.Fragment>
+      <Title tag='h1' size='lg'>proba</Title>
       {content.map((section, index) => {
         const { c, data, elements } = section;
         const Section = c;

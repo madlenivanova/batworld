@@ -58,6 +58,7 @@ module.exports = {
           "@styles": "src/styles",
           "@assets": "src/assets",
           "@plugins": "src/plugins",
+          "@utilities": "src/utilities",
         },
         extensions: [],
       },

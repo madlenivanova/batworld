@@ -6,26 +6,19 @@ a starter template to speed up development of bespoke features and making stuff 
 
 1.  **Create a new BF page.**
 
-    clone repo and
+clone repo and
 
-    ```shell
-    npm install
-    gatsby develop
-    ```
+```shell
+npm install
+gatsby develop
+```
 
-    Your site is now running at `http://localhost:8000`!
+Your site is now running at `http://localhost:8000`!
 
 ## Suggested workflow
 
-Replace storyId in src/pages/index.js.
-add conditionals for section dividers in story.js, components/ and dato.js.
-each section should include
-c (component)
-data
-elements.
-each element -
-c (component)
-data
+IMPORTANT: Replace storyId in src/pages/index.js.
+This should be automated somehow, but for now isn't.
 
 1. **Setup fonts, styles and data**
 
@@ -35,12 +28,14 @@ Setup your initial story data in **`/src/data/story`** page data in **`/src/data
 
 Setup your main typographic styles in **`/src/components/Typography`**
 
+Setup global styles in **`/src/components/MyLayout`** (needs a more elegant solution in future ;)
+
 2. **Setup your components**
 
 Setup your main components in **`/src/components`**.
 
-The current structure in Dato uses Sections (layouts) and Elements inside each section.
-Elements are usually repetitive across BFs (for example Paragraph or Gallery), while Sections can differ, and need to be adjusted manually.
+The current structure in Dato uses Sections and Elements inside each section.
+Elements are usually repetitive across BFs (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually.
 
 To define unique Sections for a story:
 2.1. Build them as components (for example SectionFeature.js);
@@ -55,7 +50,7 @@ if (includes(item.sectionId, 'feature')) {
 }
 ```
 
-Same goes for elements - in case you need to define new ones.
+Same goes for elements - in case you need to define new ones. It doesn't matter how you structure the conditionals, as long as the Story knows which components to use for each Dato entity.
 
 ## 🧐 A few notes on special components
 
@@ -83,27 +78,3 @@ You can wrap your components inside those to create effects on scroll (fade in, 
 Deploy to HS
 // to do
 
-## Using hs-specials
-
-Install gatsby-plugin-alias-imports and add this to gatsby-config.
-The react alias is necessary to avoid conflicting react versions in hs-specials and the template.
-
-```shell
-    {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          react: require.resolve(`${__dirname}/node_modules/react`),
-          "@hs-specials": path.resolve(`../hs-specials`),
-        },
-        extensions: [],
-      },
-    },
-```
-
-Use like this:
-
-```shell
-  import Specials from '@hs-specials';
-  // console.log to see what's up :)
-```
