@@ -4,6 +4,10 @@ import UniversLightWoff from "./univers-light.woff";
 import UniversLightWoff2 from "./univers-light.woff2";
 import UniversRomanWoff from "./univers-roman.woff";
 import UniversRomanWoff2 from "./univers-roman.woff2";
+import UniversBoldWoff from "./univers-bold.woff";
+import UniversBoldWoff2 from "./univers-bold.woff2";
+import UniversBoldCondWoff from "./univers-bold-cond.woff";
+import UniversBoldCondWoff2 from "./univers-bold-cond.woff2";
 import { LoadContext } from "../providers/LoadProvider";
 
 const GlobalFonts = () => {
@@ -31,6 +35,18 @@ const GlobalFonts = () => {
             url(${UniversRomanWoff}) format("woff");
         }
 
+        @font-face {
+          font-family: "univers-bold";
+          src: local("univers-bold"), url(${UniversBoldWoff2}) format("woff2"),
+            url(${UniversBoldWoff}) format("woff");
+        }
+
+        @font-face {
+          font-family: "univers-bold-cond";
+          src: local("univers-bold-cond"),
+            url(${UniversBoldCondWoff2}) format("woff2"),
+            url(${UniversBoldCondWoff}) format("woff");
+        }
       `}
     />
   );

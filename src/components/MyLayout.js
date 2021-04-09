@@ -45,6 +45,9 @@ const HSHeader = () => (
 const GlobalStyles = () => (
   <Global
     styles={css`
+      body {
+        margin: 0;
+      }
 
       #___gatsby {
         margin: 0;
@@ -88,25 +91,25 @@ const Layout = ({ children }) => {
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
-          <ResizeProvider>
-            <main
-              css={css`
-                padding-top: 60px;
-                position: relative;
-                overflow: hidden;
+        <ResizeProvider>
+          <main
+            css={css`
+              padding-top: 60px;
+              position: relative;
+              overflow: hidden;
 
-                @media (min-width: 768px) {
-                  padding-top: 72px;
-                }
+              @media (min-width: 768px) {
+                padding-top: 72px;
+              }
 
-                @media (min-width: 992px) {
-                  padding-top: 97px;
-                }
-              `}
-            >
-              {children}
-            </main>
-          </ResizeProvider>
+              @media (min-width: 992px) {
+                padding-top: 97px;
+              }
+            `}
+          >
+            {children}
+          </main>
+        </ResizeProvider>
       </LoadProvider>
     </div>
   );

@@ -7,6 +7,7 @@ import SectionFeature from "@components/SectionFeature";
 import SectionIntro from "@components/SectionIntro";
 import Gallery from "../components/Gallery";
 import Quote from "../components/Quote";
+import ListItem from "../components/ListItem";
 
 export const SECTIONS = { SectionIntro, SectionFeature };
 export const ELEMENTS = {
@@ -17,4 +18,5 @@ export const ELEMENTS = {
   ImageText,
   Gallery,
   Quote,
+  ListItem,
 };

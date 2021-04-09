@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setMargin } from "../styles/utilities";
-import { P } from "../styles/Typography";
+import { Text } from "@components/Typography";
 import { forEach } from "lodash";
 
 import { Container } from "@components/Markup";
@@ -26,7 +26,8 @@ const Paragraph = ({ text }) => {
     <div
       css={css`
         ${setMargin(["top", "bottom"], "md")}
-
+        max-width: 640px;
+        margin: 0 auto;
         a {
           border-bottom: 1px solid black;
         }
@@ -34,10 +35,14 @@ const Paragraph = ({ text }) => {
         span {
           font-style: italic;
         }
+
+        p {
+          white-space: pre-wrap;
+        }
       `}
     >
       <Container size="sm">
-        <P dangerouslySetInnerHTML={{ __html: formatText() }} />
+        <Text tag="p">{text}</Text>
       </Container>
     </div>
   );

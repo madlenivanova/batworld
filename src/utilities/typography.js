@@ -1,5 +1,5 @@
 import { setMargin, setPadding } from "@styles/spacing";
-export const enableMarginAndPadding = (props) => {
+export const enableMarginAndPadding = props => {
   let styles = ``;
   styles += props.mt ? setMargin(["top"], props.mt) : "";
   styles += props.mb ? setMargin(["bottom"], props.mb) : "";
@@ -49,14 +49,14 @@ export const TITLE_SIZES = {
     desktop: 16,
   },
   md: {
-    mobile: 20,
-    tablet: 22,
-    desktop: 22,
+    mobile: 18,
+    tablet: 24,
+    desktop: 32,
   },
   lg: {
-    mobile: 24,
-    tablet: 32,
-    desktop: 32,
+    mobile: 40,
+    tablet: 48,
+    desktop: 64,
   },
   xl: {
     mobile: 32,

@@ -10,11 +10,18 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-  console.log('content', content);
+  console.log("content", content);
   return (
     <Layout>
+      <Story content={content} />
       <h1>test</h1>
-      <div css={css`white-space: pre;`}>{JSON.stringify(content, null, 2)}</div>
+      <div
+        css={css`
+          white-space: pre;
+        `}
+      >
+        {JSON.stringify(content, null, 2)}
+      </div>
     </Layout>
   );
 };
@@ -24,7 +31,7 @@ export default IndexPage;
 export const query = graphql`
   query StoryQuery {
     allDatoCmsBespokeStory(
-      filter: { id: { eq: "DatoCmsBespokeStory-29571818-en" } }
+      filter: { id: { eq: "DatoCmsBespokeStory-30019892-en" } }
     ) {
       edges {
         node {
@@ -50,6 +57,10 @@ export const query = graphql`
             ... on DatoCmsHighlight {
               id
               text
+            }
+            ... on DatoCmsListItem {
+              listTitle
+              listItems
             }
             ... on DatoCmsQuote {
               id

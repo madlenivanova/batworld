@@ -8,9 +8,8 @@ const mapDatoKeysToISF = {
   DatoCmsHighlight: "Highlight",
   DatoCmsGallery: "Gallery",
   DatoCmsVideo: "Video",
-  DatoCmsKvMediaType: "KvMedia",
-  DatoCmsKvTextType: "KvText",
   DatoCmsImagetext: "ImageText",
+  DatoCmsListItem: "ListItem",
 };
 
 export const datoToBF = ({ content }) => {
@@ -19,7 +18,7 @@ export const datoToBF = ({ content }) => {
 
   forEach(content, (item, index) => {
     // check if first layout, and if so, init
-    
+
     const t = item.__typename;
     //console.log('typename ', t);
     if (includes(t, "Section")) {
@@ -30,9 +29,9 @@ export const datoToBF = ({ content }) => {
       }
       let layout = {};
 
-      if (includes(item.sectionId, 'feature')) {
+      if (includes(item.sectionId, "feature")) {
         layout.c = SECTIONS.SectionFeature;
-      } else if (includes(item.sectionId, 'intro')) {
+      } else if (includes(item.sectionId, "intro")) {
         layout.c = SECTIONS.SectionIntro;
       }
 
@@ -41,7 +40,7 @@ export const datoToBF = ({ content }) => {
       storyContent.push(layout);
     } else {
       if (index === 0) {
-        console.log('add an intro section divider bitte!')
+        console.log("add an intro section divider bitte!");
       }
       let elType = mapDatoKeysToISF[t];
       let element = {};

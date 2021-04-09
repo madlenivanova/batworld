@@ -1,171 +1,81 @@
-import React, { useReducer, useContext, useEffect } from "react";
-import { css } from "@emotion/core";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { css } from "@emotion/react";
+import React, { useState } from "react";
+import SwiperCore, { A11y, EffectCoverflow, Mousewheel } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { CursorContext } from "../providers/CursorProvider";
-import { ResizeContext } from "../providers/ResizeProvider";
-import { forEach } from "lodash";
+import "swiper/swiper.min.css";
 
+SwiperCore.use([A11y, EffectCoverflow, Mousewheel]);
 
-const defaultSettings = {
-  dots: true,
-  centerMode: true,
-  variableWidth: true,
-  slidesToScroll: 1,
-  arrows: false,
-  touchThreshold: 13,
-};
+const visibilityThreshold = 5;
 
-const initialState = { current: 0, isTransitioning: false };
-
-function reducer(state, action) {
-  if (action.transition) {
-    return {
-      ...state,
-      isTransitioning: true,
-    };
-  } else {
-    return {
-      current: action.current,
-      isTransitioning: false,
-    };
-  }
-}
-
-const Gallery = ({ items }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { switchIcon } = useContext(CursorContext);
-
-  // useEffect(() => {
-  //   console.log("images", stickers);
-  // }, [images]);
-
-  useEffect(() => {
-    const items = Array.from(document.querySelectorAll(".item"));
-    forEach(items, item => {
-      item.addEventListener("mouseover", () => {
-        switchIcon("open");
-      });
-      item.addEventListener("mouseout", () => {
-        switchIcon("peace");
-      });
-      item.addEventListener("mousedown", () => {
-        switchIcon("close");
-      });
-      item.addEventListener("mouseup", () => {
-        switchIcon("open");
-      });
-    });
-  }, []);
+const GallerySwiper = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div
       css={css`
-        padding: 30px 0px 90px;
-        position: relative;
+        .swiper-wrapper {
+          display: flex;
+          align-items: center;
+        }
 
-        @media (min-width: 768px) {
-          padding: 150px 0px;
-          margin-left: -24px;
-          margin-right: -24px;
+        @media screen and (max-width: 640px) {
+          .swiper-slide {
+            padding: 0 20px;
+          }
         }
       `}
     >
-      <Slider
-        {...defaultSettings}
-        onSwipe={e => {
-          dispatch({ transition: true });
+      <Swiper
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 800,
+          modifier: 1,
+          slideShadows: false,
         }}
-        afterChange={index => {
-          dispatch({ current: index });
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1048: {
+            slidesPerView: 3,
+          },
         }}
-        css={css`
-          .slick-dots {
-            //bottom: 12px;
-
-            li {
-              padding: 0px;
-              height: 30px;
-              width: 30px;
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              margin: 0px;
-              button {
-                height: 20px;
-                width: 20px;
-                border-radius: 10px;
-                transition: 0.1s all;
-                background: black;
-                &:before {
-                  display: none;
-                }
-              }
-
-              &.slick-active {
-                button {
-                  height: 30px;
-                  width: 30px;
-                  background: #fee440;
-                  border-radius: 15px;
-                }
-              }
-            }
-          }
-
-          .slick-track {
-            display: flex;
-          }
-
-          .slick-slide {
-            opacity: 1;
-            transition: opacity 0.1s;
-            outline: none !important;
-          }
-        `}
+        centeredSlides
+        freeMode
+        freeModeSticky
+        freeModeMomentumRatio={0.25}
+        onActiveIndexChange={({ activeIndex }) => setActiveIndex(activeIndex)}
+        spaceBetween={20}
+        pagination={{ clickable: true }}
       >
-        {items &&
-          items.map((item, index) => {
-            return (
-              <div
-                key={`image--${index}`}
-                css={css`
-                  padding: 8px 4px;
-
-                  @media (min-width: 768px) {
-                    padding: 8px 16px;
-                  }
-                `}
-              >
-                <div
-                  className="item"
-                  css={css`
-                    height: 70vw;
-                    width: ${item.fluid.aspectRatio * 70}vw;
-
-                    @media (min-width: 768px) {
-                      /* height: 60vw; */
-                      // width: 60vw !important;
-                      height: 50vw;
-                      width: ${item.fluid.aspectRatio * 50}vw;
-                    }
-
-                    @media (min-width: 1200px) {
-                      height: 40vw;
-                      width: ${item.fluid.aspectRatio * 40}vw;
-                    }
-                  `}
-                >
-                  <img src={item.fluid.src} srcSet={item.fluid.srcSet} />
-                </div>
-              </div>
-            );
-          })}
-      </Slider>
+        {items.map((item, i) => (
+          <SwiperSlide key={`image--${i}`}>
+            <img
+              src={item.fluid.src}
+              srcSet={item.fluid.srcSet}
+              css={css`
+                width: 100%;
+                height: 100%;
+                opacity: ${i >= activeIndex - visibilityThreshold &&
+                i < activeIndex + visibilityThreshold
+                  ? 1
+                  : 0};
+                transition: opacity 0.2s ease;
+              `}
+              alt=""
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
 
-export default Gallery;
+export default GallerySwiper;
