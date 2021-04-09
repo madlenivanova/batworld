@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { css } from "@emotion/react";
+import { Title } from "@components/Typography";
 
 const Header = ({ title, backgroundImage }) => {
   return (
@@ -34,27 +35,17 @@ const Header = ({ title, backgroundImage }) => {
           max-width: 680px;
           position: relative;
           z-index: 2;
+          text-align: center;
+          color: white;
+
+          h1 {
+            line-height: 1.1em !important;
+          }
         `}
       >
-        <h2
-          css={css`
-            font-family: Univers, HelveticaNeue-CondensedBold, Helvetica Neue,
-              Helvetica, Arial, sans-serif;
-            text-transform: uppercase;
-            font-stretch: condensed;
-            font-size: 28px;
-            line-height: 1em;
-            letter-spacing: -0.5px;
-            color: white;
-            text-align: center;
-
-            @media (min-width: 768px) {
-              font-size: 48px;
-            }
-          `}
-        >
+        <Title tag="h1" size="lg" uppercase condensed>
           {title}
-        </h2>
+        </Title>
       </div>
     </div>
   );

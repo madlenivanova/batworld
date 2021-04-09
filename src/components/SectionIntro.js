@@ -9,7 +9,7 @@ const SectionIntro = ({ sectionTitle, headerImage, color, children }) => {
       <Header title={sectionTitle} backgroundImage={headerImage} />
       <Div
         pt="md"
-        pb="mb"
+        pb="md"
         css={css`
           background-color: ${color};
         `}

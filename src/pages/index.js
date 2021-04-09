@@ -10,22 +10,22 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-  console.log("content", content);
   return (
     <Layout>
       <Story content={content} />
       <h1>test</h1>
-      <div
+    </Layout>
+  );
+};
+/*
+<div
         css={css`
           white-space: pre;
         `}
       >
         {JSON.stringify(content, null, 2)}
       </div>
-    </Layout>
-  );
-};
-//<Story content={content} />
+      */
 export default IndexPage;
 
 export const query = graphql`
