@@ -21,7 +21,7 @@ const SectionSimple = ({ sectionTitle, color, children }) => {
           `}
         >
           <Title tag="h3" bold uppercase condensed>
-            {sectionTitle}...
+            {sectionTitle}
           </Title>
         </Container>
         {children}
