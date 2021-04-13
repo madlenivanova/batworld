@@ -13,12 +13,14 @@ const Paragraph = ({ text }) => {
     let _counter = 0;
     forEach(text, lt => {
       if (lt === "*") {
-        _text += _counter % 2 ? "</span>" : "<span>";
+        _text += _counter % 2 ? "</span><span>" : "<span>";
         _counter += 1;
       } else {
         _text += lt;
       }
     });
+
+    _text += "</span>";
     return _text;
   };
 

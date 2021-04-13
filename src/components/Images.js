@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import Img from "gatsby-image";
 
 import { setPadding } from "../styles/utilities";
 
@@ -39,12 +38,12 @@ const Images = ({ items }) => {
 
                 img {
                   max-width: 100%;
-                  max-height: 130vh;
+                  max-height: 80vh;
                   object-fit: contain;
                 }
               `}
             >
-              <img srcSet={item.srcSet} src={item.src} />
+              <img srcSet={item.fluid.srcSet} src={item.fluid.src} />
             </div>
           ))}
       </div>

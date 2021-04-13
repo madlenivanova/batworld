@@ -81,6 +81,7 @@ const Chapter = ({
   const { images } = useContext(LoadContext);
 
   useEffect(() => {
+    console.log("use effect ", images);
     if (images) {
       setTimeline();
     }
@@ -100,6 +101,7 @@ const Chapter = ({
         scrub: true,
         pin: pinRef.current,
         onToggle: self => {
+          console.log("self is ", self.isActive);
           toggleStyles(self.isActive);
         },
       },
@@ -191,7 +193,8 @@ const Chapter = ({
                   height: 100%;
                   width: 100%;
                   position: absolute;
-                  background-image: url("${headerImage.fluid &&
+                  background-image: url("${headerImage &&
+                  headerImage.fluid &&
                   headerImage.fluid.src}");
                   background-size: cover;
                   background-position: center center;
@@ -209,6 +212,7 @@ const Chapter = ({
         css={css`
           position: relative;
           z-index: 5;
+          ${!headerImage && "color: white!important;"}
           margin-top: ${sectionTitle ? "0" : "-100vh"};
         `}
       >

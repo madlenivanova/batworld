@@ -5,11 +5,12 @@ import Images from "../components/Images";
 import ImageText from "../components/ImageText";
 import SectionFeature from "@components/SectionFeature";
 import SectionIntro from "@components/SectionIntro";
+import SectionSimple from "@components/SectionSimple";
 import Gallery from "../components/Gallery";
 import Quote from "../components/Quote";
 import ListItem from "../components/ListItem";
 
-export const SECTIONS = { SectionIntro, SectionFeature };
+export const SECTIONS = { SectionIntro, SectionFeature, SectionSimple };
 export const ELEMENTS = {
   Paragraph,
   Highlight,
