@@ -5,6 +5,7 @@ import { Text, Title } from "@components/Typography";
 import { Div, Container } from "@components/Markup";
 
 const ListItem = ({ items }) => {
+  console.log("ITEMS ", items);
   const formatText = text => {
     let _text = "";
     let _counter = 0;
@@ -48,6 +49,7 @@ const ListItem = ({ items }) => {
             css={css`
               max-width: 450px;
               border-top: 1px solid black;
+              white-space: pre-wrap;
             `}
           >
             <Title tag="h3" bold uppercase condensed size="md">
@@ -55,7 +57,7 @@ const ListItem = ({ items }) => {
             </Title>
             <Text
               dangerouslySetInnerHTML={{
-                __html: formatText(item.data.listItems),
+                __html: item.data.listItems,
               }}
             />
           </Div>
