@@ -9,10 +9,11 @@ const HighlightBlock = ({ text }) => (
   <div
     css={css`
       ${setMargin(["top", "bottom"], "md")}
-      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
     `}
   >
-    <Container size="md">
+    <Container size="sm">
       <Title tag="h4" size="md" dangerouslySetInnerHTML={{ __html: text }} />
     </Container>
   </div>

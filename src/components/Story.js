@@ -6,7 +6,7 @@ const addProps = index => {
   let props = {};
   switch (index) {
     case 0:
-      props.color = "#F5F0DA";
+      props.color = "#DCEDE4";
       break;
     case 1:
       props.color = "#E0DAF4";
@@ -15,7 +15,7 @@ const addProps = index => {
       props.color = "#F5C2AB";
       break;
     case 3:
-      props.color = "#000000";
+      props.color = "#D5AACD";
       break;
   }
 

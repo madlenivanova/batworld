@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
-import { Div } from "@components/Markup";
+import { Div, Container } from "@components/Markup";
+import { Title } from "@components/Typography";
 
 const SectionSimple = ({ sectionTitle, color, children }) => {
   return (
@@ -10,9 +11,19 @@ const SectionSimple = ({ sectionTitle, color, children }) => {
         pb="md"
         css={css`
           background-color: ${color};
-          ${sectionTitle === "Methodology" && "color: white;"}
         `}
       >
+        <Container
+          size="sm"
+          css={css`
+            max-width: 640px;
+            margin: 0 auto;
+          `}
+        >
+          <Title tag="h2" bold uppercase condensed>
+            {sectionTitle}
+          </Title>
+        </Container>
         {children}
       </Div>
     </React.Fragment>

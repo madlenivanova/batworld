@@ -28,13 +28,12 @@ const Paragraph = ({ text }) => {
     <div
       css={css`
         ${setMargin(["top", "bottom"], "md")}
-        max-width: 640px;
-        margin: 0 auto;
+
         a {
           border-bottom: 1px solid black;
         }
 
-        span {
+        span.italic {
           font-style: italic;
         }
 
@@ -43,8 +42,14 @@ const Paragraph = ({ text }) => {
         }
       `}
     >
-      <Container size="sm">
-        <Text tag="p">{text}</Text>
+      <Container
+        size="sm"
+        css={css`
+          max-width: 640px;
+          margin: 0 auto;
+        `}
+      >
+        <Text tag="p" dangerouslySetInnerHTML={{ __html: text }} />
       </Container>
     </div>
   );
