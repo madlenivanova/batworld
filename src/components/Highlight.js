@@ -14,11 +14,7 @@ const HighlightBlock = ({ text }) => (
         margin: 0 auto;
       `}
     >
-      <Title
-        tag="h4"
-        size="md"
-        dangerouslySetInnerHTML={{ __html: text + "oh nooo" }}
-      />
+      <Title tag="h4" size="md" dangerouslySetInnerHTML={{ __html: text }} />
     </div>
   </Container>
 );
