@@ -41,7 +41,7 @@ const Paragraph = ({ text }) => {
           white-space: pre-wrap;
         }
 
-        span {
+        span.hs-titleee {
           font-family: "univers-bold-cond";
           margin-bottom: 0px;
           font-size: 24px;
