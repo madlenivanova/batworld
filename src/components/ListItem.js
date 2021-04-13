@@ -5,22 +5,22 @@ import { Text, Title } from "@components/Typography";
 import { Div, Container } from "@components/Markup";
 
 const ListItem = ({ items }) => {
-  console.log("ITEMS ", items);
-  const formatText = text => {
-    let _text = "";
-    let _counter = 0;
-    forEach(text, lt => {
-      if (lt === "*") {
-        _text += _counter % 2 ? "</li><li>" : "<li>";
-        _counter += 1;
-      } else {
-        _text += lt;
-      }
-    });
+  // console.log("ITEMS ", items);
+  // const formatText = text => {
+  //   let _text = "";
+  //   let _counter = 0;
+  //   forEach(text, lt => {
+  //     if (lt === "*") {
+  //       _text += _counter % 2 ? "</li><li>" : "<li>";
+  //       _counter += 1;
+  //     } else {
+  //       _text += lt;
+  //     }
+  //   });
 
-    _text += "</li>";
-    return _text;
-  };
+  //   _text += "</li>";
+  //   return _text;
+  // };
   return (
     <Div
       flex

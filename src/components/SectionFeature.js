@@ -70,6 +70,7 @@ const Chapter = ({
   sectionTitle,
   chapterStyle,
   headerImage,
+  headerImageMobile,
   children,
   color,
 }) => {
@@ -78,10 +79,11 @@ const Chapter = ({
   const maskRef = useRef(null);
   const imgRef = useRef(null);
 
+  console.log("mobile", headerImageMobile);
+
   const { images } = useContext(LoadContext);
 
   useEffect(() => {
-    console.log("use effect ", images);
     if (images) {
       setTimeline();
     }
@@ -193,14 +195,19 @@ const Chapter = ({
                   height: 100%;
                   width: 100%;
                   position: absolute;
-                  background-image: url("${headerImage &&
-                  headerImage.fluid &&
-                  headerImage.fluid.src}");
+                  background-image: url("${headerImageMobile.fluid &&
+                  headerImageMobile.fluid.src}");
                   background-size: cover;
                   background-position: center center;
                   transition: transform 0.6s;
                   top: 0;
                   left: 0;
+
+                  @media (min-width: 768px) {
+                    background-image: url("${headerImage &&
+                    headerImage.fluid &&
+                    headerImage.fluid.src}");
+                  }
                 `}
               />
             </div>

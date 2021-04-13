@@ -48,6 +48,13 @@ export const query = graphql`
                   aspectRatio
                 }
               }
+              headerImageMobile {
+                fluid {
+                  src
+                  srcSet
+                  aspectRatio
+                }
+              }
             }
             ... on DatoCmsParagraph {
               id

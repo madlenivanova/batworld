@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { css } from "@emotion/react";
 import { Title } from "@components/Typography";
 
-const Header = ({ title, backgroundImage }) => {
+const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
   return (
     <div
       css={css`
         height: 100vh;
         width: 100%;
-        background-image: url("${backgroundImage.fluid &&
-        backgroundImage.fluid.src}");
+        background-image: url("${backgroundImageMobile.fluid &&
+        backgroundImageMobile.fluid.src}");
         background-size: cover;
         background-position: center center;
         position: relative;
@@ -26,6 +26,11 @@ const Header = ({ title, backgroundImage }) => {
           height: 100%;
           width: 100%;
           background: rgba(0, 0, 0, 0.45);
+        }
+
+        @media (min-width: 992px) {
+          background-image: url("${backgroundImage.fluid &&
+          backgroundImage.fluid.src}");
         }
       `}
     >
