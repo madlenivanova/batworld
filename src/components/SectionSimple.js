@@ -20,7 +20,7 @@ const SectionSimple = ({ sectionTitle, color, children }) => {
             margin: 0 auto;
           `}
         >
-          <Title tag="h2" bold uppercase condensed>
+          <Title tag="h3" bold uppercase condensed>
             {sectionTitle}
           </Title>
         </Container>
