@@ -1,6 +1,5 @@
 import React from "react";
 import { gsap, ScrollToPlugin } from "gsap/all";
-import Header from "@components/Header";
 gsap.registerPlugin(ScrollToPlugin);
 
 const addProps = index => {
@@ -35,6 +34,7 @@ const Story = ({ content }) => {
           <Section key={`section--${index}`} {...props} initTimeline={true}>
             {elements.map((element, elementIndex) => {
               const Element = element.c;
+
               return (
                 <Element
                   key={`section--${index}--element--${elementIndex}`}

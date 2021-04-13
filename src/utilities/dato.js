@@ -33,6 +33,8 @@ export const datoToBF = ({ content }) => {
         layout.c = SECTIONS.SectionFeature;
       } else if (includes(item.sectionId, "intro")) {
         layout.c = SECTIONS.SectionIntro;
+      } else if (includes(item.sectionId, "simple")) {
+        layout.c = SECTIONS.SectionSimple;
       }
 
       layout.data = omit(item, ["id", "__typename", "sectionId"]);
@@ -48,9 +50,23 @@ export const datoToBF = ({ content }) => {
       element.c = ELEMENTS[elType];
       element.data = omit(item, ["id", "__typename"]);
 
-      storyContent[currentLayout].elements.push(element);
+      const els = storyContent[currentLayout].elements;
+      if (element.type === "ListItem") {
+        if (els[els.length - 1].type !== "ListItems") {
+          storyContent[currentLayout].elements.push({
+            type: "ListItems",
+            c: ELEMENTS.ListItem,
+            data: { items: [element] },
+          });
+        } else {
+          els[els.length - 1].data.items.push(element);
+        }
+      } else {
+        storyContent[currentLayout].elements.push(element);
+      }
     }
   });
+  console.log(storyContent);
   return storyContent;
 };
 

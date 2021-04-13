@@ -32,6 +32,7 @@ export const withDynamicTag = Component => {
 export const TitleBase = styled.h1`
   font-weight: 400;
   line-height: 1.3em;
+  margin: 0px;
   font-family: ${props =>
       props.condensed ? "univers-bold-cond" : "univers-bold"},
     sans-serif;

@@ -13,7 +13,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Story content={content} />
-      <h1>test</h1>
     </Layout>
   );
 };
