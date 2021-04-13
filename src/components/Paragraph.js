@@ -41,7 +41,7 @@ const Paragraph = ({ text }) => {
           white-space: pre-wrap;
         }
 
-        h3 {
+        span {
           font-family: "univers-bold-cond";
           margin-bottom: 0px;
           font-size: 24px;
