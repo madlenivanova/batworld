@@ -5,7 +5,6 @@ import { Text, Title } from "@components/Typography";
 import { Div, Container } from "@components/Markup";
 
 const ListItem = ({ items }) => {
-  console.log("items ", items);
   const formatText = text => {
     let _text = "";
     let _counter = 0;
@@ -35,14 +34,17 @@ const ListItem = ({ items }) => {
           flex
           jc="center"
           css={css`
-            max-width: 50%;
-            width: 50%;
-
             margin-top: 32px;
             box-sizing: border-box;
+
+            @media (min-width: 768px) {
+              max-width: 50%;
+              width: 50%;
+            }
           `}
         >
           <Div
+            pt="xs"
             css={css`
               max-width: 450px;
               border-top: 1px solid black;

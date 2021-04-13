@@ -1,16 +1,17 @@
 import React from "react";
 import { css } from "@emotion/react";
-import PropTypes from "prop-types";
-
-import { setPadding } from "../styles/utilities";
+import { Div } from "@components/Markup";
 
 const Images = ({ items }) => {
   return (
-    <div
+    <Div
+      pt="sm"
+      pb="sm"
       css={css`
-        ${setPadding(["top", "bottom"], "md")}
         max-width: 1200px;
         margin: 0 auto;
+        padding-left: 16px;
+        padding-right: 16px;
       `}
     >
       <div
@@ -47,23 +48,8 @@ const Images = ({ items }) => {
             </div>
           ))}
       </div>
-    </div>
+    </Div>
   );
-};
-
-Images.defaultProps = {
-  items: [
-    {
-      src: "https://interactive-development.hsnb.io/hsnbisf/assets/bowie4.jpg",
-    },
-    {
-      src: "https://interactive-development.hsnb.io/hsnbisf/assets/bowie8.jpg",
-    },
-  ],
-};
-
-Images.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 export default Images;

@@ -26,7 +26,7 @@ export const TEXT_SIZES = {
     desktop: 16,
   },
   lg: {
-    mobile: 24,
+    mobile: 20,
     tablet: 32,
     desktop: 32,
   },
@@ -49,7 +49,7 @@ export const TITLE_SIZES = {
     desktop: 16,
   },
   md: {
-    mobile: 18,
+    mobile: 24,
     tablet: 24,
     desktop: 32,
   },

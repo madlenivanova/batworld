@@ -6,17 +6,21 @@ import { Container } from "@components/Markup";
 import { Title } from "@components/Typography";
 
 const HighlightBlock = ({ text }) => (
-  <div
-    css={css`
-      ${setMargin(["top", "bottom"], "md")}
-      max-width: 640px;
-      margin: 0 auto;
-    `}
-  >
-    <Container size="sm">
-      <Title tag="h4" size="md" dangerouslySetInnerHTML={{ __html: text }} />
-    </Container>
-  </div>
+  <Container size="sm">
+    <div
+      css={css`
+        ${setMargin(["top", "bottom"], "md")}
+        max-width: 640px;
+        margin: 0 auto;
+      `}
+    >
+      <Title
+        tag="h4"
+        size="md"
+        dangerouslySetInnerHTML={{ __html: text + "oh nooo" }}
+      />
+    </div>
+  </Container>
 );
 
 HighlightBlock.defaultProps = {
