@@ -1,19 +1,27 @@
 import React from "react";
 import { css } from "@emotion/react";
 import { Div } from "@components/Markup";
+import { Title } from "@components/Typography";
 
 const Images = ({ items }) => {
   return (
     <Div
-      pt="sm"
-      pb="sm"
+      pt="md"
+      pb="md"
       css={css`
         max-width: 1200px;
         margin: 0 auto;
         padding-left: 16px;
         padding-right: 16px;
+
+        h3 {
+          text-align: center;
+        }
       `}
     >
+      <Title tag="h3" size="md" uppercase bold condensed mb="sm">
+        On the rise
+      </Title>
       <div
         css={css`
           display: flex;

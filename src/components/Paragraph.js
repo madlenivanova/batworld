@@ -40,6 +40,16 @@ const Paragraph = ({ text }) => {
         p {
           white-space: pre-wrap;
         }
+
+        h3 {
+          font-family: "univers-bold-cond";
+          margin-bottom: 0px;
+          font-size: 24px;
+
+          @media (min-width: 768px) {
+            font-size: 32px;
+          }
+        }
       `}
     >
       <Container
