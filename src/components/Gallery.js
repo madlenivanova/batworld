@@ -25,7 +25,7 @@ const GallerySwiper = ({ items }) => {
           text-transform: uppercase;
         `}
       >
-        (swipe to explore gallery)
+        (Click and swipe to explore The NEXT 20)
       </Text>
       <Div
         css={css`
