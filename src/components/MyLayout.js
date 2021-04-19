@@ -3,9 +3,6 @@ import { Global, css } from "@emotion/react";
 import GlobalFonts from "../fonts/fonts";
 import LoadProvider from "../providers/LoadProvider";
 import ResizeProvider from "../providers/ResizeProvider";
-import CursorProvider from "../providers/CursorProvider";
-import IntroAnimation from "@components/IntroAnimation";
-import IntroAnimationMobile from "@components/IntroAnimationMobile";
 
 const HSHeader = () => (
   <div
@@ -48,19 +45,21 @@ const HSHeader = () => (
 const GlobalStyles = () => (
   <Global
     styles={css`
-      * {
-        box-sizing: border-box;
+      body {
         margin: 0;
       }
+
       #___gatsby {
         margin: 0;
-        font-size: 16px;
+        font-size: 18px;
         font-family: "univers-light", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
         color: rgba(33, 23, 3, 1);
+        box-sizing: border-box;
+        margin: 0;
       }
 
       a,
@@ -92,28 +91,24 @@ const Layout = ({ children }) => {
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
-        <CursorProvider>
-          <ResizeProvider>
-            <IntroAnimation />
-            <IntroAnimationMobile />
-            <main
-              css={css`
-                position: relative;
-                overflow: hidden;
+        <ResizeProvider>
+          <main
+            css={css`
+              position: relative;
+              overflow: hidden;
 
-                /* @media (min-width: 768px) {
-                  padding-top: 72px;
-                }
+              /* @media (min-width: 768px) {
+                padding-top: 72px;
+              }
 
-                @media (min-width: 992px) {
-                  padding-top: 97px;
-                } */
-              `}
-            >
-              {children}
-            </main>
-          </ResizeProvider>
-        </CursorProvider>
+              @media (min-width: 992px) {
+                padding-top: 97px;
+              } */
+            `}
+          >
+            {children}
+          </main>
+        </ResizeProvider>
       </LoadProvider>
     </div>
   );

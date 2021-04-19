@@ -1,4 +1,5 @@
 import React from "react";
+import { css } from "@emotion/react";
 import { graphql } from "gatsby";
 import datoToBF from "../utilities/dato";
 import Story from "@components/Story";
@@ -9,20 +10,27 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-
   return (
     <Layout>
       <Story content={content} />
     </Layout>
   );
 };
-
+/*
+<div
+        css={css`
+          white-space: pre;
+        `}
+      >
+        {JSON.stringify(content, null, 2)}
+      </div>
+      */
 export default IndexPage;
 
 export const query = graphql`
   query StoryQuery {
     allDatoCmsBespokeStory(
-      filter: { id: { eq: "DatoCmsBespokeStory-18944056-en" } }
+      filter: { id: { eq: "DatoCmsBespokeStory-30019892-en" } }
     ) {
       edges {
         node {
@@ -40,6 +48,13 @@ export const query = graphql`
                   aspectRatio
                 }
               }
+              headerImageMobile {
+                fluid {
+                  src
+                  srcSet
+                  aspectRatio
+                }
+              }
             }
             ... on DatoCmsParagraph {
               id
@@ -48,6 +63,10 @@ export const query = graphql`
             ... on DatoCmsHighlight {
               id
               text
+            }
+            ... on DatoCmsListItem {
+              listTitle
+              listItems
             }
             ... on DatoCmsQuote {
               id

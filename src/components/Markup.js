@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { enableMarginAndPadding } from "../styles/spacing";
+import { enableMarginAndPadding } from "@styles/spacing";
 
 const enableFlex = props => {
   let styles = ``;
@@ -12,13 +12,13 @@ const enableFlex = props => {
 };
 
 export const Container = styled("div")`
-  width: 100%;
   max-width: 880px;
   margin: 0 auto;
   padding: 0px 20px;
 
   @media (min-width: 768px) {
     padding: 0px 32px;
+    width: 100%;
   }
 `;
 

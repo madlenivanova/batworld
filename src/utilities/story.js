@@ -1,16 +1,16 @@
-import styled from "styled-components";
-
 import Paragraph from "../components/Paragraph";
 import Highlight from "../components/Highlight";
 import Video from "../components/Video";
 import Images from "../components/Images";
 import ImageText from "../components/ImageText";
-import SectionArtist from "../components/SectionArtist";
-import SectionIntro from "../components/SectionIntro";
+import SectionFeature from "@components/SectionFeature";
+import SectionIntro from "@components/SectionIntro";
+import SectionSimple from "@components/SectionSimple";
 import Gallery from "../components/Gallery";
 import Quote from "../components/Quote";
+import ListItem from "../components/ListItem";
 
-export const SECTIONS = { SectionIntro, SectionArtist };
+export const SECTIONS = { SectionIntro, SectionFeature, SectionSimple };
 export const ELEMENTS = {
   Paragraph,
   Highlight,
@@ -19,4 +19,5 @@ export const ELEMENTS = {
   ImageText,
   Gallery,
   Quote,
+  ListItem,
 };

@@ -1,0 +1,23 @@
+name: trigger-circleci-pipeline
+on:
+  push:
+    branches: [ master ]
+jobs:
+  trigger-circle-ci-pipeline:
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.repository, 'titel-media/st-story_') }} # don't run in the template repo
+    steps:
+      - name: Set variables
+        run: echo "REPOSITORY_ID=$GITHUB_REPOSITORY" | sed 's/titel-media\/st-story_//' >> $GITHUB_ENV
+      - name: Trigger CircleCI pipeline
+        env:
+          CIRCLE_CI_TOKEN: ${{ secrets.CIRCLE_CI_TOKEN }}
+          PROJECT_SLUG: gh/titel-media/bespoke-feature-builder # template repo
+        run: |
+          curl -u ${{ env.CIRCLE_CI_TOKEN }}: -X POST --header "Content-Type: application/json" -d '{
+            "parameters": {
+              "run_workflow_deploy": true,
+              "hs_template_id": "${{ env.REPOSITORY_ID }}",
+              "repository_id": "${{ env.REPOSITORY_ID }}"
+            }
+          }' https://circleci.com/api/v2/project/${{env.PROJECT_SLUG}}/pipeline

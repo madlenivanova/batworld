@@ -1,33 +1,22 @@
 import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { setPadding, setMargin } from "../styles/utilities";
+import { setMargin } from "@styles/utilities";
 import { Container } from "@components/Markup";
-import { H4 } from "../styles/Typography";
+import { Title } from "@components/Typography";
 
 const HighlightBlock = ({ text }) => (
-  <div
-    css={css`
-      ${setMargin(["top", "bottom"], "md")}
-    `}
-  >
-    <Container size="md">
-      <H4
-        css={css`
-          color: rgba(254, 228, 64, 1);
-          font-family: "monument", sans-serif;
-          text-transform: uppercase;
-          line-height: 1.3em;
-          font-size: 18px;
-
-          @media (min-width: 768px) {
-            font-size: 40px;
-          }
-        `}
-        dangerouslySetInnerHTML={{ __html: text }}
-      />
-    </Container>
-  </div>
+  <Container size="sm">
+    <div
+      css={css`
+        ${setMargin(["top", "bottom"], "md")}
+        max-width: 640px;
+        margin: 0 auto;
+      `}
+    >
+      <Title tag="h4" size="md" dangerouslySetInnerHTML={{ __html: text }} />
+    </div>
+  </Container>
 );
 
 HighlightBlock.defaultProps = {

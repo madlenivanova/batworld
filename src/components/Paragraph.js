@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setMargin } from "../styles/utilities";
-import { P } from "../styles/Typography";
+import { Text } from "@components/Typography";
 import { forEach } from "lodash";
 
 import { Container } from "@components/Markup";
@@ -13,12 +13,14 @@ const Paragraph = ({ text }) => {
     let _counter = 0;
     forEach(text, lt => {
       if (lt === "*") {
-        _text += _counter % 2 ? "</span>" : "<span>";
+        _text += _counter % 2 ? "</span><span>" : "<span>";
         _counter += 1;
       } else {
         _text += lt;
       }
     });
+
+    _text += "</span>";
     return _text;
   };
 
@@ -31,13 +33,33 @@ const Paragraph = ({ text }) => {
           border-bottom: 1px solid black;
         }
 
-        span {
+        span.italic {
           font-style: italic;
+        }
+
+        p {
+          white-space: pre-wrap;
+        }
+
+        span.hs-titleee {
+          font-family: "univers-bold-cond";
+          margin-bottom: 0px;
+          font-size: 24px;
+
+          @media (min-width: 768px) {
+            font-size: 32px;
+          }
         }
       `}
     >
-      <Container size="sm">
-        <P dangerouslySetInnerHTML={{ __html: formatText() }} />
+      <Container
+        size="sm"
+        css={css`
+          max-width: 640px;
+          margin: 0 auto;
+        `}
+      >
+        <Text tag="p" dangerouslySetInnerHTML={{ __html: text }} />
       </Container>
     </div>
   );
