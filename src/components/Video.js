@@ -1,26 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { setPadding } from "../styles/utilities";
+import { setPadding } from "@styles/utilities";
 import { Container } from "@components/Markup";
 import Player from "@vimeo/player";
 
-// const getRelativeCoords = () => {
-//   var parentPos = document.getElementById("parent-id").getBoundingClientRect(),
-//     childPos = document.getElementById("child-id").getBoundingClientRect(),
-//     relativePos = {};
-
-//   relativePos.top = childPos.top - parentPos.top;
-//   relativePos.right = childPos.right - parentPos.right;
-//   relativePos.bottom = childPos.bottom - parentPos.bottom;
-//   relativePos.left = childPos.left - parentPos.left;
-
-//   return relativePos;
-// };
-
 const Video = ({ providerUid }) => {
   const videoContainer = useRef(null);
-  let player = useRef(null);
+  const player = useRef(null);
 
   useEffect(() => {
     if (!player.current) {

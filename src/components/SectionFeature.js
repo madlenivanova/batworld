@@ -79,8 +79,6 @@ const Chapter = ({
   const maskRef = useRef(null);
   const imgRef = useRef(null);
 
-  console.log("mobile", headerImageMobile);
-
   const { images } = useContext(LoadContext);
 
   useEffect(() => {
@@ -103,7 +101,6 @@ const Chapter = ({
         scrub: true,
         pin: pinRef.current,
         onToggle: self => {
-          console.log("self is ", self.isActive);
           toggleStyles(self.isActive);
         },
       },

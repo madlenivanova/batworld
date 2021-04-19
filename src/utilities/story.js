@@ -8,7 +8,6 @@ import SectionIntro from "@components/SectionIntro";
 import SectionSimple from "@components/SectionSimple";
 import Gallery from "@components/Gallery";
 import Quote from "@components/Quote";
-import ListItem from "@components/ListItem";
 
 export const SECTIONS = { SectionIntro, SectionFeature, SectionSimple };
 export const ELEMENTS = {
@@ -19,5 +18,4 @@ export const ELEMENTS = {
   ImageText,
   Gallery,
   Quote,
-  ListItem,
 };

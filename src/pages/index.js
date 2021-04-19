@@ -18,13 +18,13 @@ const IndexPage = ({ data }) => {
 };
 /*
 <div
-        css={css`
-          white-space: pre;
-        `}
-      >
-        {JSON.stringify(content, null, 2)}
-      </div>
-      */
+  css={css`
+    white-space: pre;
+  `}
+>
+  {JSON.stringify(content, null, 2)}
+</div>
+*/
 export default IndexPage;
 
 export const query = graphql`
@@ -63,10 +63,6 @@ export const query = graphql`
             ... on DatoCmsHighlight {
               id
               text
-            }
-            ... on DatoCmsListItem {
-              listTitle
-              listItems
             }
             ... on DatoCmsQuote {
               id

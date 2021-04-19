@@ -30,6 +30,8 @@ Setup your main typographic styles in **`/src/components/Typography`**
 
 Setup global styles in **`/src/components/MyLayout`** (needs a more elegant solution in future ;)
 
+Add a .env file following the same structure as the .env.sample in the folder.
+
 2. **Setup your components**
 
 Setup your main components in **`/src/components`**.
@@ -78,3 +80,4 @@ You can wrap your components inside those to create effects on scroll (fade in, 
 Deploy to HS
 // to do
 
+// add notes about HS elements used in previews - header, spacings - how to disable and enable them (possibly more elegantly than now)
