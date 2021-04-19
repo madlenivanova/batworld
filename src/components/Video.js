@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setPadding } from "../styles/utilities";
-import Container from "../styles/Container";
+import { Container } from "@components/Markup";
 import Player from "@vimeo/player";
 
 // const getRelativeCoords = () => {

@@ -2,7 +2,48 @@ import { createElement as h } from "react";
 import styled from "styled-components";
 
 import PropTypes from "prop-types";
-import { enableMarginAndPadding, TITLE_SIZES } from "@utilities/typography";
+import { enableMarginAndPadding } from "@styles/utilities";
+
+const TITLE_SIZES = {
+  xs: {
+    mobile: 14,
+    tablet: 14,
+    desktop: 14,
+  },
+  sm: {
+    mobile: 16,
+    tablet: 16,
+    desktop: 16,
+  },
+  md: {
+    mobile: 24,
+    tablet: 24,
+    desktop: 32,
+  },
+  lg: {
+    mobile: 40,
+    tablet: 48,
+    desktop: 64,
+  },
+  xl: {
+    mobile: 32,
+    tablet: 48,
+    desktop: 60,
+  },
+};
+
+export const QUOTE = styled("h5")`
+  font-size: 24px;
+  text-align: center;
+  font-family: "monument";
+  font-weight: normal;
+  text-transform: none;
+  line-height: 1.2em;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+`;
 
 export const withDynamicTag = Component => {
   const bucket = Object.create(null);

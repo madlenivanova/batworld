@@ -30,7 +30,7 @@ export default IndexPage;
 export const query = graphql`
   query StoryQuery {
     allDatoCmsBespokeStory(
-      filter: { id: { eq: "DatoCmsBespokeStory-30019892-en" } }
+      filter: { id: { eq: "DatoCmsBespokeStory-29571818-en" } }
     ) {
       edges {
         node {

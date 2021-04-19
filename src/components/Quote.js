@@ -2,8 +2,8 @@ import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { setPadding, setMargin } from "../styles/utilities";
-import { P, QUOTE } from "../styles/Typography";
-import Container from "../styles/Container";
+import { Text } from "@components/Typography";
+import { Container } from "@components/Markup";
 
 const Quote = ({ text, source }) => {
   return (
@@ -13,7 +13,7 @@ const Quote = ({ text, source }) => {
       `}
     >
       <Container size="md">
-        <QUOTE dangerouslySetInnerHTML={{ __html: text }} />
+        <Text dangerouslySetInnerHTML={{ __html: text }} />
       </Container>
     </div>
   );

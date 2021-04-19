@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { enableMarginAndPadding } from "@styles/spacing";
+import { enableMarginAndPadding } from "@styles/utilities";
 
 const enableFlex = props => {
   let styles = ``;

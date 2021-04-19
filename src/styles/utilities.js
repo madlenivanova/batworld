@@ -1,5 +1,27 @@
 // A few utilities to allow for consistent spacing across the page
-import { SPACINGS } from "../data/app";
+// refactor thouhhhh
+export const SPACINGS = {
+  xs: {
+    mobile: "12",
+    tablet: "12",
+    desktop: "15",
+  },
+  sm: {
+    mobile: "18",
+    tablet: "18",
+    desktop: "24",
+  },
+  md: {
+    mobile: "30",
+    tablet: "45",
+    desktop: "54",
+  },
+  lg: {
+    mobile: "45",
+    tablet: "75",
+    desktop: "128",
+  },
+};
 
 export const setPadding = (dir, size) => {
   // dir is array ['top', 'bottom' ... ] or string 'all'

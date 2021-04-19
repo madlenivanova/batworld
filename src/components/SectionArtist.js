@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { css } from "@emotion/react";
 import Img from "gatsby-image";
 import { gsap } from "gsap/all";
-import { H2 } from "../styles/Typography";
+import { Title } from "@componentsTypography";
 import SplitText from "../plugins/SplitText";
 import ImagesLoaded from "react-images-loaded";
 import { curatedBy } from "./SectionIntro";
@@ -114,7 +114,7 @@ const SectionArtist = ({
               `}
             ></div>
 
-            <H2
+            <Title
               ref={headlineRef}
               css={css`
                 font-size: 10vw;
@@ -127,7 +127,7 @@ const SectionArtist = ({
               `}
             >
               {sectionTitle}
-            </H2>
+            </Title>
           </div>
         </div>
       </ImagesLoaded>

@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "hs-bespoke-features-starter",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "quick & not so dirty",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "highsnobiety / kv",
   "dependencies": {
     "@emotion/core": "10.1.1",
     "@emotion/react": "11.1.1",
@@ -62,7 +62,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/titel-media/hs-bespoke-features-starter-gatsby-dato"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

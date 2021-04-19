@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { forEach } from "lodash";
 import withAnimation from "../effects/withAnimation";
-import { P } from "../styles/Typography";
+import { Text } from "@components/Typography";
 const defaultAnimation = {
   from: {
     opacity: 0,
@@ -13,7 +13,7 @@ const defaultAnimation = {
   duration: 1,
 };
 
-const Text = withAnimation(defaultAnimation)(({ text }) => (
+const TextBlock = withAnimation(defaultAnimation)(({ text }) => (
   <div
     css={css`
       a {
@@ -24,7 +24,7 @@ const Text = withAnimation(defaultAnimation)(({ text }) => (
       }
     `}
   >
-    <P dangerouslySetInnerHTML={{ __html: text }} />
+    <Text dangerouslySetInnerHTML={{ __html: text }} />
   </div>
 ));
 
@@ -123,7 +123,7 @@ const ImageText = ({ id, image, text, alignReverse }) => {
             }
           `}
         >
-          <Text text={formatText()} />
+          <TextBlock text={formatText()} />
         </div>
       </div>
     </div>

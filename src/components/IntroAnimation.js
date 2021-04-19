@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, forwardRef } from "react";
 import { css } from "@emotion/react";
 import { gsap } from "gsap/all";
-import { H4 } from "@styles/Typography";
+import { Title } from "@components/Typography";
 import open from "@assets/02_open.png";
 import crocs from "@assets/crocs.png";
 import shark from "../assets/shark.png";
@@ -143,14 +143,14 @@ const IntroAnimation = () => {
         >
           (loading)
         </h6>
-        <H4
+        <Title
           css={css`
             font-family: "monument";
             text-transform: uppercase;
           `}
         >
           Click and drag the Jibbitz™ charms to move them around
-        </H4>
+        </Title>
       </div>
       <div
         css={css`
