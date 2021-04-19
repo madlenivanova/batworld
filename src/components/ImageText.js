@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { css } from "@emotion/react";
 import { forEach } from "lodash";
-import withAnimation from "../effects/withAnimation";
+import withAnimation from "@effects/withAnimation";
 import { Text } from "@components/Typography";
 const defaultAnimation = {
   from: {

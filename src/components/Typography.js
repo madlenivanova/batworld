@@ -32,19 +32,6 @@ const TITLE_SIZES = {
   },
 };
 
-export const QUOTE = styled("h5")`
-  font-size: 24px;
-  text-align: center;
-  font-family: "monument";
-  font-weight: normal;
-  text-transform: none;
-  line-height: 1.2em;
-
-  @media (min-width: 768px) {
-    font-size: 48px;
-  }
-`;
-
 export const withDynamicTag = Component => {
   const bucket = Object.create(null);
 

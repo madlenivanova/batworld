@@ -5,26 +5,14 @@ module.exports = {
   siteMetadata: {
     title: `HS Bespoke Features Starter`,
     description: `quick & not so dirty`,
-    author: `@gatsbyjs`,
+    author: `@highsnob`,
   },
-  assetPrefix: `https://static.highsnobiety.com/interactive-stories/2021-04-crocs-fix-2/`,
+  assetPrefix: process.env.ASSET_PREFIX,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `@wardpeet/gatsby-plugin-static-site`,
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          react: require.resolve(`${__dirname}/node_modules/react`),
-        },
-        extensions: [],
-      },
-    },
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -37,7 +25,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Highsnob bespoke feature`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -49,6 +37,7 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
+          react: require.resolve(`${__dirname}/node_modules/react`),
           "@src": "src",
           "@components": "src/components",
           "@providers": "src/providers",
@@ -56,6 +45,7 @@ module.exports = {
           "@assets": "src/assets",
           "@plugins": "src/plugins",
           "@utilities": "src/utilities",
+          "@effects": "src/effects",
         },
         extensions: [],
       },
