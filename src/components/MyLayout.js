@@ -85,10 +85,10 @@ const GlobalStyles = () => (
   />
 );
 
+//  <HSHeader />;
 const Layout = ({ children }) => {
   return (
     <div>
-      <HSHeader />
       <GlobalFonts />
       <GlobalStyles />
       <LoadProvider>
@@ -98,17 +98,16 @@ const Layout = ({ children }) => {
             <IntroAnimationMobile />
             <main
               css={css`
-                padding-top: 60px;
                 position: relative;
                 overflow: hidden;
 
-                @media (min-width: 768px) {
+                /* @media (min-width: 768px) {
                   padding-top: 72px;
                 }
 
                 @media (min-width: 992px) {
                   padding-top: 97px;
-                }
+                } */
               `}
             >
               {children}

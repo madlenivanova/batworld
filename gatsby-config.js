@@ -7,9 +7,7 @@ module.exports = {
     description: `quick & not so dirty`,
     author: `@gatsbyjs`,
   },
-
-  assetPrefix: process.env.ASSET_PREFIX,
-
+  assetPrefix: `https://static.highsnobiety.com/interactive-stories/2021-04-crocs-fix-2/`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
@@ -40,12 +38,10 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
-        short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {

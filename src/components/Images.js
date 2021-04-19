@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import Img from "gatsby-image";
 
 import { setPadding } from "../styles/utilities";
 

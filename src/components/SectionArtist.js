@@ -1,7 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { css } from "@emotion/react";
-import PropTypes from "prop-types";
-import { setPadding } from "../styles/utilities";
 import Img from "gatsby-image";
 import { gsap } from "gsap/all";
 import { H2 } from "../styles/Typography";
@@ -9,14 +7,6 @@ import SplitText from "../plugins/SplitText";
 import ImagesLoaded from "react-images-loaded";
 import { curatedBy } from "./SectionIntro";
 gsap.registerPlugin(SplitText);
-
-const SectionHeader = ({ headerImage }) => {
-  return <Img fluid={headerImage.fluid} />;
-};
-
-const getRandomArbitrary = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
 
 const SectionArtist = ({
   sectionId,
@@ -70,8 +60,6 @@ const SectionArtist = ({
           ref={headerRef}
           css={css`
             height: 100vh;
-            //max-height: 0px;
-            //background: url("${headerImage.fluid.src}");
             background-color: ${color};
             background-size: cover;
             background-position: center center;
@@ -147,7 +135,6 @@ const SectionArtist = ({
         css={css`
           z-index: 5;
           position: relative;
-          //max-height: 0px;
           overflow: hidden;
         `}
       >

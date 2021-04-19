@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import Img from "gatsby-image";
 import { forEach } from "lodash";
 import withAnimation from "../effects/withAnimation";
 import { P } from "../styles/Typography";
