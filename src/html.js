@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function defaultOutput(props) {
+  console.log("props ", JSON.stringify(props));
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -23,7 +24,7 @@ function defaultOutput(props) {
         {props.postBodyComponents}
       </body>
     </html>
-  )
+  );
 }
 
 export default function HTML(props) {
@@ -35,16 +36,20 @@ export default function HTML(props) {
   const postBody = props.postBodyComponents.map(({ props, type, key }) => ({
     ...props,
     type,
-    key
+    key,
   }));
 
   const body = props.body;
 
   return process.env.GATSBY_OUTPUT_JSON ? (
     <hsInteractiveStory
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({ head, body, postBody }) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({ head, body, postBody }),
+      }}
     />
-  ) : defaultOutput(props);
+  ) : (
+    defaultOutput(props)
+  );
 }
 
 HTML.propTypes = {
