@@ -28,11 +28,11 @@ filter: { id: { eq: "DatoCmsBespokeStory-STORYID-en" } }
 
 Upload WOFF/WOFF2 versions of your fonts to **`/src/fonts`** and replace names and urls in fonts.js.
 
+Setup global styles in **`/src/components/GlobalStyles`**
+
+Setup fonts in **`/src/components/GlobalFonts`**
+
 Setup your main typographic styles in **`/src/components/Typography`**
-
-Setup global styles in **`/src/components/MyLayout`** (needs a more elegant solution in future ;)
-
-Add a .env file following the same structure as the .env.sample in the folder.
 
 2. **Setup your components**
 

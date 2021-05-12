@@ -1,6 +1,5 @@
 import React from "react";
 import { css } from "@emotion/react";
-
 import LoadProvider from "@providers/LoadProvider";
 import ResizeProvider from "@providers/ResizeProvider";
 import GlobalStyles from "@components/GlobalStyles";
