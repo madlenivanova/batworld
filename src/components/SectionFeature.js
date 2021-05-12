@@ -192,7 +192,8 @@ const Chapter = ({
                   height: 100%;
                   width: 100%;
                   position: absolute;
-                  background-image: url("${headerImageMobile.fluid &&
+                  background-image: url("${headerImageMobile &&
+                  headerImageMobile.fluid &&
                   headerImageMobile.fluid.src}");
                   background-size: cover;
                   background-position: center center;

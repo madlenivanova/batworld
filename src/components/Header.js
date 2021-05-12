@@ -9,7 +9,8 @@ const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
       css={css`
         height: 100vh;
         width: 100%;
-        background-image: url("${backgroundImageMobile.fluid &&
+        background-image: url("${backgroundImageMobile &&
+        backgroundImageMobile.fluid &&
         backgroundImageMobile.fluid.src}");
         background-size: cover;
         background-position: center center;
@@ -29,7 +30,8 @@ const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
         }
 
         @media (min-width: 992px) {
-          background-image: url("${backgroundImage.fluid &&
+          background-image: url("${backgroundImage &&
+          backgroundImage.fluid &&
           backgroundImage.fluid.src}");
         }
       `}
