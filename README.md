@@ -17,23 +17,17 @@ Your site is now running at `http://localhost:8000`!
 
 ## Suggested workflow
 
-IMPORTANT: Replace STORYID in the graphql query in src/pages/index.js.
-This should be automated somehow, but for now isn't.
-
-```shell
-filter: { id: { eq: "DatoCmsBespokeStory-STORYID-en" } }
-```
-
 1. **Setup your story in DatoCMS**
 
-Have a look at the current sample story that the starter template uses:
-https://interactive-stories.admin.datocms.com/editor/item_types/526134/items/38786796/edit
+Have a look at the [current sample story](https://interactive-stories.admin.datocms.com/editor/item_types/526134/items/38786796/edit) that the starter template uses:
 
 The current structure in Dato uses Section Dividers and Elements inside each section (as Dato does not allow for defacto nested content at this point).
 Elements are usually repetitive across bespoke features (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually. However, most stories have three types of sections: Intro, Feature, Footer, and those are currently predefined in the components folder.
 
 On Dato level, sections are differentiated via their section-id.
 It doesn't have to be unique, but in order for a section to be recognized as an intro section, the id needs to include it as a string, for example "section-intro". Same goes for feature and footer.
+
+**Defining custom sections and elements**
 
 If you need to define a custom section, use the same approach, and name the id something unique, for example "section-davidbowie". Build a component for it, and include it in utilities/story.js. Then in utilities/dato.js (line 32-40), do something like:
 
@@ -42,6 +36,17 @@ If you need to define a custom section, use the same approach, and name the id s
 else if (includes(item.sectionId, "davidbowie")) {
   layout.c = SECTIONS.SectionDavidBowie;
 }
+```
+
+_Please abstain from adding custom elements (blocks), unless absoulutely necessary!!! And discuss it with me first!!! More exclamation marks!!!!!_
+
+**Querying story data**
+
+IMPORTANT: Replace STORYID in the graphql query in src/pages/index.js.
+This should be automated somehow, but for now isn't.
+
+```shell
+filter: { id: { eq: "DatoCmsBespokeStory-STORYID-en" } }
 ```
 
 2. **Setup fonts, styles and data**
