@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
 import { Div } from "@components/Markup";
-import { Title } from "@components/Typography";
 
 const Images = ({ items }) => {
   return (
@@ -19,9 +18,6 @@ const Images = ({ items }) => {
         }
       `}
     >
-      <Title tag="h3" size="md" uppercase bold condensed mb="sm">
-        On the rise
-      </Title>
       <div
         css={css`
           display: flex;
