@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import datoToBF from "../utilities/dato";
+import datoToBF from "@utilities/dato";
 import Story from "@components/Story";
 import Layout from "@components/MyLayout";
 
@@ -9,6 +9,7 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
+
   return (
     <Layout>
       <Story content={content} />

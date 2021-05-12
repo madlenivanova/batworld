@@ -1,6 +1,9 @@
 # HS Bespoke Features Starter
 
-a starter template to speed up development of bespoke features and making stuff reusable
+a starter template to speed up development of bespoke features and making stuff reusable.
+
+Preview the starter template here:
+[hs-sample-bespoke-feature.netlify.app](https://hs-sample-bespoke-feature.netlify.app/)
 
 ## 🚀 Quick start
 
@@ -39,6 +42,12 @@ else if (includes(item.sectionId, "davidbowie")) {
 ```
 
 _Please abstain from adding custom elements (blocks), unless absoulutely necessary!!! And discuss it with me first!!! More exclamation marks!!!!!_
+
+**Adding custom props to sections or elements**
+
+Sometimes you may need to add a custom prop, for example a background color or a different typeface.
+
+_Don't add custom props to blocks in Dato - it will only make blocks heavier! Instead, use the id from the query to assign it manually in utilities/dato.js. It's not perfect, but nothing is._
 
 **Querying story data**
 
