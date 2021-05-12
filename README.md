@@ -1,6 +1,6 @@
 # HS Bespoke Features Starter
 
-a starter template to speed up development of bespoke features and making stuff reusable.
+A starter template for speedier, more sustainable development of bespoke features.
 
 Preview the starter template here:
 [hs-sample-bespoke-feature.netlify.app](https://hs-sample-bespoke-feature.netlify.app/)
