@@ -39,7 +39,9 @@ Setup your main typographic styles in **`/src/components/Typography`**
 Setup your main components in **`/src/components`**.
 
 The current structure in Dato uses Sections and Elements inside each section.
-Elements are usually repetitive across BFs (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually.
+Elements are usually repetitive across bespoke features (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually. However, most stories have three types of sections: Intro, Feature, Footer, and those are currently predefined in the components folder.
+
+// Explain how to set it up in dato cms
 
 To define unique Sections for a story:
 2.1. Build them as components (for example SectionFeature.js);

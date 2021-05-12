@@ -8,9 +8,9 @@ import Quote from "@components/Quote";
 
 import SectionFeature from "@components/SectionFeature";
 import SectionIntro from "@components/SectionIntro";
-import SectionSimple from "@components/SectionSimple";
+import SectionFooter from "@components/SectionFooter";
 
-export const SECTIONS = { SectionIntro, SectionFeature, SectionSimple };
+export const SECTIONS = { SectionIntro, SectionFeature, SectionFooter };
 export const ELEMENTS = {
   Paragraph,
   Highlight,
