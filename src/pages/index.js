@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import datoToBF from "@utilities/dato";
 import Story from "@components/Story";
 import Layout from "@components/MyLayout";
+import HeroPlaceholder from "@components/Hero";
 
 const IndexPage = ({ data }) => {
   const storyContent = data.allDatoCmsBespokeStory.edges[0].node.content;
@@ -10,8 +11,11 @@ const IndexPage = ({ data }) => {
     content: storyContent,
   });
 
+  const { heroImage, title } = data.allDatoCmsBespokeStory.edges[0].node;
+
   return (
     <Layout>
+      <HeroPlaceholder title={title} heroImage={heroImage} />
       <Story content={content} />
     </Layout>
   );
@@ -28,6 +32,13 @@ export const query = graphql`
         node {
           id
           title
+          heroImage {
+            fluid {
+              src
+              srcSet
+              aspectRatio
+            }
+          }
           content {
             ... on DatoCmsSectionDivider {
               id
@@ -97,6 +108,11 @@ export const query = graphql`
                   aspectRatio
                 }
               }
+              text
+            }
+            ... on DatoCmsCta {
+              id
+              url
               text
             }
           }

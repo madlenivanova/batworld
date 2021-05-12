@@ -63,7 +63,7 @@ export const datoToBF = ({ content }) => {
       element.type = mapDatoKeysToISF[t];
       element.c = ELEMENTS[element.type];
       element.data = omit(item, ["id", "__typename"]);
-
+      console.log("eement", element);
       storyContent[currentLayout].elements.push(element);
     }
   });

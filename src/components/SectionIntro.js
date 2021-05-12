@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/react";
 import { Div } from "@components/Markup";
-import Header from "@components/Header";
 
 const SectionIntro = ({
   sectionTitle,
@@ -12,11 +11,6 @@ const SectionIntro = ({
 }) => {
   return (
     <React.Fragment>
-      <Header
-        title={sectionTitle}
-        backgroundImage={headerImage}
-        backgroundImageMobile={headerImageMobile}
-      />
       <Div
         pt="md"
         pb="md"

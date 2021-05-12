@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { css } from "@emotion/react";
 import { Title } from "@components/Typography";
 
-const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
+const Hero = ({ title, heroImage }) => {
   return (
     <div
       css={css`
         height: 100vh;
         width: 100%;
-        background-image: url("${backgroundImageMobile &&
-        backgroundImageMobile.fluid &&
-        backgroundImageMobile.fluid.src}");
+        background-image: url("${heroImage &&
+        heroImage.fluid &&
+        heroImage.fluid.src}");
         background-size: cover;
         background-position: center center;
         position: relative;
@@ -27,12 +27,6 @@ const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
           height: 100%;
           width: 100%;
           background: rgba(0, 0, 0, 0.45);
-        }
-
-        @media (min-width: 992px) {
-          background-image: url("${backgroundImage &&
-          backgroundImage.fluid &&
-          backgroundImage.fluid.src}");
         }
       `}
     >
@@ -58,7 +52,7 @@ const Header = ({ title, backgroundImage, backgroundImageMobile }) => {
   );
 };
 
-Header.propTypes = {
+Hero.propTypes = {
   backgroundImage: PropTypes.shape({
     fluid: PropTypes.shape({
       src: PropTypes.string,
@@ -67,7 +61,7 @@ Header.propTypes = {
   title: PropTypes.string,
 };
 
-Header.defaultProps = {
+Hero.defaultProps = {
   backgroundImage: {
     fluid: {
       src:
@@ -77,4 +71,4 @@ Header.defaultProps = {
   title: "The sorrows of pain and regret are left to the dead and the dying",
 };
 
-export default Header;
+export default Hero;

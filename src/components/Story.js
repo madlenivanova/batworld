@@ -1,5 +1,6 @@
 import React from "react";
 import { gsap, ScrollToPlugin } from "gsap/all";
+
 gsap.registerPlugin(ScrollToPlugin);
 
 const Story = ({ content }) => {

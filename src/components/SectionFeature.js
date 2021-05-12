@@ -218,6 +218,7 @@ const Chapter = ({
           position: relative;
           z-index: 5;
           margin-top: ${sectionTitle ? "0" : "-100vh"};
+          padding-bottom: 32px;
         `}
       >
         {children}
