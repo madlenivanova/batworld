@@ -217,7 +217,6 @@ const Chapter = ({
         css={css`
           position: relative;
           z-index: 5;
-          ${!headerImage && "color: white!important;"}
           margin-top: ${sectionTitle ? "0" : "-100vh"};
         `}
       >

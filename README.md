@@ -72,23 +72,6 @@ Setup your main typographic styles in **`/src/components/Typography`**
 
 Setup your main components in **`/src/components`**.
 
-// Explain how to set it up in dato cms
-
-To define unique Sections for a story:
-2.1. Build them as components (for example SectionFeature.js);
-2.2. Include them in utilities/story.js;
-2.3. Add conditionals inside utilities/dato.js, so the Story builder can map the Dato entities to the components, for example:
-
-```shell
-if (includes(item.sectionId, 'feature')) {
-  layout.c = SECTIONS.SectionFeature;
-} else if (includes(item.sectionId, 'intro')) {
-  layout.c = SECTIONS.SectionIntro;
-}
-```
-
-Same goes for elements - in case you need to define new ones. It doesn't matter how you structure the conditionals, as long as the Story knows which components to use for each Dato entity.
-
 ## 🧐 A few notes on special components
 
 The starter includes some helpful utilities to speed up development.

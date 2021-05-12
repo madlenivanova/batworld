@@ -12,6 +12,7 @@ const mapDatoKeysToISF = {
   DatoCmsVideo: "Video",
   DatoCmsImagetext: "ImageText",
   DatoCmsListItem: "ListItem",
+  DatoCmsCta: "CTA",
 };
 
 export const datoToBF = ({ content }) => {
@@ -53,7 +54,7 @@ export const datoToBF = ({ content }) => {
 
       if (!ELEMENTS[mapDatoKeysToISF[t]]) {
         console.log(
-          `No available element type for ${element.type}. Have a look in utilities/dato.js`
+          `No available element type for ${mapDatoKeysToISF[t]}. Have a look in utilities/dato.js`
         );
         return;
       }
