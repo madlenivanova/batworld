@@ -34,6 +34,8 @@ export const datoToBF = ({ content }) => {
         layout.c = SECTIONS.SectionFeature;
       } else if (includes(item.sectionId, "intro")) {
         layout.c = SECTIONS.SectionIntro;
+      } else if (includes(item.sectionId, "footer")) {
+        layout.c = SECTIONS.SectionFooter;
       } else {
         console.log(
           `No available section type for ${item.sectionId}. Have a look in utilities/dato.js`
