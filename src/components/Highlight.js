@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { setMargin } from "@styles/utilities";
+import { setMargin } from "@utilities/styles";
 import { Container } from "@components/Markup";
 import { Title } from "@components/Typography";
 

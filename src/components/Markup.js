@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { enableMarginAndPadding } from "@styles/utilities";
+import { enableMarginAndPadding } from "@utilities/styles";
 
 const enableFlex = props => {
   let styles = ``;

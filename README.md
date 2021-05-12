@@ -17,14 +17,16 @@ Your site is now running at `http://localhost:8000`!
 
 ## Suggested workflow
 
-IMPORTANT: Replace storyId in src/pages/index.js.
+IMPORTANT: Replace STORYID in the graphql query in src/pages/index.js.
 This should be automated somehow, but for now isn't.
+
+```shell
+filter: { id: { eq: "DatoCmsBespokeStory-STORYID-en" } }
+```
 
 1. **Setup fonts, styles and data**
 
 Upload WOFF/WOFF2 versions of your fonts to **`/src/fonts`** and replace names and urls in fonts.js.
-
-Setup your initial story data in **`/src/data/story`** page data in **`/src/data/app`**. Those can be edited later but the page needs them to build anything.
 
 Setup your main typographic styles in **`/src/components/Typography`**
 

@@ -2,7 +2,7 @@ import { createElement as h } from "react";
 import styled from "@emotion/styled";
 
 import PropTypes from "prop-types";
-import { enableMarginAndPadding } from "@styles/utilities";
+import { enableMarginAndPadding } from "@utilities/styles";
 
 const TITLE_SIZES = {
   xs: {

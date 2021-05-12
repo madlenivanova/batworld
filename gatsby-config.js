@@ -40,7 +40,7 @@ module.exports = {
           "@src": "src",
           "@components": "src/components",
           "@providers": "src/providers",
-          "@styles": "src/styles",
+          "@fonts": "src/fonts",
           "@assets": "src/assets",
           "@plugins": "src/plugins",
           "@utilities": "src/utilities",

@@ -1,5 +1,4 @@
 import React from "react";
-import { css } from "@emotion/react";
 import { graphql } from "gatsby";
 import datoToBF from "../utilities/dato";
 import Story from "@components/Story";
@@ -16,15 +15,7 @@ const IndexPage = ({ data }) => {
     </Layout>
   );
 };
-/*
-<div
-  css={css`
-    white-space: pre;
-  `}
->
-  {JSON.stringify(content, null, 2)}
-</div>
-*/
+
 export default IndexPage;
 
 export const query = graphql`

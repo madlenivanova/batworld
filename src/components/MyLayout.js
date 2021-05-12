@@ -1,88 +1,10 @@
 import React from "react";
-import { Global, css } from "@emotion/react";
-import GlobalFonts from "../fonts/fonts";
-import LoadProvider from "../providers/LoadProvider";
-import ResizeProvider from "../providers/ResizeProvider";
+import { css } from "@emotion/react";
 
-const HSHeader = () => (
-  <div
-    css={css`
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: white;
-      border-bottom: 1px solid black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 500;
-
-      @media (min-width: 768px) {
-        height: 72px;
-      }
-
-      @media (min-width: 992px) {
-        height: 97px;
-      }
-    `}
-  >
-    <h4
-      css={css`
-        font-family: "univers-light", sans-serif;
-        text-transform: uppercase;
-        font-size: 24px;
-        display: inline;
-        margin: 0px;
-      `}
-    >
-      highsnobiety header
-    </h4>
-  </div>
-);
-
-const GlobalStyles = () => (
-  <Global
-    styles={css`
-      body {
-        margin: 0;
-      }
-
-      #___gatsby {
-        margin: 0;
-        font-size: 18px;
-        font-family: "univers-light", sans-serif;
-        line-height: 1.4em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
-        color: rgba(33, 23, 3, 1);
-        box-sizing: border-box;
-        margin: 0;
-      }
-
-      a,
-      a:visited {
-        color: black;
-        text-decoration: none;
-      }
-
-      button {
-        padding: 0px;
-
-        &:hover,
-        &:focus {
-          outline: none;
-        }
-      }
-
-      img {
-        max-width: 100%;
-      }
-    `}
-  />
-);
+import LoadProvider from "@providers/LoadProvider";
+import ResizeProvider from "@providers/ResizeProvider";
+import GlobalStyles from "@components/GlobalStyles";
+import GlobalFonts from "@components/GlobalFonts";
 
 //  <HSHeader />;
 const Layout = ({ children }) => {

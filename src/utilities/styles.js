@@ -1,5 +1,5 @@
 // A few utilities to allow for consistent spacing across the page
-// refactor thouhhhh
+// refactor thoughhhh
 export const SPACINGS = {
   xs: {
     mobile: "12",

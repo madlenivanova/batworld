@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { Global, css } from "@emotion/react";
-import UniversLightWoff from "./univers-light.woff";
-import UniversLightWoff2 from "./univers-light.woff2";
-import UniversRomanWoff from "./univers-roman.woff";
-import UniversRomanWoff2 from "./univers-roman.woff2";
-import UniversBoldWoff from "./univers-bold.woff";
-import UniversBoldWoff2 from "./univers-bold.woff2";
-import UniversBoldCondWoff from "./univers-bold-cond.woff";
-import UniversBoldCondWoff2 from "./univers-bold-cond.woff2";
-import { LoadContext } from "../providers/LoadProvider";
+import UniversLightWoff from "@fonts/univers-light.woff";
+import UniversLightWoff2 from "@fonts/univers-light.woff2";
+import UniversRomanWoff from "@fonts/univers-roman.woff";
+import UniversRomanWoff2 from "@fonts/univers-roman.woff2";
+import UniversBoldWoff from "@fonts/univers-bold.woff";
+import UniversBoldWoff2 from "@fonts/univers-bold.woff2";
+import UniversBoldCondWoff from "@fonts/univers-bold-cond.woff";
+import UniversBoldCondWoff2 from "@fonts/univers-bold-cond.woff2";
+import { LoadContext } from "@providers/LoadProvider";
 
 const GlobalFonts = () => {
   const { loadFonts } = useContext(LoadContext);
