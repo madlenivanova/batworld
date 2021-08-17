@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function defaultOutput(props) {
-  console.log("props ", JSON.stringify(props));
   return (
     <html {...props.htmlAttributes}>
       <head>

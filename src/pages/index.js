@@ -1,4 +1,5 @@
 import React from "react";
+import { css } from "@emotion/react";
 import { graphql } from "gatsby";
 import datoToBF from "@utilities/dato";
 import Story from "@components/Story";
@@ -12,10 +13,17 @@ const IndexPage = ({ data }) => {
   });
 
   const { heroImage, title } = data.allDatoCmsBespokeStory.edges[0].node;
-
+  console.log("content");
   return (
     <Layout>
       <HeroPlaceholder title={title} heroImage={heroImage} />
+      <div
+        css={css`
+          white-space: pre;
+        `}
+      >
+        {JSON.stringify(content, null, 2)}
+      </div>
       <Story content={content} />
     </Layout>
   );
