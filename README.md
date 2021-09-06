@@ -25,10 +25,12 @@ Your site is now running at `http://localhost:8000`!
 Have a look at the [current sample story](https://interactive-stories.admin.datocms.com/editor/item_types/526134/items/38786796/edit) that the starter template uses:
 
 The current structure in Dato uses Section Dividers and Elements inside each section (as Dato does not allow for defacto nested content at this point).
-Elements are usually repetitive across bespoke features (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually. However, most stories have three types of sections: Intro, Feature, Footer, and those are currently predefined in the components folder.
+
+Elements are usually repetitive across bespoke features (for example Paragraph or Gallery), while Sections can differ, and might need to be adjusted manually. However, most stories have three types of sections: Intro, Feature, Footer, and those are currently predefined in the components folder. An example would be: Intro about the brand, three Features about different artists promoting the brand, a Footer containing a CTA.
 
 On Dato level, sections are differentiated via their section-id.
-It doesn't have to be unique, but in order for a section to be recognized as an intro section, the id needs to include it as a string, for example "section-intro". Same goes for feature and footer.
+
+It doesn't have to be unique, but in order for a section to be recognized as an intro section, the id needs to include it as a string, for example "section-intro". Same goes for feature and footer. To see exact implementation, check @utilities/dato.
 
 **Defining custom sections and elements**
 

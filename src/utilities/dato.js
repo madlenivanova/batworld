@@ -22,7 +22,6 @@ export const datoToBF = ({ content }) => {
   forEach(content, (item, index) => {
     // check if first layout, and if so, init
     const t = item.__typename;
-    console.log("type ", t, item);
     if (includes(t, "Section")) {
       if (currentLayout === null) {
         currentLayout = 0;
@@ -64,7 +63,6 @@ export const datoToBF = ({ content }) => {
       element.type = mapDatoKeysToISF[t];
       element.c = ELEMENTS[element.type];
       element.data = omit(item, ["id", "__typename"]);
-      console.log("eement", element);
       storyContent[currentLayout].elements.push(element);
     }
   });
