@@ -24,6 +24,7 @@ function defaultOutput(props) {
       </body>
     </html>
   );
+  ß;
 }
 
 export default function HTML(props) {

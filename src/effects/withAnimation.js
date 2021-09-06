@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/react";
-import VisibilitySensor from "react-visibility-sensor";
+// import VisibilitySensor from "react-visibility-sensor";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,20 +30,14 @@ const withAnimation = ({ from, to, duration }) => WrappedComponent => {
     };
 
     return (
-      <VisibilitySensor
-        partialVisibility={true}
-        minTopValue={100}
-        onChange={onPageEnter}
+      <div
+        ref={wrapperRef}
+        css={css`
+          position: relative;
+        `}
       >
-        <div
-          ref={wrapperRef}
-          css={css`
-            position: relative;
-          `}
-        >
-          <WrappedComponent {...props} />
-        </div>
-      </VisibilitySensor>
+        <WrappedComponent {...props} />
+      </div>
     );
   };
 

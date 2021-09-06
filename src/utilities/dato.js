@@ -22,6 +22,7 @@ export const datoToBF = ({ content }) => {
   forEach(content, (item, index) => {
     // check if first layout, and if so, init
     const t = item.__typename;
+    console.log("type ", t, item);
     if (includes(t, "Section")) {
       if (currentLayout === null) {
         currentLayout = 0;

@@ -1,5 +1,5 @@
 import React, { useEffect, forwardRef, useRef } from "react";
-import VisibilitySensor from "react-visibility-sensor";
+//import VisibilitySensor from "react-visibility-sensor";
 import { gsap, ScrollTrigger } from "gsap/all";
 import SplitText from "../plugins/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -76,11 +76,7 @@ const withLettersAnimation = ({ from, to, duration }) => WrappedComponent => {
     };
 
     return (
-      <VisibilitySensor
-        partialVisibility={true}
-        minTopValue={50}
-        onChange={onPageEnter}
-      >
+      <div>
         {({ isVisible }) => {
           if (isVisible && split.current) {
             animate();
@@ -89,7 +85,7 @@ const withLettersAnimation = ({ from, to, duration }) => WrappedComponent => {
             <SubWrapper ref={headingRef} C={WrappedComponent} {...props} />
           );
         }}
-      </VisibilitySensor>
+      </div>
     );
   };
 

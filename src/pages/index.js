@@ -1,5 +1,4 @@
 import React from "react";
-import { css } from "@emotion/react";
 import { graphql } from "gatsby";
 import datoToBF from "@utilities/dato";
 import Story from "@components/Story";
@@ -11,19 +10,18 @@ const IndexPage = ({ data }) => {
   const content = datoToBF({
     content: storyContent,
   });
-
   const { heroImage, title } = data.allDatoCmsBespokeStory.edges[0].node;
-  console.log("content");
+
   return (
     <Layout>
       <HeroPlaceholder title={title} heroImage={heroImage} />
-      <div
+      {/* <div
         css={css`
           white-space: pre;
         `}
       >
         {JSON.stringify(content, null, 2)}
-      </div>
+      </div> */}
       <Story content={content} />
     </Layout>
   );
@@ -40,6 +38,7 @@ export const query = graphql`
         node {
           id
           title
+          __typename
           heroImage {
             fluid {
               src
@@ -50,6 +49,7 @@ export const query = graphql`
           content {
             ... on DatoCmsSectionDivider {
               id
+              __typename
               sectionId
               sectionTitle
               headerImage {
@@ -69,23 +69,28 @@ export const query = graphql`
             }
             ... on DatoCmsParagraph {
               id
+              __typename
               text
             }
             ... on DatoCmsHighlight {
               id
+              __typename
               text
             }
             ... on DatoCmsQuote {
               id
+              __typename
               text
               source
             }
             ... on DatoCmsVideo {
               id
+              __typename
               providerUid
             }
             ... on DatoCmsImage {
               id
+              __typename
               items {
                 alt
                 fluid {
@@ -97,6 +102,7 @@ export const query = graphql`
             }
             ... on DatoCmsGallery {
               id
+              __typename
               items {
                 alt
                 fluid {
@@ -108,6 +114,7 @@ export const query = graphql`
             }
             ... on DatoCmsImagetext {
               id
+              __typename
               image {
                 alt
                 fluid {
@@ -120,6 +127,7 @@ export const query = graphql`
             }
             ... on DatoCmsCta {
               id
+              __typename
               url
               text
             }
