@@ -30,7 +30,7 @@ Elements are usually repetitive across bespoke features (for example Paragraph o
 
 On Dato level, sections are differentiated via their section-id.
 
-It doesn't have to be unique, but in order for a section to be recognized as an intro section, the id needs to include it as a string, for example "section-intro". Same goes for feature and footer. To see exact implementation, check @utilities/dato.
+It doesn't have to be unique, but in order for a section to be recognized as an intro section, the id needs to include it as a string, for example "section-intro". Same goes for feature and footer. To see exact implementation, check datoToBF in @utilities/dato.
 
 **Defining custom sections and elements**
 
@@ -43,7 +43,7 @@ else if (includes(item.sectionId, "davidbowie")) {
 }
 ```
 
-_Please abstain from adding custom elements (blocks), unless absoulutely necessary!!! And discuss it with me first!!! More exclamation marks!!!!!_
+_Please abstain from adding custom elements (blocks), unless absoulutely necessary!!! And discuss it with me first!!! More exclamation marks!!!!! :D_
 
 **Adding custom props to sections or elements**
 
@@ -88,10 +88,6 @@ Useful if you need to setup GSAP animations or calculate component heights for s
 
 A utility to let your components know when the window has been resized.
 See notes on how to use it inside the file.
-
-3. **On scroll / trigger animation effects** in **`/src/effects`**
-
-You can wrap your components inside those to create effects on scroll (fade in, zoom in, anything else that can be animated with GSAP).
 
 ## 💫 Deploy
 
