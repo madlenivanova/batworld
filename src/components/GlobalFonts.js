@@ -1,14 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { Global, css } from "@emotion/react";
 import { LoadContext } from "@providers/LoadProvider";
-import UniversLightWoff from "@fonts/univers-light.woff";
-import UniversLightWoff2 from "@fonts/univers-light.woff2";
-import UniversRomanWoff from "@fonts/univers-roman.woff";
-import UniversRomanWoff2 from "@fonts/univers-roman.woff2";
-import UniversBoldWoff from "@fonts/univers-bold.woff";
-import UniversBoldWoff2 from "@fonts/univers-bold.woff2";
-import UniversBoldCondWoff from "@fonts/univers-bold-cond.woff";
-import UniversBoldCondWoff2 from "@fonts/univers-bold-cond.woff2";
+import NexaRegularWoff from "@fonts/nexa-regular.woff";
+import NexaRegularWoff2 from "@fonts/nexa-regular.woff2";
+import NexaRegularTextWoff from "@fonts/nexatext-regular.woff";
+import NexaRegularTextWoff2 from "@fonts/nexatext-regular.woff2";
+import NexaBoldWoff from "@fonts/nexa-bold.woff";
+import NexaBoldWoff2 from "@fonts/nexa-bold.woff2";
 
 const GlobalFonts = () => {
   const { loadFonts } = useContext(LoadContext);
@@ -17,12 +15,7 @@ const GlobalFonts = () => {
   useEffect(() => {
     if (typeof loadFonts === "function") {
       loadFonts({
-        families: [
-          "univers-light",
-          "univers-roman",
-          "univers-bold",
-          "univers-bold-cond",
-        ],
+        families: ["nexa-regular", "nexatext-regular", "nexa-bold"],
       });
     }
   }, [loadFonts]);
@@ -31,28 +24,22 @@ const GlobalFonts = () => {
     <Global
       styles={css`
         @font-face {
-          font-family: "univers-light";
-          src: local("univers-light"), url(${UniversLightWoff2}) format("woff2"),
-            url(${UniversLightWoff}) format("woff");
+          font-family: "nexa-regular";
+          src: local("nexa-regular"), url(${NexaRegularWoff2}) format("woff2"),
+            url(${NexaRegularWoff}) format("woff");
         }
 
         @font-face {
-          font-family: "univers-roman";
-          src: local("univers-roman"), url(${UniversRomanWoff2}) format("woff2"),
-            url(${UniversRomanWoff}) format("woff");
+          font-family: "nexa-text-regular";
+          src: local("nexa-text-regular"),
+            url(${NexaRegularTextWoff2}) format("woff2"),
+            url(${NexaRegularTextWoff}) format("woff");
         }
 
         @font-face {
-          font-family: "univers-bold";
-          src: local("univers-bold"), url(${UniversBoldWoff2}) format("woff2"),
-            url(${UniversBoldWoff}) format("woff");
-        }
-
-        @font-face {
-          font-family: "univers-bold-cond";
-          src: local("univers-bold-cond"),
-            url(${UniversBoldCondWoff2}) format("woff2"),
-            url(${UniversBoldCondWoff}) format("woff");
+          font-family: "nexa-bold";
+          src: local("nexa-bold"), url(${NexaBoldWoff2}) format("woff2"),
+            url(${NexaBoldWoff}) format("woff");
         }
       `}
     />

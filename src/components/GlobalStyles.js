@@ -11,7 +11,7 @@ const GlobalStyles = () => (
       #___gatsby {
         margin: 0;
         font-size: 18px;
-        font-family: "univers-light", sans-serif;
+        font-family: "nexa-text-regular", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
