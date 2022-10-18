@@ -10,25 +10,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
-    `@wardpeet/gatsby-plugin-static-site`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Highsnob bespoke feature`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/hs-icon.png`,
-      },
-    },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
@@ -49,7 +30,7 @@ module.exports = {
     {
       resolve: `gatsby-source-datocms`,
       options: {
-        apiToken: `301e42ddbf53a95a63eee3f3b8ee40`,
+        apiToken: `3f98b60750fe9c878b6160894bb1e0`,
         environment: `main`,
         previewMode: true,
         disableLiveReload: false,
