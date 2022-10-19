@@ -1,20 +1,74 @@
-// const fs = require("fs")
-// const path = require("path")
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const POSTS_PER_PAGE = 9;
 
-// const publicPath = './public';
-// const jsonOutputPath = path.join(publicPath, 'json')
+  return new Promise((res, rej) => {
+    graphql(`
+      {
+        pages: allDatoCmsPage {
+          edges {
+            node {
+              id
+              pageSlug
+            }
+          }
+        }
+        blogPosts: allDatoCmsBlogPost {
+          edges {
+            node {
+              id
+              pageSlug
+            }
+          }
+        }
+      }
+    `).then(result => {
+      console.log(result);
+      const singlePages = result.data.pages.edges;
+      const blogPosts = result.data.blogPosts.edges;
 
-// exports.onPostBuild = (props) => {
-//   if (!process.env.GATSBY_OUTPUT_JSON) return;
+      for (
+        var i = 1;
+        i < Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+        i += 1
+      ) {
+        createPage({
+          path: `/blog/page/${i + 1}`,
+          component: require.resolve(`./src/templates/blog-posts-page.js`),
+        });
+      }
 
-//   const data = fs.readFileSync(path.join(publicPath, 'index.html'));
-//   const html = data.toString();
+      blogPosts.forEach((post, i) => {
+        const slug = post.node.pageSlug || `post--${i}`; //63214
+        const nextSlug =
+          blogPosts[i === blogPosts.length - 1 ? 0 : i + 1].node.pageSlug;
+        const prevSlug =
+          blogPosts[i === 0 ? blogPosts.length - 1 : i - 1].node.pageSlug;
 
-//   const leadingTagsLength = '<!DOCTYPE html><hsInterativeStory>'.length
-//   const trailingTagsLength = '</hsInterativeStory>'.length
+        createPage({
+          path: `/blog/${slug}`,
+          component: require.resolve(`./src/templates/blog-post.js`),
+          context: {
+            slug: slug,
+            nextSlug: nextSlug,
+            prevSlug: prevSlug,
+          },
+        });
+      });
 
-//   const rawJson = html.substr(leadingTagsLength + 1, html.length - leadingTagsLength - trailingTagsLength - 2);
+      singlePages.forEach(page => {
+        const slug = page.node.pageSlug;
 
-//   if (!fs.existsSync(jsonOutputPath)) fs.mkdirSync(jsonOutputPath);
-//   fs.writeFileSync(path.join(jsonOutputPath, 'story.json'), rawJson)
-// }
+        createPage({
+          path: `/${slug}`,
+          component: require.resolve(`./src/templates/page.js`),
+          context: {
+            slug: slug,
+          },
+        });
+      });
+
+      res();
+    });
+  });
+};
