@@ -2,14 +2,19 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `HS Bespoke Features Starter`,
     description: `quick & not so dirty`,
-    author: `@highsnob`,
+    author: `katerina vaseva`,
   },
   assetPrefix: process.env.ASSET_PREFIX,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`${__dirname}/src/layouts/index.js`),
+      },
+    },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
