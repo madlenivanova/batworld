@@ -1,11 +1,13 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
+import { DARK, LIGHT } from "../styles/colors";
 
 const GlobalStyles = () => (
   <Global
     styles={css`
       body {
         margin: 0;
+        background-color: ${LIGHT};
       }
 
       #___gatsby {
@@ -16,7 +18,7 @@ const GlobalStyles = () => (
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
-        color: rgba(33, 23, 3, 1);
+        color: ${DARK};
         box-sizing: border-box;
         margin: 0;
       }

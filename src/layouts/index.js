@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Transition from "./transition";
-import { css } from "@emotion/react";
 import GlobalFonts from "@components/GlobalFonts";
 import GlobalStyles from "@components/GlobalStyles";
 
@@ -9,11 +8,7 @@ const Layout = ({ children, location }) => {
     <>
       <GlobalFonts />
       <GlobalStyles />
-      <main
-        css={css`
-          border: 1px solid red;
-        `}
-      >
+      <main>
         <Transition location={location}>{children}</Transition>
       </main>
     </>
