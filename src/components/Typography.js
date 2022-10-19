@@ -3,33 +3,15 @@ import styled from "@emotion/styled";
 
 import PropTypes from "prop-types";
 import { enableMarginAndPadding } from "@utilities/styles";
+import { ONE, TWO, THREE, FOUR, FIVE, COPY } from "../styles/fontsizes";
 
-const TITLE_SIZES = {
-  xs: {
-    mobile: 14,
-    tablet: 14,
-    desktop: 14,
-  },
-  sm: {
-    mobile: 16,
-    tablet: 16,
-    desktop: 16,
-  },
-  md: {
-    mobile: 24,
-    tablet: 24,
-    desktop: 32,
-  },
-  lg: {
-    mobile: 40,
-    tablet: 48,
-    desktop: 64,
-  },
-  xl: {
-    mobile: 32,
-    tablet: 48,
-    desktop: 60,
-  },
+const SIZES = {
+  ONE,
+  TWO,
+  THREE,
+  FOUR,
+  FIVE,
+  COPY,
 };
 
 export const withDynamicTag = Component => {
@@ -57,59 +39,37 @@ export const withDynamicTag = Component => {
 /* The title supports individual properties */
 /* tag, bold, size. additionally, you can add css */
 
-export const TitleBase = styled.h1`
-  font-weight: 400;
-  line-height: 1.3em;
+export const HeadingBase = styled.h1`
+  font-weight: normal;
+  line-height: 1em;
   margin: 0px;
-  font-family: ${props =>
-      props.condensed ? "univers-bold-cond" : "univers-bold"},
-    sans-serif;
+  font-family: "nexa-bold", sans-serif;
   text-transform: ${props => (props.uppercase ? "uppercase" : "none")};
-  font-size: ${props => TITLE_SIZES[props.size || "md"].mobile}px;
-
+  font-size: ${props => SIZES[props.size || "COPY"].MOBILE}px;
   @media (min-width: 768px) {
-    font-size: ${props => TITLE_SIZES[props.size || "md"].tablet}px;
+    font-size: ${props => SIZES[props.size || "COPY"].TABLET}px;
   }
-
   @media (min-width: 1200px) {
-    font-size: ${props => TITLE_SIZES[props.size || "md"].desktop}px;
+    font-size: ${props => SIZES[props.size || "COPY"].DESKTOP}px;
   }
 
   ${props => enableMarginAndPadding(props)};
 `;
 
-export const Title = withDynamicTag(TitleBase);
-
-Title.propTypes = {
-  tag: PropTypes.string,
-  bold: PropTypes.bool,
-  size: PropTypes.string,
-};
-
-Title.defaultProps = {
-  tag: "h1",
-  bold: true,
-};
-
-/* The text component has the option for predefined styles */
-/* Available current styles are 'caption' and 'label' */
-/* It also supports individual properties */
+export const HeadingTitle = withDynamicTag(HeadingBase);
 
 const TextBase = styled.p`
-  line-height: 1.4em;
-  letter-spacing: 0.2px;
-  text-transform: ${props => (props.uppercase ? "uppercase" : "none")};
+  line-height: 1.35em;
   font-weight: normal;
-  font-family: "univers-regular", sans-serif;
-
-  font-size: 16px;
-  line-height: 24px;
+  font-family: "nexa-regular", sans-serif;
   letter-spacing: 0;
 
+  font-size: ${props => SIZES.COPY.MOBILE}px;
   @media (min-width: 768px) {
-    font-size: 19px;
-    line-height: 32px;
-    letter-spacing: 0;
+    font-size: ${props => SIZES.COPY.TABLET}px;
+  }
+  @media (min-width: 1200px) {
+    font-size: ${props => SIZES.COPY.DESKTOP}px;
   }
 
   ${props => enableMarginAndPadding(props)};
@@ -125,34 +85,8 @@ export const Text = withDynamicTag(TextBase);
 
 Text.propTypes = {
   tag: PropTypes.string,
-  size: PropTypes.string,
-  bold: PropTypes.bool,
-  uppercase: PropTypes.bool,
-  textStyle: PropTypes.string,
 };
 
 Text.defaultProps = {
   tag: "p",
-  size: "sm",
-  bold: false,
-  uppercase: false,
 };
-
-export const HeadingBase = styled.h1`
-  font-family: "opensans-extrabold";
-  text-transform: uppercase;
-  font-size: 40px;
-  letter-spacing: -0.24px;
-  line-height: 1em;
-  opacity: ${props => {
-    return props.opacity ? "0.45" : "1";
-  }};
-
-  @media (min-width: 768px) {
-    font-size: 64px;
-  }
-
-  ${props => enableMarginAndPadding(props)};
-`;
-
-export const Heading = withDynamicTag(HeadingBase);
