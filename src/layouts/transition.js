@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { gsap } from "gsap/all";
 import styled from "@emotion/styled";
+import { reverse } from "lodash";
 import {
   TransitionGroup,
   Transition as ReactTransition,
@@ -32,6 +33,8 @@ const Panel = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.color};
+  transform: translate3d(0, 80%, 0);
+  opacity: 0.2;
 `;
 
 const PanelContainer = styled.div`
@@ -53,32 +56,22 @@ const Transition = ({ children, location }) => {
     .map((_, i) => panelRefs.current[i] || createRef());
 
   const createTimeline = () => {
-    const panels = panelRefs.current.map(panelRef => panelRef.current);
+    const panels = reverse(panelRefs.current.map(panelRef => panelRef.current));
     console.log(panels);
-    // const tl = gsap.timeline({ paused: true }).to(divs, 0.55, {
-    //   // from: "center",
-    //   x: index => {
-    //     const CURRENT = findIndex(items, { key: pageKeyRef.current });
-    //     const HAS_OFFSET = CURRENT < index;
-    //     const INITIAL_POS = ITEM_WIDTH * index;
-    //     const OFFSET = HAS_OFFSET ? maxWidthRef.current - ITEM_WIDTH : 0;
-    //     return INITIAL_POS + OFFSET;
-    //   },
-    //   stagger: {
-    //     amount: 0.45,
-    //     ease: "power3.easeInOut",
-    //     from: from,
-    //   },
-    //   ease: "power3.easeInOut",
-    //   onComplete: () => {
-    //     prevKeyRef.current = getPageKey({ pathname: location.pathname });
-    //   },
-    // });
-  };
+    const tl = gsap.timeline({ paused: true }).to(panels, {
+      y: 0,
+      duration: 0.6,
+      stagger: {
+        amount: 0.45,
+        ease: "power3.easeInOut",
+      },
+      onComplete: () => {
+        console.log("ok");
+      },
+    });
 
-  useEffect(() => {
-    createTimeline();
-  }, [location.pathname]);
+    return tl;
+  };
 
   const renderPanels = () =>
     Array(PANELS_COUNT)
@@ -88,6 +81,10 @@ const Transition = ({ children, location }) => {
           panel
         </Panel>
       ));
+
+  useEffect(() => {
+    createTimeline().play();
+  }, [location.pathname]);
 
   return (
     <TransitionGroup>
