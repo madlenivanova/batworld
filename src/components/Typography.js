@@ -56,20 +56,20 @@ export const HeadingBase = styled.h1`
   ${props => enableMarginAndPadding(props)};
 `;
 
-export const HeadingTitle = withDynamicTag(HeadingBase);
+export const Heading = withDynamicTag(HeadingBase);
 
 const TextBase = styled.p`
   line-height: 1.35em;
   font-weight: normal;
-  font-family: "nexa-regular", sans-serif;
+  font-family: "nexa-text-regular", sans-serif;
   letter-spacing: 0;
 
-  font-size: ${props => SIZES.COPY.MOBILE}px;
+  font-size: ${SIZES.COPY.MOBILE}px;
   @media (min-width: 768px) {
-    font-size: ${props => SIZES.COPY.TABLET}px;
+    font-size: ${SIZES.COPY.TABLET}px;
   }
   @media (min-width: 1200px) {
-    font-size: ${props => SIZES.COPY.DESKTOP}px;
+    font-size: ${SIZES.COPY.DESKTOP}px;
   }
 
   ${props => enableMarginAndPadding(props)};

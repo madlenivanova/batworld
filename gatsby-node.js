@@ -23,7 +23,6 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-      console.log(result);
       const singlePages = result.data.pages.edges;
       const blogPosts = result.data.blogPosts.edges;
 

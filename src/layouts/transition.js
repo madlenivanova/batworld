@@ -33,7 +33,7 @@ const Panel = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.color};
-  transform: translate3d(0, 80%, 0);
+  transform: translate3d(0, 100%, 0);
   opacity: 0.2;
 `;
 
@@ -82,9 +82,9 @@ const Transition = ({ children, location }) => {
         </Panel>
       ));
 
-  useEffect(() => {
-    createTimeline().play();
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   createTimeline().play();
+  // }, [location.pathname]);
 
   return (
     <TransitionGroup>

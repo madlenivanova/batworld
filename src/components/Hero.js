@@ -1,54 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { css } from "@emotion/react";
-import { Title } from "@components/Typography";
+import { Heading } from "@components/Typography";
+import { Container } from "@components/Markup";
+import styled from "@emotion/styled";
 
-const Hero = ({ title, heroImage }) => {
+const Spacer = styled.div`
+  padding-top: 30vh;
+`;
+
+const Hero = ({ title, subtitle, heroImage }) => {
   return (
-    <div
-      css={css`
-        height: 100vh;
-        width: 100%;
-        background-image: url("${heroImage &&
-        heroImage.fluid &&
-        heroImage.fluid.src}");
-        background-size: cover;
-        background-position: center center;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background: rgba(0, 0, 0, 0.45);
-        }
-      `}
-    >
-      <div
-        css={css`
-          padding: 0px 16px;
-          max-width: 680px;
-          position: relative;
-          z-index: 2;
-          text-align: center;
-          color: white;
-
-          h1 {
-            line-height: 1.1em !important;
-          }
-        `}
-      >
-        <Title tag="h1" size="lg" uppercase condensed>
-          {title}
-        </Title>
-      </div>
-    </div>
+    <Container size="xl">
+      <Spacer />
+      <Heading tag="h1" size="TWO" uppercase>
+        {title}
+      </Heading>
+      <Heading tag="h3" size="THREE">
+        Прилепите могат да бъдат активни през зимата по нормални прилепски
+        причини, да си свършат работата и да влязат обратно в хибернация без
+        изобщо да са в опасност, камо ли да са бедстващи.
+      </Heading>
+    </Container>
   );
 };
 

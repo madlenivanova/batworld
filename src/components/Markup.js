@@ -12,7 +12,7 @@ const enableFlex = props => {
 };
 
 export const Container = styled("div")`
-  max-width: 880px;
+  max-width: ${props => (props.size === "xl" ? "none" : "1400px")};
   margin: 0 auto;
   padding: 0px 20px;
 

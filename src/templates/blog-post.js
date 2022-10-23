@@ -1,9 +1,18 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { Container } from "@components/Markup";
+import Hero from "@components/Hero";
 
 const BlogPost = ({ data }) => {
   console.log(data);
-  return <h1>blog post</h1>;
+
+  const { post, nextPost, prevPost } = data;
+  const { title, featuredImage } = post;
+  return (
+    <React.Fragment>
+      <Hero title={title} />
+    </React.Fragment>
+  );
 };
 
 export default BlogPost;
