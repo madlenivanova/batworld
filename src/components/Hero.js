@@ -1,46 +1,60 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Heading } from "@components/Typography";
-import { Container } from "@components/Markup";
+import { Container, Div } from "@components/Markup";
 import styled from "@emotion/styled";
+import { DARK } from "../styles/colors";
+import { UilArrowLeft } from "@iconscout/react-unicons";
+import { UilShareAlt as UilShare } from "@iconscout/react-unicons";
 
 const Spacer = styled.div`
-  padding-top: 30vh;
+  padding-top: 20vh;
 `;
 
-const Hero = ({ title, subtitle, heroImage }) => {
+const Nav = styled(Div)`
+  border-bottom: 1px solid ${DARK};
+  height: 60px;
+`;
+
+const ShareContainer = styled.button`
+  height: 45px;
+  width: 45px;
+  border: 1px solid ${DARK};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Share = () => {
   return (
-    <Container size="xl">
-      <Spacer />
-      <Heading tag="h1" size="TWO" uppercase>
-        {title}
-      </Heading>
-      <Heading tag="h3" size="THREE">
-        Прилепите могат да бъдат активни през зимата по нормални прилепски
-        причини, да си свършат работата и да влязат обратно в хибернация без
-        изобщо да са в опасност, камо ли да са бедстващи.
-      </Heading>
-    </Container>
+    <ShareContainer>
+      <UilShare />
+    </ShareContainer>
   );
 };
 
-Hero.propTypes = {
-  backgroundImage: PropTypes.shape({
-    fluid: PropTypes.shape({
-      src: PropTypes.string,
-    }),
-  }),
-  title: PropTypes.string,
-};
+const Hero = ({ title, featuredImage, share, nav }) => {
+  return (
+    <Container size="xl">
+      <Spacer />
+      {nav && (
+        <Nav flex ai="center" mb="md">
+          <UilArrowLeft color={DARK} />
+          <Heading tag="h6" size="COPY" uppercase ml="xs">
+            обратно към въпроси и отговори
+          </Heading>
+        </Nav>
+      )}
 
-Hero.defaultProps = {
-  backgroundImage: {
-    fluid: {
-      src:
-        "https://firebasestorage.googleapis.com/v0/b/isf-web-app.appspot.com/o/v4AtQXOg81mjyO7ANqzx%2F5a877277-d92d-4234-9ba1-f0b6143bb883.jpg?alt=media&token=b896f77e-c6bd-4b14-ad15-aa4fdf0cd3b2",
-    },
-  },
-  title: "The sorrows of pain and regret are left to the dead and the dying",
+      <Heading tag="h1" size="ONE" uppercase>
+        {title}
+      </Heading>
+
+      <Div mt="lg" mb="md">
+        {share && <Share />}
+      </Div>
+    </Container>
+  );
 };
 
 export default Hero;

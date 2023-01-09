@@ -41,9 +41,11 @@ export const withDynamicTag = Component => {
 
 export const HeadingBase = styled.h1`
   font-weight: normal;
-  line-height: 1em;
+  line-height: ${props => (props.uppercase ? "0.88em" : "1em")};
   margin: 0px;
-  font-family: "nexa-bold", sans-serif;
+  font-family: ${props => (props.bold ? "nexa-bold" : "nexa-regular")},
+    sans-serif;
+  letter-spacing: -0.025em;
   text-transform: ${props => (props.uppercase ? "uppercase" : "none")};
   font-size: ${props => SIZES[props.size || "COPY"].MOBILE}px;
   @media (min-width: 768px) {
@@ -57,6 +59,14 @@ export const HeadingBase = styled.h1`
 `;
 
 export const Heading = withDynamicTag(HeadingBase);
+
+Heading.propTypes = {
+  tag: PropTypes.string,
+};
+
+Heading.defaultProps = {
+  tag: "p",
+};
 
 const TextBase = styled.p`
   line-height: 1.35em;

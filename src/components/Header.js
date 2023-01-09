@@ -1,36 +1,127 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
+import React, { useState, useEffect, useRef } from "react";
+import { css } from "@emotion/react";
 import { Container, Div } from "@components/Markup";
-import logo from "../images/logo.svg";
+import { Heading } from "./Typography";
 import { Squeeze as Hamburger } from "hamburger-react";
-import { DARK } from "../styles/colors";
+import { DARK, ACCENT, LIGHT } from "../styles/colors";
+import { UilArrowUpRight } from "@iconscout/react-unicons";
+import Logo from "./Logo";
+import Menu from "./Menu";
+import { gsap, ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
-const Logo = styled.img`
-  max-width: 120px;
+const Signal = () => (
+  <Div
+    flex
+    ai="center"
+    css={css`
+      color: ${ACCENT};
+      @media (max-width: 767px) {
+        display: none;
+      }
+    `}
+  >
+    <Heading tag="h6" size="COPY" uppercase mr="xs">
+      подай сигнал
+    </Heading>
+    <UilArrowUpRight color={ACCENT} />
+  </Div>
+);
 
-  @media (min-width: 768px) {
-    max-width: 180px;
-  }
-`;
+const Dms = () => (
+  <Heading
+    tag="h6"
+    size="COPY"
+    uppercase
+    ml="md"
+    css={css`
+      @media (max-width: 767px) {
+        display: none;
+      }
+    `}
+  >
+    DMS BAT
+  </Heading>
+);
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      start: 200,
+      onToggle: self => {
+        const isit = self.isActive || self.progress === 1 ? true : false;
+        console.log(self.isActive, self.progress, isit);
+        setIsScrolled(isit);
+      },
+    });
+  }, []);
 
   return (
-    <Container>
-      <Div flex jc="space-between" ai="center">
-        <Logo src={logo} />
-        <Div>
-          <Hamburger
-            toggled={isOpen}
-            toggle={setOpen}
-            distance="sm"
-            size="36"
-            color={DARK}
-          />
+    <div
+      ref={headerRef}
+      css={css`
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+        transition: 0.15s all;
+        background-color: ${isScrolled ? DARK : "transparent"};
+      `}
+    >
+      <Container
+        css={css`
+          position: relative;
+          z-index: 2;
+          color: ${isOpen || isScrolled ? LIGHT : DARK};
+
+          svg.batworld-logo {
+            height: 100%;
+            fill: ${isOpen || isScrolled ? LIGHT : DARK};
+
+            .cls-1 {
+              fill: ${ACCENT};
+            }
+          }
+        `}
+      >
+        <Div
+          flex
+          jc="space-between"
+          ai="center"
+          css={css`
+            height: ${isScrolled ? "90px" : "120px"};
+            transition: 0.15s all;
+          `}
+        >
+          <Logo w={isScrolled ? "60px" : "90px"} />
+          <Div
+            flex
+            jc="space-between"
+            css={css`
+              min-width: 38%;
+            `}
+          >
+            <Div flex ai="center">
+              <Signal />
+              <Dms />
+            </Div>
+            <Hamburger
+              toggled={isOpen}
+              toggle={setOpen}
+              distance="sm"
+              size="36"
+              color={isOpen || isScrolled ? LIGHT : DARK}
+            />
+          </Div>
         </Div>
-      </Div>
-    </Container>
+      </Container>
+      <Menu isOpen={isOpen} />
+    </div>
   );
 };
 

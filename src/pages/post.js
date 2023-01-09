@@ -1,15 +1,22 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Hero from "@components/Hero";
-import SectionIntro from "@components/SectionIntro";
+import { renderComponent } from "../components/renderComponent";
 
 const IndexPage = ({ data }) => {
-  const { content, title, featuredImage } = data.allDatoCmsQAndA.edges[1].node;
-  const { src } = featuredImage.fluid;
+  const { content, title, featuredImage } = data.allDatoCmsQAndA.edges[0].node;
 
   return (
     <>
-      <SectionIntro src={src} />
+      <Hero
+        title={title}
+        featuredImage={featuredImage}
+        share={true}
+        nav={true}
+      />
+      {content.map((item, index) => {
+        return renderComponent({ item, index });
+      })}
     </>
   );
 };
@@ -17,18 +24,12 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const query = graphql`
-  query StoryQuery {
+  query PostQuery {
     allDatoCmsPage(filter: { id: { eq: "DatoCmsPage-36166633-en" } }) {
       edges {
         node {
           id
           title
-          featuredImage {
-            fluid {
-              src
-              srcSet
-            }
-          }
         }
       }
     }

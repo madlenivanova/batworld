@@ -5,7 +5,7 @@ export const ONE = {
 };
 
 export const TWO = {
-  DESKTOP: 123,
+  DESKTOP: 136,
   TABLET: 76,
   MOBILE: 47,
 };
@@ -23,9 +23,9 @@ export const FOUR = {
 };
 
 export const FIVE = {
-  DESKTOP: 29,
-  TABLET: 18,
-  MOBILE: 18,
+  DESKTOP: 36,
+  TABLET: 24,
+  MOBILE: 24,
 };
 
 export const COPY = {

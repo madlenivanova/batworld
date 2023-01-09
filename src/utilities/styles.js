@@ -2,14 +2,14 @@
 // refactor thoughhhh
 export const SPACINGS = {
   xs: {
-    mobile: "12",
-    tablet: "12",
-    desktop: "15",
+    mobile: "4",
+    tablet: "4",
+    desktop: "8",
   },
   sm: {
-    mobile: "18",
-    tablet: "18",
-    desktop: "24",
+    mobile: "8",
+    tablet: "8",
+    desktop: "16",
   },
   md: {
     mobile: "30",
@@ -20,6 +20,11 @@ export const SPACINGS = {
     mobile: "45",
     tablet: "75",
     desktop: "128",
+  },
+  xl: {
+    mobile: "120",
+    tablet: "120",
+    desktop: "180",
   },
 };
 

@@ -11,6 +11,16 @@ const enableFlex = props => {
   return styles;
 };
 
+const enableWidth = props => {
+  let styles = ``;
+  styles += props.flex ? "display: flex; " : "";
+  styles += props.flexInline ? "display: inline-flex; " : "";
+  styles += props.jc ? `justify-content: ${props.jc};` : "";
+  styles += props.ai ? `align-items: ${props.ai};` : "";
+
+  return styles;
+};
+
 export const Container = styled("div")`
   max-width: ${props => (props.size === "xl" ? "none" : "1400px")};
   margin: 0 auto;

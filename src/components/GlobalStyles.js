@@ -10,6 +10,10 @@ const GlobalStyles = () => (
         background-color: ${LIGHT};
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       @font-face {
         font-family: "NexaBold";
         src: url("../fonts/NexaBold/font.woff2") format("woff2"),
@@ -44,7 +48,7 @@ const GlobalStyles = () => (
       #___gatsby {
         margin: 0;
         font-size: 18px;
-        font-family: "NexaTextRegular", sans-serif;
+        font-family: "nexa-text-regular", sans-serif;
         line-height: 1.4em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -56,11 +60,14 @@ const GlobalStyles = () => (
 
       a,
       a:visited {
-        color: black;
+        color: inherit;
         text-decoration: none;
+        font-weight: normal;
       }
 
       button {
+        background-color: transparent;
+        cursor: pointer;
         padding: 0px;
 
         &:hover,
@@ -71,6 +78,11 @@ const GlobalStyles = () => (
 
       img {
         max-width: 100%;
+      }
+
+      p {
+        margin: 0px;
+        font-weight: normal;
       }
     `}
   />
