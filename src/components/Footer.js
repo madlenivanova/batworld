@@ -9,6 +9,9 @@ import Logo from "./Logo";
 import { Text, Heading } from "@components/Typography";
 import { UilHeart } from "@iconscout/react-unicons";
 import { UilMedicalSquare } from "@iconscout/react-unicons";
+import { UilFacebookF } from "@iconscout/react-unicons";
+import { UilInstagram } from "@iconscout/react-unicons";
+import { UilLinkedin } from "@iconscout/react-unicons";
 
 const StickyItem = ({ text, icon, url }) => (
   <Link to={url}>
@@ -64,6 +67,54 @@ const Sticky = () => {
   );
 };
 
+const FooterLink = ({ text, url }) => {
+  return (
+    <Link
+      to={url}
+      css={css`
+        margin-bottom: 8px;
+      `}
+    >
+      <Text>{text}</Text>
+    </Link>
+  );
+};
+
+const Social = ({ icon, url }) => {
+  const icons = {
+    fb: UilFacebookF,
+    insta: UilInstagram,
+    in: UilLinkedin,
+  };
+  const Ic = icons[icon];
+
+  return (
+    <Link
+      to={url}
+      css={css`
+        margin-right: 16px;
+      `}
+    >
+      <Ic color={LIGHT} size={24} />
+    </Link>
+  );
+};
+
+const socials = [
+  {
+    icon: "fb",
+    url: "#",
+  },
+  {
+    icon: "insta",
+    url: "#",
+  },
+  {
+    icon: "in",
+    url: "#",
+  },
+];
+
 const Footer = () => {
   return (
     <>
@@ -77,14 +128,22 @@ const Footer = () => {
           <Div pt="lg" pb="md" flex>
             <Div
               css={css`
-                border: 1px solid red;
+                color: white;
                 @media (min-width: 768px) {
                   width: 33.33%;
                   min-width: 33.33%;
                 }
               `}
             >
-              sitemap
+              <Text>+359 888 123456</Text>
+              <Text>hello@batworld.bg</Text>
+              <Text>София, ул. Георги Бенковски 20</Text>
+
+              <Div flex mt="md">
+                {socials.map((social, index) => (
+                  <Social key={`social--${index}`} {...social}></Social>
+                ))}
+              </Div>
             </Div>
             <Div
               css={css`

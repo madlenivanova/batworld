@@ -5,7 +5,7 @@ import SectionIntro from "@components/SectionIntro";
 
 const IndexPage = ({ data }) => {
   const { content, title, featuredImage } = data.allDatoCmsQAndA.edges[1].node;
-  const { src } = featuredImage.fluid;
+  const { src } = featuredImage?.fluid;
 
   return (
     <>
