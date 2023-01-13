@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import GoToLink from "@components/GoToLink";
 import React from "react";
+import { ACCENT } from "../styles/colors";
 import { Div, RowsContainer, Half } from "@components/Markup";
-import { Caption, Heading } from "@components/Typography";
+import { Heading } from "@components/Typography";
 import Meta from "@components/Meta";
 
 const Img = styled.div`
@@ -16,7 +17,17 @@ const Img = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  padding: 16px 0 48px 25%;
+  padding: 16px 0 48px 16%;
+
+  h3 {
+    transition: 0.1s all;
+  }
+
+  &: hover {
+    h3 {
+      color: ${ACCENT};
+    }
+  }
 `;
 
 export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
@@ -39,12 +50,32 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
           jc="space-between"
           css={css`
             flex-direction: column;
+
+            h3 {
+              transition: 0.1s all;
+
+              @media (min-width: 768px) {
+                // max-width: 75%;
+                // margin-left: 25%;
+              }
+            }
+
+            &: hover {
+              h3 {
+                color: ${ACCENT};
+              }
+            }
+
+            height: 100%;
+            padding-left: 16%;
           `}
         >
-          <Heading size="FOUR" tag="h3" bold mb="sm">
-            {title}
-          </Heading>
-          <Meta postDate={postDate} author="Вяра" />
+          <Div css={css``}>
+            <Heading size="FOUR" tag="h3" bold mb="sm">
+              {title}
+            </Heading>
+            <Meta postDate={postDate} author="Вяра" />
+          </Div>
           <GoToLink text="прочети" url={`/blog/${slug}`} />
         </Div>
       </Half>
@@ -53,8 +84,6 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
 };
 
 const Thumbnail = ({ featuredImage, title, slug, postDate }) => {
-  console.log(typeof postDate);
-
   return (
     <Link to={`/blog/${slug}`}>
       <div
