@@ -14,6 +14,12 @@ const SIZES = {
   COPY,
 };
 
+export const Caption = styled.p`
+  opacity: 0.75;
+  font-size: 13px;
+  ${props => enableMarginAndPadding(props)};
+`;
+
 export const withDynamicTag = Component => {
   const bucket = Object.create(null);
 

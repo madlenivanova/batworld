@@ -23,7 +23,7 @@ export const FOUR = {
 };
 
 export const FIVE = {
-  DESKTOP: 36,
+  DESKTOP: 32,
   TABLET: 24,
   MOBILE: 24,
 };

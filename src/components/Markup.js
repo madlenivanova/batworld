@@ -42,12 +42,36 @@ export const Row = styled.div`
   }
 `;
 
+export const Half = styled.div`
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    padding: 0px 8px;
+    min-width: 50%;
+    width: 50%;
+  }
+`;
+
+export const TwoRows = styled.div`
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    padding: 0px 8px;
+    min-width: 66.66%;
+    width: 66.66%;
+  }
+`;
+
 export const RowsContainer = styled.div`
+  width: 100%;
+  min-width: 100%;
   @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin: 0px -8px;
   }
+
+  ${props => enableMarginAndPadding(props)};
 `;
 
 export const Div = styled("div")`
