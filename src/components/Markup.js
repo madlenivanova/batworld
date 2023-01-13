@@ -32,6 +32,24 @@ export const Container = styled("div")`
   }
 `;
 
+export const Row = styled.div`
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    padding: 0px 8px;
+    min-width: 33.33%;
+    width: 33.33%;
+  }
+`;
+
+export const RowsContainer = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -8px;
+  }
+`;
+
 export const Div = styled("div")`
   ${props => enableMarginAndPadding(props)};
   ${props => enableFlex(props)};

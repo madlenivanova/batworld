@@ -1,8 +1,9 @@
 import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import { Link } from "gatsby";
-import { Div, Container } from "@components/Markup";
+import { Div, Container, Row, RowsContainer } from "@components/Markup";
 import React from "react";
+import Thumbnail from "@components/PostThumbnail";
 import { Text, Heading } from "@components/Typography";
 
 const PageHeader = ({ title }) => {
@@ -17,55 +18,20 @@ const PageHeader = ({ title }) => {
   );
 };
 
-const ThumbnailImg = ({ src, srcSet }) => {
-  return (
-    <div
-      css={css`
-        padding-top: 52%;
-        border: 1px solid blue;
-        width: 100%;
-        background-image: url("${src}");
-        background-size: cover;
-        background-position: center center;
-      `}
-    ></div>
-  );
-};
-
-const Thumbnail = ({ featuredImage, title, url }) => {
-  return (
-    <div
-      css={css`
-        width: 33.33%;
-        position: relative;
-        border: 1px solid blue;
-        padding: 0px 20px;
-      `}
-    >
-      <Link to={`/blog/${url}`}>
-        <ThumbnailImg {...featuredImage.fluid}></ThumbnailImg>
-        <Heading size="FIVE" tag="h3" bold mt="sm">
-          {title}
-        </Heading>
-      </Link>
-    </div>
-  );
-};
-
 const Blog = ({ data }) => {
   const posts = data.allDatoCmsBlogPost.edges.map(edge => edge.node);
 
   return (
     <>
       <PageHeader title={"блог"}></PageHeader>
-      <Container
-        css={css`
-          min-height: 1900px;
-        `}
-      >
-        {posts.map(post => (
-          <Thumbnail url={post.pageSlug} key={post.pageSlug} {...post} />
-        ))}
+      <Container size="xl">
+        <RowsContainer>
+          {posts.map(post => (
+            <Row key={post.pageSlug}>
+              <Thumbnail slug={post.pageSlug} {...post} />
+            </Row>
+          ))}
+        </RowsContainer>
       </Container>
     </>
   );
