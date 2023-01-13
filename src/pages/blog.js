@@ -21,8 +21,7 @@ const Blog = ({ data }) => {
 
   console.log("data", data);
   return (
-    <>
-      <PageHeader title={"блог"}></PageHeader>
+    <Div pt="lg">
       <Container size="xl">
         <RowsContainer>
           {posts.map((post, i) =>
@@ -40,7 +39,7 @@ const Blog = ({ data }) => {
           )}
         </RowsContainer>
       </Container>
-    </>
+    </Div>
   );
 };
 

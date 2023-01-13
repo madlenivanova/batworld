@@ -1,14 +1,14 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
+import GoToLink from "@components/GoToLink";
 import React from "react";
-import { Row, TwoRows, RowsContainer, Half } from "@components/Markup";
+import { Div, RowsContainer, Half } from "@components/Markup";
 import { Caption, Heading } from "@components/Typography";
 import Meta from "@components/Meta";
 
 const Img = styled.div`
-  padding-top: 52%;
-  border: 1px solid blue;
+  padding-top: 66%;
   width: 100%;
   background-image: url("${props => props.src}");
   background-size: cover;
@@ -17,10 +17,9 @@ const Img = styled.div`
 
 const TitleContainer = styled.div`
   padding: 16px 0 48px 25%;
-  border: 1px solid red;
 `;
 
-export const FeaturedThumbnail = ({ featuredImage, title, slug }) => {
+export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
   return (
     <RowsContainer mb="md">
       <Half>
@@ -28,7 +27,6 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug }) => {
           <div
             css={css`
               position: relative;
-              border: 1px solid red;
             `}
           >
             <Img {...featuredImage.fluid} alt={title} />
@@ -36,9 +34,19 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug }) => {
         </Link>
       </Half>
       <Half>
-        <Heading size="FOUR" tag="h3" bold mb="sm">
-          {title}
-        </Heading>
+        <Div
+          flex
+          jc="space-between"
+          css={css`
+            flex-direction: column;
+          `}
+        >
+          <Heading size="FOUR" tag="h3" bold mb="sm">
+            {title}
+          </Heading>
+          <Meta postDate={postDate} author="Вяра" />
+          <GoToLink text="прочети" url={`/blog/${slug}`} />
+        </Div>
       </Half>
     </RowsContainer>
   );

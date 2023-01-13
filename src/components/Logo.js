@@ -2,16 +2,19 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const LogoContainer = styled.div`
-  max-width: ${props => props.w}px;
-  height: ${props => props.w}px;
+  min-width: ${props => props.w};
+  max-width: ${props => props.w};
+  height: ${props => props.w};
 
   @media (min-width: 768px) {
-    max-width: ${props => props.w}px;
+    max-width: ${props => props.w};
   }
 
   svg {
     max-width: 100%;
     max-height: 100%;
+    min-width: ${props => props.w};
+    max-width: ${props => props.w};
   }
 `;
 

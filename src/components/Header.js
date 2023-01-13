@@ -4,29 +4,11 @@ import { Container, Div } from "@components/Markup";
 import { Heading } from "./Typography";
 import { Squeeze as Hamburger } from "hamburger-react";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
-import { UilArrowUpRight } from "@iconscout/react-unicons";
+
 import Logo from "./Logo";
 import Menu from "./Menu";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
-
-const Signal = () => (
-  <Div
-    flex
-    ai="center"
-    css={css`
-      color: ${ACCENT};
-      @media (max-width: 767px) {
-        display: none;
-      }
-    `}
-  >
-    <Heading tag="h6" size="COPY" uppercase mr="xs">
-      подай сигнал
-    </Heading>
-    <UilArrowUpRight color={ACCENT} />
-  </Div>
-);
 
 const Dms = () => (
   <Heading
@@ -54,7 +36,6 @@ const Header = () => {
       start: 200,
       onToggle: self => {
         const isit = self.isActive || self.progress === 1 ? true : false;
-        console.log(self.isActive, self.progress, isit);
         setIsScrolled(isit);
       },
     });
@@ -103,11 +84,10 @@ const Header = () => {
             flex
             jc="space-between"
             css={css`
-              min-width: 38%;
+              min-width: 20%;
             `}
           >
             <Div flex ai="center">
-              <Signal />
               <Dms />
             </Div>
             <Hamburger

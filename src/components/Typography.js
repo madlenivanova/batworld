@@ -20,6 +20,15 @@ export const Caption = styled.p`
   ${props => enableMarginAndPadding(props)};
 `;
 
+export const Label = styled.p`
+  text-transform: uppercase;
+  font-weight: "nexa-bold", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: bold;
+  ${props => enableMarginAndPadding(props)};
+`;
+
 export const withDynamicTag = Component => {
   const bucket = Object.create(null);
 

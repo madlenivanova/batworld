@@ -18,8 +18,8 @@ export const THREE = {
 
 export const FOUR = {
   DESKTOP: 47,
-  TABLET: 29,
-  MOBILE: 29,
+  TABLET: 40,
+  MOBILE: 32,
 };
 
 export const FIVE = {
