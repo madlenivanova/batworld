@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { ACCENT } from "../styles/colors";
 import { Link } from "gatsby";
-import { UilArrowUpRight } from "@iconscout/react-unicons";
+import { UilArrowUpRight, UilArrowUpLeft } from "@iconscout/react-unicons";
 
 const FlexLink = styled(Link)`
   display: flex;
@@ -30,8 +30,9 @@ const GoToLink = ({ text, url, dir }) => {
         }
       `}
     >
+      {dir === "back" && <UilArrowUpLeft />}
       <Label>{text}</Label>
-      <UilArrowUpRight />
+      {dir !== "back" && <UilArrowUpRight />}
     </FlexLink>
   );
 };

@@ -1,16 +1,66 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { css } from "@emotion/react";
 import { Container } from "@components/Markup";
-import Hero from "@components/Hero";
+import { Heading } from "@components/Typography";
+import { ACCENT, DARK } from "../styles/colors";
+import { Div } from "@components/Markup";
+import PageNav from "@components/PageNav";
+import ImgBackground from "@components/ImgBackground";
+import renderModularContent from "@components/renderModularContent";
+import Share from "@components/Share";
+import Meta from "@components/Meta";
+
+const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
+  return (
+    <Container>
+      {featuredImage && (
+        <ImgBackground fluid={featuredImage?.fluid} alt={title} />
+      )}
+      <Div pt="sm" pb="lg">
+        <Heading size="TWO">{title}</Heading>
+      </Div>
+      <Div flex>
+        <Div
+          mt="sm"
+          css={css`
+            @media (min-width: 992px) {
+              min-width: 33.33%;
+            }
+          `}
+        >
+          <Share />
+          <Meta postDate={postDate} author={"batworld bg"} />
+        </Div>
+        <Div
+          mt="sm"
+          css={css`
+            @media (min-width: 992px) {
+              min-width: 33.33%;
+            }
+          `}
+        >
+          <Heading size="FOUR">{intro}</Heading>
+        </Div>
+      </Div>
+    </Container>
+  );
+};
 
 const BlogPost = ({ data }) => {
-  console.log(data);
-
   const { post, nextPost, prevPost } = data;
-  const { title, featuredImage } = post;
+  const { title, featuredImage, intro, content, postDate } = post;
+  console.log(post);
   return (
     <React.Fragment>
-      <Hero title={title} />
+      <PageNav text={"обратно към блога"} url={"#"} />
+      <BlogPostHero
+        title={title}
+        intro={intro}
+        postDate={postDate}
+        featuredImage={featuredImage}
+      />
+      {renderModularContent({ content: content })}
     </React.Fragment>
   );
 };
@@ -43,6 +93,8 @@ export const query = graphql`
     }
     post: datoCmsBlogPost(pageSlug: { eq: $slug }) {
       title
+      intro
+      postDate
       metaTags {
         description
         image {
@@ -74,6 +126,7 @@ export const query = graphql`
         ... on DatoCmsTextBlock {
           id
           copy
+          headline
           __typename
         }
       }

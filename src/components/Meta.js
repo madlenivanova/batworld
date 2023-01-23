@@ -10,9 +10,15 @@ const Meta = ({ postDate, author }) => {
   };
 
   return (
-    <Caption mt="sm">
-      от {author}, {Intl.DateTimeFormat("bg-BG", options).format(date)}
-    </Caption>
+    <Caption
+      mt="sm"
+      dangerouslySetInnerHTML={{
+        __html: `от ${author},<br /> ${Intl.DateTimeFormat(
+          "bg-BG",
+          options
+        ).format(date)}`,
+      }}
+    />
   );
 };
 

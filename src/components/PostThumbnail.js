@@ -7,14 +7,7 @@ import { ACCENT } from "../styles/colors";
 import { Div, RowsContainer, Half } from "@components/Markup";
 import { Heading } from "@components/Typography";
 import Meta from "@components/Meta";
-
-const Img = styled.div`
-  padding-top: 66%;
-  width: 100%;
-  background-image: url("${props => props.src}");
-  background-size: cover;
-  background-position: center center;
-`;
+import ImgBackground from "./ImgBackground";
 
 const TitleContainer = styled.div`
   padding: 16px 0 48px 16%;
@@ -35,13 +28,7 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
     <RowsContainer mb="md">
       <Half>
         <Link to={`/blog/${slug}`}>
-          <div
-            css={css`
-              position: relative;
-            `}
-          >
-            <Img {...featuredImage.fluid} alt={title} />
-          </div>
+          <ImgBackground fluid={featuredImage.fluid} alt={title} />
         </Link>
       </Half>
       <Half>
@@ -91,7 +78,7 @@ const Thumbnail = ({ featuredImage, title, slug, postDate }) => {
           position: relative;
         `}
       >
-        <Img {...featuredImage.fluid} alt={title} />
+        <ImgBackground fluid={featuredImage.fluid} alt={title} />
       </div>
       <TitleContainer>
         <Heading size="FIVE" tag="h3" bold mb="sm">

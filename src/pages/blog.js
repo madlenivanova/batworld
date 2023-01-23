@@ -19,7 +19,6 @@ const PageHeader = ({ title }) => {
 const Blog = ({ data }) => {
   const posts = data.allDatoCmsBlogPost.edges.map(edge => edge.node);
 
-  console.log("data", data);
   return (
     <Div pt="lg">
       <Container size="xl">
