@@ -1,9 +1,8 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import { Container } from "@components/Markup";
 import { Heading } from "@components/Typography";
-import { ACCENT, DARK } from "../styles/colors";
 import { Div } from "@components/Markup";
 import PageNav from "@components/PageNav";
 import ImgBackground from "@components/ImgBackground";
@@ -17,10 +16,12 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
       {featuredImage && (
         <ImgBackground fluid={featuredImage?.fluid} alt={title} />
       )}
-      <Div pt="sm" pb="lg">
-        <Heading size="TWO">{title}</Heading>
+      <Div pt="md" pb="lg">
+        <Heading size="TWO" bold>
+          {title}
+        </Heading>
       </Div>
-      <Div flex>
+      <Div flex mb="lg">
         <Div
           mt="sm"
           css={css`
@@ -49,16 +50,23 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
 
 const BlogPost = ({ data }) => {
   const { post, nextPost, prevPost } = data;
-  const { title, featuredImage, intro, content, postDate } = post;
-  console.log(post);
+  const {
+    title,
+    featuredImage,
+    intro,
+    content,
+    postDate,
+    disableFeaturedImageInTemplate,
+  } = post;
+  console.log("yes or no", disableFeaturedImageInTemplate);
   return (
     <React.Fragment>
-      <PageNav text={"обратно към блога"} url={"#"} />
+      <PageNav text={"обратно към блога"} url={"/blog"} />
       <BlogPostHero
         title={title}
         intro={intro}
         postDate={postDate}
-        featuredImage={featuredImage}
+        featuredImage={disableFeaturedImageInTemplate ? null : featuredImage}
       />
       {renderModularContent({ content: content })}
     </React.Fragment>
@@ -95,6 +103,7 @@ export const query = graphql`
       title
       intro
       postDate
+      disableFeaturedImageInTemplate
       metaTags {
         description
         image {

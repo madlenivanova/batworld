@@ -5,7 +5,7 @@ export const ONE = {
 };
 
 export const TWO = {
-  DESKTOP: 136,
+  DESKTOP: 100,
   TABLET: 76,
   MOBILE: 47,
 };

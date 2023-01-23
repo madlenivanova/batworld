@@ -28,7 +28,7 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
     <RowsContainer mb="md">
       <Half>
         <Link to={`/blog/${slug}`}>
-          <ImgBackground fluid={featuredImage.fluid} alt={title} />
+          <ImgBackground fluid={featuredImage?.fluid} alt={title} />
         </Link>
       </Half>
       <Half>
@@ -40,11 +40,6 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
 
             h3 {
               transition: 0.1s all;
-
-              @media (min-width: 768px) {
-                // max-width: 75%;
-                // margin-left: 25%;
-              }
             }
 
             &: hover {
@@ -78,7 +73,7 @@ const Thumbnail = ({ featuredImage, title, slug, postDate }) => {
           position: relative;
         `}
       >
-        <ImgBackground fluid={featuredImage.fluid} alt={title} />
+        <ImgBackground fluid={featuredImage?.fluid} alt={title} />
       </div>
       <TitleContainer>
         <Heading size="FIVE" tag="h3" bold mb="sm">

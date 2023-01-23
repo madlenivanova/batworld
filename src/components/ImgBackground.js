@@ -14,6 +14,8 @@ const Img = styled.div`
   background-image: url("${props => props.src}");
   background-size: cover;
   background-position: center center;
+
+  border-radius: 0 30px 0 0;
 `;
 
 const ImgBackground = ({ fluid, alt }) => {

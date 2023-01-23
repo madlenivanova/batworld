@@ -56,7 +56,8 @@ export const withDynamicTag = Component => {
 
 export const HeadingBase = styled.h1`
   font-weight: normal;
-  line-height: ${props => (props.uppercase ? "0.88em" : "1em")};
+  line-height: ${props =>
+    props.uppercase || props.size === "TWO" ? "0.88em" : "1em"};
   margin: 0px;
   font-family: ${props => (props.bold ? "nexa-bold" : "nexa-regular")},
     sans-serif;

@@ -2,39 +2,49 @@ import React from "react";
 import { Label } from "@components/Typography";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { ACCENT } from "../styles/colors";
+import { ACCENT, DARK } from "../styles/colors";
 import { Link } from "gatsby";
 import { Div, Container } from "@components/Markup";
 
 import { UilFacebookF } from "@iconscout/react-unicons";
-import { UilInstagram } from "@iconscout/react-unicons";
-import { UilLinkedin } from "@iconscout/react-unicons";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  ViberShareButton,
-  VKShareButton,
-  WhatsappShareButton,
-} from "react-share";
+import { FacebookShareButton } from "react-share";
 
 const ShareButton = () => {
-  return <></>;
+  return (
+    <FacebookShareButton url={"#"}>
+      <Div
+        flex
+        jc="center"
+        ai="center"
+        mr="sm"
+        css={css`
+          border: 1px solid ${DARK};
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          background: transparent;
+
+          transition: 0.1s all;
+
+          &:hover {
+            background-color: ${DARK};
+
+            svg {
+              fill: white;
+            }
+          }
+        `}
+      >
+        <UilFacebookF size={24} />
+      </Div>
+    </FacebookShareButton>
+  );
 };
 
-const Share = ({ text, url, dir }) => {
+const Share = () => {
   return (
     <Div flex>
-      <FacebookShareButton>
-        <UilFacebookF size={24} />
-      </FacebookShareButton>
-      <FacebookShareButton>
-        <UilFacebookF size={24} />
-      </FacebookShareButton>
-      <FacebookShareButton>
-        <UilFacebookF size={24} />
-      </FacebookShareButton>
+      <ShareButton />
     </Div>
   );
 };
