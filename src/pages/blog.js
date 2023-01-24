@@ -1,16 +1,29 @@
 import { graphql } from "gatsby";
+import { css } from "@emotion/react";
 import { Div, Container, Row, RowsContainer } from "@components/Markup";
 import React from "react";
+import { ACCENT } from "../styles/colors";
 import Thumbnail, { FeaturedThumbnail } from "@components/PostThumbnail";
-import { Text, Heading } from "@components/Typography";
+import { Heading } from "@components/Typography";
 
 const PageHeader = ({ title }) => {
   return (
-    <Div pt="xl" pb="lg">
+    <Div
+      pt="lg"
+      pb="lg"
+      css={css`
+        span {
+          color: ${ACCENT};
+        }
+      `}
+    >
       <Container>
-        <Heading tag="h1" size="THREE" uppercase bold>
-          {title}
-        </Heading>
+        <Heading
+          tag="h1"
+          size="TWO"
+          bold
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
       </Container>
     </Div>
   );
@@ -20,7 +33,8 @@ const Blog = ({ data }) => {
   const posts = data.allDatoCmsBlogPost.edges.map(edge => edge.node);
 
   return (
-    <Div pt="lg">
+    <Div>
+      <PageHeader title={"<span>Batworld</span><br />Блог"} />
       <Container size="xl">
         <RowsContainer>
           {posts.map((post, i) =>
