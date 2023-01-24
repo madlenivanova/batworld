@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 import { Container } from "@components/Markup";
 import { Heading } from "@components/Typography";
 import { Div } from "@components/Markup";
+import { ACCENT, DARK } from "../styles/colors";
 import PageNav from "@components/PageNav";
 import ImgBackground from "@components/ImgBackground";
 import renderModularContent from "@components/renderModularContent";
@@ -60,7 +61,7 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
   );
 };
 
-const Thumb = ({ featuredImage, title, url }) => {
+const Thumb = ({ featuredImage, title, url, align }) => {
   return (
     <Div
       css={css`
@@ -76,11 +77,19 @@ const Thumb = ({ featuredImage, title, url }) => {
           max-width: 25%;
           width: 25%;
         }
+
+        text-align: ${align || "left"};
+
+        &:hover {
+          h5 {
+            color: ${ACCENT};
+          }
+        }
       `}
     >
       <Link to={`/blog/${url}`}>
         <ImgBackground fluid={featuredImage?.fluid} alt={title} />
-        <Heading size="FIVE" bold>
+        <Heading tag="h5" size="FIVE" bold mt="sm">
           {title}
         </Heading>
       </Link>
@@ -89,14 +98,19 @@ const Thumb = ({ featuredImage, title, url }) => {
 };
 
 const PrevNextNav = ({ next, prev }) => {
-  console.log(next, prev);
-
   return (
-    <Div pt="md" pb="md">
+    <Div pb="lg">
       <Container>
-        <Div flex>
-          <Thumb {...next} />
+        <Div
+          pt="sm"
+          flex
+          jc="space-between"
+          css={css`
+            border-top: 1px solid ${DARK};
+          `}
+        >
           <Thumb {...prev} />
+          <Thumb {...next} align={"right"} />
         </Div>
       </Container>
     </Div>
