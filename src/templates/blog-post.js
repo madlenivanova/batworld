@@ -21,12 +21,24 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
           {title}
         </Heading>
       </Div>
-      <Div flex mb="lg">
+      <Div
+        flex
+        mb="lg"
+        css={css`
+          @media (max-width: 767px) {
+            flex-direction: column;
+          }
+        `}
+      >
         <Div
           mt="sm"
           css={css`
-            @media (min-width: 992px) {
+            @media (min-width: 768px) {
               min-width: 33.33%;
+            }
+
+            @media (max-width: 767px) {
+              margin-bottom: 30px;
             }
           `}
         >
@@ -36,7 +48,7 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
         <Div
           mt="sm"
           css={css`
-            @media (min-width: 992px) {
+            @media (min-width: 768px) {
               min-width: 33.33%;
             }
           `}
