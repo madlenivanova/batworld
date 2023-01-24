@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { css } from "@emotion/react";
 import { Container } from "@components/Markup";
 import { Heading } from "@components/Typography";
@@ -60,6 +60,49 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
   );
 };
 
+const Thumb = ({ featuredImage, title, url }) => {
+  return (
+    <Div
+      css={css`
+        max-width: 50%;
+        width: 50%;
+
+        @media (min-width: 768px) {
+          max-width: 33.33%;
+          width: 33.33%;
+        }
+
+        @media (min-width: 992px) {
+          max-width: 25%;
+          width: 25%;
+        }
+      `}
+    >
+      <Link to={`/blog/${url}`}>
+        <ImgBackground fluid={featuredImage?.fluid} alt={title} />
+        <Heading size="FIVE" bold>
+          {title}
+        </Heading>
+      </Link>
+    </Div>
+  );
+};
+
+const PrevNextNav = ({ next, prev }) => {
+  console.log(next, prev);
+
+  return (
+    <Div pt="md" pb="md">
+      <Container>
+        <Div flex>
+          <Thumb {...next} />
+          <Thumb {...prev} />
+        </Div>
+      </Container>
+    </Div>
+  );
+};
+
 const BlogPost = ({ data }) => {
   const { post, nextPost, prevPost } = data;
   const {
@@ -70,7 +113,7 @@ const BlogPost = ({ data }) => {
     postDate,
     disableFeaturedImageInTemplate,
   } = post;
-  console.log("yes or no", disableFeaturedImageInTemplate);
+
   return (
     <React.Fragment>
       <PageNav text={"обратно към блога"} url={"/blog"} />
@@ -81,6 +124,7 @@ const BlogPost = ({ data }) => {
         featuredImage={disableFeaturedImageInTemplate ? null : featuredImage}
       />
       {renderModularContent({ content: content })}
+      <PrevNextNav prev={prevPost} next={nextPost} />
     </React.Fragment>
   );
 };

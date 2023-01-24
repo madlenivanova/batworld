@@ -2,14 +2,14 @@ import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import { Div, Container, Row, RowsContainer } from "@components/Markup";
 import React from "react";
-import { ACCENT } from "../styles/colors";
+import { ACCENT, DARK } from "../styles/colors";
 import Thumbnail, { FeaturedThumbnail } from "@components/PostThumbnail";
 import { Heading } from "@components/Typography";
 
 const PageHeader = ({ title }) => {
   return (
     <Div
-      pt="lg"
+      pt="sm"
       pb="lg"
       css={css`
         span {
@@ -18,12 +18,19 @@ const PageHeader = ({ title }) => {
       `}
     >
       <Container>
-        <Heading
-          tag="h1"
-          size="TWO"
-          bold
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        <Div
+          pt="sm"
+          css={css`
+            border-top: 1px solid ${DARK};
+          `}
+        >
+          <Heading
+            tag="h1"
+            size="TWO"
+            bold
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        </Div>
       </Container>
     </Div>
   );
