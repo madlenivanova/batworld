@@ -14,7 +14,6 @@ const Layout = ({ children, location }) => {
       <main
         css={css`
           overflow: hidden;
-          padding-top: 150px;
         `}
       >
         <Header />

@@ -59,6 +59,7 @@ const Sticky = () => {
         right: 0;
         top: 50%;
         transform: translate3d(0, -50%, 0);
+        z-index: 2;
       `}
     >
       <StickyItem text="намерих прилеп" icon={"medical"} />

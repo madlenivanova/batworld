@@ -4,9 +4,6 @@ import { Link } from "gatsby";
 import GoToLink from "@components/GoToLink";
 import React from "react";
 import { ACCENT } from "../styles/colors";
-import { Div, RowsContainer, Half } from "@components/Markup";
-import { Heading } from "@components/Typography";
-import Meta from "@components/Meta";
 
 const Img = styled.div`
   padding-top: 66%;
