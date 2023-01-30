@@ -10,54 +10,26 @@ import ImgBackground from "@components/ImgBackground";
 import renderModularContent from "@components/renderModularContent";
 import Share from "@components/Share";
 import Meta from "@components/Meta";
+import { TextRightAligned } from "../components/Layout";
 
 const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
   return (
-    <Container>
-      {featuredImage && (
-        <ImgBackground fluid={featuredImage?.fluid} alt={title} />
-      )}
-      <Div pt="md" pb="lg">
-        <Heading size="TWO" bold>
-          {title}
-        </Heading>
-      </Div>
-      <Div
-        flex
-        mb="lg"
-        css={css`
-          @media (max-width: 767px) {
-            flex-direction: column;
-          }
-        `}
-      >
-        <Div
-          mt="sm"
-          css={css`
-            @media (min-width: 768px) {
-              min-width: 33.33%;
-            }
-
-            @media (max-width: 767px) {
-              margin-bottom: 30px;
-            }
-          `}
-        >
-          <Share />
-          <Meta postDate={postDate} author={"batworld bg"} />
+    <>
+      <Container>
+        {featuredImage && (
+          <ImgBackground fluid={featuredImage?.fluid} alt={title} />
+        )}
+        <Div pt="md" pb="lg">
+          <Heading size="TWO" bold>
+            {title}
+          </Heading>
         </Div>
-        <Div
-          mt="sm"
-          css={css`
-            @media (min-width: 768px) {
-              min-width: 33.33%;
-            }
-          `}
-        >
-          <Heading size="FOUR">{intro}</Heading>
-        </Div>
-      </Div>
-    </Container>
+      </Container>
+      <TextRightAligned text={intro}>
+        <Share />
+        <Meta postDate={postDate} author={"batworld bg"} />
+      </TextRightAligned>
+    </>
   );
 };
 

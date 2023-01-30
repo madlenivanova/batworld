@@ -1,80 +1,36 @@
 import React from "react";
-import { Heading, Text } from "@components/Typography";
+import { Heading, Text, Label } from "@components/Typography";
 import { graphql } from "gatsby";
 import Hero from "@components/Hero";
 import { css } from "@emotion/react";
 import SectionIntro from "@components/SectionIntro";
 import { Container, Div } from "@components/Markup";
-import { ACCENT, LIGHT } from "../styles/colors";
+import { ACCENT, LIGHT, DARK } from "../styles/colors";
 import ImgBackground from "../components/ImgBackground";
 import { random } from "lodash";
+import { TextRightAligned, SectionLabel } from "../components/Layout";
+import GoToLink from "@components/GoToLink";
 
 const HomepageIntro = ({ featuredImage, text }) => {
   // const renderStackImage = ({ fluid }) => {
-  //   const rot = random(-30, 30);
-
-  //   return (
-  //     <Div
-  //       css={css`
-  //         position: absolute;
-  //         top: 50%;
-  //         left: 50%;
-  //         transform-origin: center center;
-  //         transform: translate3d(-50%, -50%, 0) rotate(${rot}deg);
-  //         min-width: 30vw;
-  //       `}
-  //     >
-  //       <ImgBackground fluid={fluid} />
-  //     </Div>
-  //   );
-  // };
 
   return (
     <Div pt="lg" pb="lg">
-      <Container>
-        <Div flex>
-          <Div
-            flex
-            ai="center"
-            jc="center"
-            css={css`
-              width: 50%;
-              position: relative;
-              min-height: 80vh;
-            `}
-          >
-            <div
-              css={css`
-                max-width: 450px;
-              `}
-            >
-              <Heading
-                tag="h2"
-                size="THREE"
-                bold
-                mb="md"
-                dangerouslySetInnerHTML={{
-                  __html: "The largest bat sanctuary in Bulgaria",
-                }}
-              />
-              <Text dangerouslySetInnerHTML={{ __html: text }} />
-            </div>
-          </Div>
-          <Div
-            css={css`
-              width: 50%;
-              position: relative;
-              min-height: 80vh;
-
-              img {
-                border-radius: 50% 50% 0 0;
-              }
-            `}
-          >
-            <img src={featuredImage.fluid.src} />
-          </Div>
+      <TextRightAligned
+        text={`Прилепите са изключително чисти, интелигентни, емоционални и чувствителни създания. Те са безкрайно важни за здравето на екосистемата, за нашето здраве, за здравето на селското стопанство и индустрията ни.`}
+      >
+        <Div
+          flex
+          jc="space-between"
+          css={css`
+            height: 100%;
+            flex-direction: column;
+          `}
+        >
+          <SectionLabel text={"за нас"} />
+          <GoToLink text="прочети още" url={``} />
         </Div>
-      </Container>
+      </TextRightAligned>
     </Div>
   );
 };
