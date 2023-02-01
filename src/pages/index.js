@@ -1,23 +1,34 @@
 import React from "react";
-import { Heading, Text, Label } from "@components/Typography";
+import { Heading } from "@components/Typography";
 import { graphql } from "gatsby";
-import Hero from "@components/Hero";
 import { css } from "@emotion/react";
-import SectionIntro from "@components/SectionIntro";
 import { Container, Div } from "@components/Markup";
-import { ACCENT, LIGHT, DARK } from "../styles/colors";
-import ImgBackground from "../components/ImgBackground";
-import { random } from "lodash";
+import { ACCENT } from "../styles/colors";
 import { TextRightAligned, SectionLabel } from "../components/Layout";
 import GoToLink from "@components/GoToLink";
+import HomepageLinks from "@components/HomepageLinks";
 
 const HomepageIntro = ({ featuredImage, text }) => {
   // const renderStackImage = ({ fluid }) => {
 
   return (
-    <Div pt="lg" pb="lg">
+    <Div
+      pt="lg"
+      pb="lg"
+      css={css`
+        a.ok {
+          color: ${ACCENT};
+          transition: 0.1s all;
+
+          &:hover {
+            color: black;
+          }
+        }
+      `}
+    >
       <TextRightAligned
-        text={`Прилепите са изключително чисти, интелигентни, емоционални и чувствителни създания. Те са безкрайно важни за здравето на екосистемата, за нашето здраве, за здравето на селското стопанство и индустрията ни.`}
+        text={`Кратък текст, описващ с няколко изречения дейността на организацията. Това са само временни изречения, с които да видим как изглежда на страницата. При това положение на нещата ние не можем да не кажем, че нещата не са били само сън в лятна нощ.
+        <br /><br />Ако намериш прилеп, не се страхувай от първо, второ трето. Прочети <a class="ok" href="#">какво да направиш, ако намериш прилеп</a> и как да разбереш дали съществото е в беда.`}
       >
         <Div
           flex
@@ -68,7 +79,6 @@ const HomepageHero = ({ featuredImage, headline }) => {
         pb="md"
         ai="flex-end"
         css={css`
-          border: 1px solid red;
           height: 100%;
           position: relative;
           z-index: 1;
@@ -97,6 +107,30 @@ const HomepageHero = ({ featuredImage, headline }) => {
   );
 };
 
+const hplinks = [
+  {
+    heading: "Подкрепи ни",
+    text:
+      "Batworld Bulgaria е неправителствена организация, която разчита на помощта на доброволци и дарители. Включи се!",
+    icon: "heart",
+    url: "#",
+  },
+  {
+    heading: "Участвай като доброволец",
+    text:
+      "Batworld Bulgaria е неправителствена организация, която разчита на помощта на доброволци и дарители. Включи се!",
+    icon: "hands",
+    url: "#",
+  },
+  {
+    heading: "Научи повече и сподели",
+    text:
+      "Batworld Bulgaria е неправителствена организация, която разчита на помощта на доброволци и дарители. Включи се!",
+    icon: "info",
+    url: "#",
+  },
+];
+
 const IndexPage = ({ data }) => {
   const { headline, featuredImage } = data.datoCmsHomepage;
   const src = featuredImage?.fluid?.src;
@@ -112,6 +146,7 @@ const IndexPage = ({ data }) => {
               Bat World was founded in 1994 and is a 501c3 non-profit, accredited organization with the 
               Global Federation of Animal Sanctuaries.`}
       />
+      <HomepageLinks hplinks={hplinks} />
     </>
   );
 };

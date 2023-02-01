@@ -23,9 +23,9 @@ export const FOUR = {
 };
 
 export const FIVE = {
-  DESKTOP: 32,
-  TABLET: 24,
-  MOBILE: 24,
+  DESKTOP: 40,
+  TABLET: 32,
+  MOBILE: 32,
 };
 
 export const COPY = {
