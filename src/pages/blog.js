@@ -9,9 +9,9 @@ import { Heading } from "@components/Typography";
 const PageHeader = ({ title }) => {
   return (
     <Div
-      pt="sm"
       pb="lg"
       css={css`
+        padding-top: 150px;
         span {
           color: ${ACCENT};
         }
