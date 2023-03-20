@@ -6,7 +6,7 @@ import { Squeeze as Hamburger } from "hamburger-react";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
 
 import Logo from "./Logo";
-import Menu from "./Menu";
+import { MenuDesktop } from "./Menu";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,20 +87,21 @@ const Header = () => {
               min-width: 20%;
             `}
           >
-            <Div flex ai="center">
+            {/* <Div flex ai="center">
               <Dms />
-            </Div>
-            <Hamburger
+            </Div> */}
+            {/* <Hamburger
               toggled={isOpen}
               toggle={setOpen}
               distance="sm"
               size="36"
               color={isOpen || isScrolled ? LIGHT : DARK}
-            />
+            /> */}
+            <MenuDesktop />
           </Div>
         </Div>
       </Container>
-      <Menu isOpen={isOpen} />
+      {/* <Menu isOpen={isOpen} /> */}
     </div>
   );
 };

@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
 import { css } from "@emotion/react";
 import { Container, Div } from "@components/Markup";
-import { Heading, Text } from "./Typography";
+import { Heading, Text, Label } from "./Typography";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
-import { UilArrowUpRight } from "@iconscout/react-unicons";
+import { UilArrowUpRight, UilCaretRight } from "@iconscout/react-unicons";
 import { MenuContainer } from "./headerStyles";
-import Logo from "./Logo";
 import LinkInternal from "./LinkInternal";
 import Scrollbars from "react-custom-scrollbars";
+import styled from "@emotion/styled";
 
 const menuItems = [
   {
+    desktopTitle: "За нас",
     keyTitle: "За нас",
     subItems: [
       {
@@ -22,24 +24,20 @@ const menuItems = [
     ],
   },
   {
+    desktopTitle: "За прилепите",
     keyTitle: "Въпроси и отговори",
     seeAll: true,
     subItems: [
       {
-        keyTitle: "Намерих прилеп, какво да направя?",
+        keyTitle: "Въпроси и отговори",
       },
       {
-        keyTitle: "Кои прилепи се срещат в България?",
-      },
-      {
-        keyTitle: "Може ли да ме ухапе?",
-      },
-      {
-        keyTitle: "Още някакъв често задаван въпрос?",
+        keyTitle: "Прилепите в България",
       },
     ],
   },
   {
+    desktopTitle: "Включи се",
     keyTitle: "Включи се",
     subItems: [
       {
@@ -57,14 +55,9 @@ const menuItems = [
     ],
   },
   {
+    desktopTitle: "Блог",
     keyTitle: "Последно от блога",
     seeAll: true,
-    subItems: [
-      {
-        keyTitle: "Заглавие на блог пост",
-        visual: true,
-      },
-    ],
   },
 ];
 
@@ -113,6 +106,106 @@ const MenuItem = ({ keyTitle, subItems, seeAll }) => {
   );
 };
 
+const MenuDesktopSubItem = ({ keyTitle, url }) => {
+  return (
+    <Link
+      to={url}
+      className="menu-link"
+      css={css`
+        height: 42px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+        p {
+          line-height: 1.2em;
+        }
+      `}
+    >
+      <Text textStyle="label">{keyTitle}</Text>
+    </Link>
+  );
+};
+
+const MenuDesktopItem = ({ desktopTitle, subItems, open, toggleOpen }) => {
+  const styles = `color: white; border: none; box-shadow: none; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 30px;`;
+  const C = styled(subItems ? "button" : Link)`
+    ${styles}
+  `;
+  const props = subItems ? { onClick: toggleOpen } : {};
+
+  return (
+    <div
+      css={css`
+        width: 180px;
+        position: relative;
+      `}
+    >
+      <C {...props}>
+        <Text>{desktopTitle}</Text>
+        {subItems && (
+          <UilCaretRight
+            size={12}
+            css={css`
+              transform: rotate(90deg);
+            `}
+          />
+        )}
+      </C>
+      {subItems && (
+        <div
+          css={css`
+            background-color: ${DARK};
+            position: absolute;
+            left: 0;
+            top: 100%;
+            max-height: ${open ? "160px" : 0};
+            transition: 0.15s all;
+
+            .menu-link {
+              opacity: ${open ? 1 : 0};
+              transition: 0.15s all;
+              transition-delay: ${open ? "0.15s" : "0s"};
+            }
+          `}
+        >
+          {subItems.map(subItem => (
+            <MenuDesktopSubItem {...subItem} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const MenuDesktop = ({ isOpen }) => {
+  const [open, setOpen] = useState(null);
+
+  useEffect(() => {
+    console.log(open);
+  }, [open]);
+  return (
+    <nav
+      css={css`
+        display: flex;
+      `}
+    >
+      {menuItems.map((item, index) => (
+        <MenuDesktopItem
+          open={index === open}
+          toggleOpen={() => {
+            console.log("dothat");
+            index === open ? setOpen(null) : setOpen(index);
+          }}
+          {...item}
+        />
+      ))}
+    </nav>
+  );
+};
+
 const Menu = ({ isOpen }) => {
   return (
     <MenuContainer isOpen={isOpen}>
@@ -154,4 +247,4 @@ const Menu = ({ isOpen }) => {
   );
 };
 
-export default Menu;
+export default MenuDesktop;
