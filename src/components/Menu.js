@@ -58,6 +58,7 @@ const menuItems = [
     desktopTitle: "Блог",
     keyTitle: "Последно от блога",
     seeAll: true,
+    url: "/blog",
   },
 ];
 
@@ -129,22 +130,30 @@ const MenuDesktopSubItem = ({ keyTitle, url }) => {
   );
 };
 
-const MenuDesktopItem = ({ desktopTitle, subItems, open, toggleOpen }) => {
+const MenuDesktopItem = ({ desktopTitle, url, subItems, open, toggleOpen }) => {
   const styles = `color: white; border: none; box-shadow: none; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 30px;`;
   const C = styled(subItems ? "button" : Link)`
     ${styles}
   `;
-  const props = subItems ? { onClick: toggleOpen } : {};
+  const props = subItems ? { onClick: toggleOpen } : { to: url };
 
   return (
     <div
       css={css`
-        width: 180px;
+        padding: 0 16px;
         position: relative;
+
+        a {
+          cursor: pointer;
+        }
+
+        p.nav-item {
+          margin-right: 12px;
+        }
       `}
     >
       <C {...props}>
-        <Text>{desktopTitle}</Text>
+        <Text className="nav-item">{desktopTitle}</Text>
         {subItems && (
           <UilCaretRight
             size={12}
@@ -161,7 +170,7 @@ const MenuDesktopItem = ({ desktopTitle, subItems, open, toggleOpen }) => {
             position: absolute;
             left: 0;
             top: 100%;
-            max-height: ${open ? "160px" : 0};
+            max-height: ${open ? "200px" : 0};
             transition: 0.15s all;
 
             .menu-link {
@@ -180,23 +189,25 @@ const MenuDesktopItem = ({ desktopTitle, subItems, open, toggleOpen }) => {
   );
 };
 
-export const MenuDesktop = ({ isOpen }) => {
+export const MenuDesktop = ({ isScrolled }) => {
   const [open, setOpen] = useState(null);
 
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
   return (
     <nav
       css={css`
         display: flex;
+        p.nav-item {
+          color: ${isScrolled ? "white" : DARK};
+        }
+        svg {
+          fill: ${isScrolled ? "white" : DARK};
+        }
       `}
     >
       {menuItems.map((item, index) => (
         <MenuDesktopItem
           open={index === open}
           toggleOpen={() => {
-            console.log("dothat");
             index === open ? setOpen(null) : setOpen(index);
           }}
           {...item}

@@ -97,7 +97,7 @@ const Header = () => {
               size="36"
               color={isOpen || isScrolled ? LIGHT : DARK}
             /> */}
-            <MenuDesktop />
+            <MenuDesktop isScrolled={isScrolled} />
           </Div>
         </Div>
       </Container>
