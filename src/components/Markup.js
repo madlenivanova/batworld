@@ -22,7 +22,7 @@ const enableWidth = props => {
 };
 
 export const Container = styled("div")`
-  max-width: ${props => (props.size === "xl" ? "none" : "1400px")};
+  max-width: ${props => (props.size === "xl" ? "1400px" : "1400px")};
   margin: 0 auto;
   padding: 0px 20px;
 

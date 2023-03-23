@@ -17,7 +17,15 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
     <>
       <Container>
         {featuredImage && (
-          <ImgBackground fluid={featuredImage?.fluid} alt={title} />
+          <div
+            css={css`
+              @media (min-width: 768px) {
+                max-width: 66%;
+              }
+            `}
+          >
+            <ImgBackground fluid={featuredImage?.fluid} alt={title} />
+          </div>
         )}
         <Div pt="md" pb="lg">
           <Heading size="TWO" bold>

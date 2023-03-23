@@ -7,7 +7,7 @@ import { Div } from "@components/Markup";
 
 const PageNav = ({ url, text }) => {
   return (
-    <Div mb="md">
+    <Div mb="md" mt="lg">
       <Container>
         <Div
           pb="xs"
