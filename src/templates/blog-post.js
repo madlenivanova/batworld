@@ -12,7 +12,7 @@ import Share from "@components/Share";
 import Meta from "@components/Meta";
 import { TextRightAligned } from "../components/Layout";
 
-const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
+const BlogPostHero = ({ title, intro, postDate, author, featuredImage }) => {
   return (
     <>
       <Container>
@@ -35,7 +35,7 @@ const BlogPostHero = ({ title, intro, postDate, featuredImage }) => {
       </Container>
       <TextRightAligned text={intro}>
         <Share />
-        <Meta postDate={postDate} author={"batworld bg"} />
+        <Meta postDate={postDate} author={author} />
       </TextRightAligned>
     </>
   );
@@ -101,6 +101,7 @@ const BlogPost = ({ data }) => {
   const { post, nextPost, prevPost } = data;
   const {
     title,
+    author,
     featuredImage,
     intro,
     content,
@@ -112,6 +113,7 @@ const BlogPost = ({ data }) => {
     <React.Fragment>
       <PageNav text={"обратно към блога"} url={"/blog"} />
       <BlogPostHero
+        author={author}
         title={title}
         intro={intro}
         postDate={postDate}
@@ -154,6 +156,7 @@ export const query = graphql`
       intro
       postDate
       disableFeaturedImageInTemplate
+      author
       metaTags {
         description
         image {

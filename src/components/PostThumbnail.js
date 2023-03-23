@@ -23,7 +23,13 @@ const TitleContainer = styled.div`
   }
 `;
 
-export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
+export const FeaturedThumbnail = ({
+  featuredImage,
+  title,
+  author,
+  slug,
+  postDate,
+}) => {
   return (
     <RowsContainer mb="md">
       <Half>
@@ -56,7 +62,7 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
             <Heading size="FOUR" tag="h3" bold mb="sm">
               {title}
             </Heading>
-            <Meta postDate={postDate} author="Вяра" />
+            <Meta postDate={postDate} author={author} />
           </Div>
           <GoToLink text="прочети" url={`/blog/${slug}`} />
         </Div>
@@ -65,7 +71,7 @@ export const FeaturedThumbnail = ({ featuredImage, title, slug, postDate }) => {
   );
 };
 
-const Thumbnail = ({ featuredImage, title, slug, postDate }) => {
+const Thumbnail = ({ featuredImage, title, slug, author, postDate }) => {
   return (
     <Link to={`/blog/${slug}`}>
       <div
@@ -79,7 +85,7 @@ const Thumbnail = ({ featuredImage, title, slug, postDate }) => {
         <Heading size="FIVE" tag="h3" bold mb="sm">
           {title}
         </Heading>
-        <Meta postDate={postDate} author="Вяра" />
+        <Meta postDate={postDate} author={author} />
       </TitleContainer>
     </Link>
   );

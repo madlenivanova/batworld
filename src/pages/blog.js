@@ -74,6 +74,7 @@ export const query = graphql`
           id
           title
           pageSlug
+          author
           postDate
           featuredImage {
             fluid {
