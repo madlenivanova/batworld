@@ -154,6 +154,7 @@ const Footer = () => {
                 @media (min-width: 768px) {
                   width: 33.33%;
                   min-width: 33.33%;
+                  max-width: 33.33%;
                 }
               `}
             >
@@ -175,6 +176,8 @@ const Footer = () => {
 
                 @media (min-width: 768px) {
                   width: 33.33%;
+                  max-width: 33.33%;
+                  min-width: 33.33%;
                 }
 
                 svg.batworld-logo {
