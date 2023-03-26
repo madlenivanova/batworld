@@ -6,6 +6,7 @@ import { Div, Container } from "@components/Markup";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
 import React from "react";
 import Logo from "./Logo";
+import fulllogo from "../images/bw-bulgaria-logo-02.png";
 import { Text, Heading } from "@components/Typography";
 import { UilHeart } from "@iconscout/react-unicons";
 import { UilMedicalSquare } from "@iconscout/react-unicons";
@@ -123,23 +124,44 @@ const Footer = () => {
       <footer
         css={css`
           background-color: ${DARK};
+
+          color: white;
+          p {
+            line-height: 1.35em;
+          }
         `}
       >
         <Container>
-          <Div pt="lg" pb="md" flex>
+          <Div
+            pt="lg"
+            pb="md"
+            flex
+            css={css`
+              @media (max-width: 767px) {
+                flex-direction: column;
+              }
+            `}
+          >
             <Div
+              flex
+              jc="space-between"
               css={css`
-                color: white;
+                flex-direction: column;
+
+                width: 100%;
+                min-width: 100%;
+
                 @media (min-width: 768px) {
                   width: 33.33%;
                   min-width: 33.33%;
                 }
               `}
             >
-              <Text>+359 888 123456</Text>
-              <Text>hello@batworld.bg</Text>
-              <Text>София, ул. Георги Бенковски 20</Text>
-
+              <Div>
+                <Text>+359 888 123456</Text>
+                <Text>hello@batworld.bg</Text>
+                <Text>София, ул. Георги Бенковски 20</Text>
+              </Div>
               <Div flex mt="md">
                 {socials.map((social, index) => (
                   <Social key={`social--${index}`} {...social}></Social>
@@ -148,7 +170,9 @@ const Footer = () => {
             </Div>
             <Div
               css={css`
-                border: 1px solid red;
+                width: 100%;
+                min-width: 100%;
+
                 @media (min-width: 768px) {
                   width: 33.33%;
                 }
@@ -157,11 +181,26 @@ const Footer = () => {
                   height: 100%;
                   fill: ${LIGHT};
                 }
+
+                @media (max-width: 767px) {
+                  margin: 32px 0px 0px;
+                }
               `}
             >
-              <Logo />
+              <img src={fulllogo} alt="batworld bulgaria logo" />
             </Div>
             <Heading></Heading>
+          </Div>
+          <Div pt="md" pb="md">
+            <Text
+              css={css`
+                opacity: 0.5;
+                max-width: 500px;
+              `}
+            >
+              Batworld Bulgaria е неправителствена организация, основана през
+              2014г. Всички права запазени.
+            </Text>
           </Div>
         </Container>
       </footer>

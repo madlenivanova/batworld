@@ -38,6 +38,7 @@ const PageHeader = ({ title }) => {
 
 const Blog = ({ data }) => {
   const posts = data.allDatoCmsBlogPost.edges.map(edge => edge.node);
+  posts.sort((a, b) => new Date(b.postDate) - new Date(a.postDate));
 
   return (
     <Div>

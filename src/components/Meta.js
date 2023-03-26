@@ -9,11 +9,13 @@ const Meta = ({ postDate, author }) => {
     month: "long",
   };
 
+  const postAuthor = author || "Batworld Bulgaria";
+
   return (
     <Caption
       mt="sm"
       dangerouslySetInnerHTML={{
-        __html: `от ${author},<br /> ${Intl.DateTimeFormat(
+        __html: `от ${postAuthor},<br /> ${Intl.DateTimeFormat(
           "bg-BG",
           options
         ).format(date)}`,

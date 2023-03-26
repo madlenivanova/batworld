@@ -17,9 +17,11 @@ const menuItems = [
     subItems: [
       {
         keyTitle: "Задруга",
+        url: "/za-nas",
       },
       {
         keyTitle: "Bat World Sanctuary",
+        url: "/za-bat-world-sanctuary",
       },
     ],
   },

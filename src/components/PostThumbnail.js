@@ -31,7 +31,12 @@ export const FeaturedThumbnail = ({
   postDate,
 }) => {
   return (
-    <RowsContainer mb="md">
+    <RowsContainer
+      mb="md"
+      css={css`
+        padding: 0 8px;
+      `}
+    >
       <Half>
         <Link to={`/blog/${slug}`}>
           <ImgBackground fluid={featuredImage?.fluid} alt={title} />
@@ -59,7 +64,7 @@ export const FeaturedThumbnail = ({
           `}
         >
           <Div css={css``}>
-            <Heading size="FOUR" tag="h3" bold mb="sm">
+            <Heading size="THREE" tag="h3" bold mb="sm">
               {title}
             </Heading>
             <Meta postDate={postDate} author={author} />
