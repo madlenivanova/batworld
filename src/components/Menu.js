@@ -9,60 +9,7 @@ import { MenuContainer } from "./headerStyles";
 import LinkInternal from "./LinkInternal";
 import Scrollbars from "react-custom-scrollbars";
 import styled from "@emotion/styled";
-
-const menuItems = [
-  {
-    desktopTitle: "За нас",
-    keyTitle: "За нас",
-    subItems: [
-      {
-        keyTitle: "Задруга",
-        url: "/za-nas",
-      },
-      {
-        keyTitle: "Bat World Sanctuary",
-        url: "/za-bat-world-sanctuary",
-      },
-    ],
-  },
-  {
-    desktopTitle: "За прилепите",
-    keyTitle: "Въпроси и отговори",
-    seeAll: true,
-    subItems: [
-      {
-        keyTitle: "Въпроси и отговори",
-      },
-      {
-        keyTitle: "Прилепите в България",
-      },
-    ],
-  },
-  {
-    desktopTitle: "Включи се",
-    keyTitle: "Включи се",
-    subItems: [
-      {
-        keyTitle: "Доброволци",
-      },
-      {
-        keyTitle: "Дарения",
-      },
-      {
-        keyTitle: "Магазин",
-      },
-      {
-        keyTitle: "Как да помогна?",
-      },
-    ],
-  },
-  {
-    desktopTitle: "Блог",
-    keyTitle: "Последно от блога",
-    seeAll: true,
-    url: "/blog",
-  },
-];
+import { menuItems } from "./menuItems";
 
 const MenuItem = ({ keyTitle, subItems, seeAll }) => {
   return (
@@ -133,7 +80,7 @@ const MenuDesktopSubItem = ({ keyTitle, url }) => {
 };
 
 const MenuDesktopItem = ({ desktopTitle, url, subItems, open, toggleOpen }) => {
-  const styles = `color: white; border: none; box-shadow: none; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 30px;`;
+  const styles = `color: white!important; border: none; box-shadow: none; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 30px;`;
   const C = styled(subItems ? "button" : Link)`
     ${styles}
   `;
@@ -147,6 +94,11 @@ const MenuDesktopItem = ({ desktopTitle, url, subItems, open, toggleOpen }) => {
 
         a {
           cursor: pointer;
+          color: white;
+
+          &:visited {
+            color: white;
+          }
         }
 
         p.nav-item {

@@ -1,14 +1,11 @@
 import React from "react";
+import { css } from "@emotion/react";
 import { graphql, Link } from "gatsby";
 import { Container, Div } from "@components/Markup";
 import { Heading, Text } from "@components/Typography";
 import { DARK, ACCENT } from "../styles/colors";
-import Hero from "@components/Hero";
 import styled from "@emotion/styled";
-
-const Thumbnail = () => {
-  return <h1>Thumbnail</h1>;
-};
+import { PageHeader } from "./blog";
 
 const ItemContainer = styled(Div)`
   border-top: 2px solid ${DARK};
@@ -34,7 +31,7 @@ const QandAPage = ({ data }) => {
 
   return (
     <Div>
-      <Hero title="Въпроси и отговори" share={false} nav={false} />
+      <PageHeader title={"<span>Въпроси</span><br />& отговори"} />;
       <Container>
         {items.map(item => {
           return (

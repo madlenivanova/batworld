@@ -8,38 +8,7 @@ import { ACCENT, DARK } from "../styles/colors";
 import PageNav from "@components/PageNav";
 import ImgBackground from "@components/ImgBackground";
 import renderModularContent from "@components/renderModularContent";
-import Share from "@components/Share";
-import Meta from "@components/Meta";
-import { TextRightAligned } from "../components/Layout";
-
-const BlogPostHero = ({ title, intro, postDate, author, featuredImage }) => {
-  return (
-    <>
-      <Container>
-        {featuredImage && (
-          <div
-            css={css`
-              @media (min-width: 768px) {
-                max-width: 66%;
-              }
-            `}
-          >
-            <ImgBackground fluid={featuredImage?.fluid} alt={title} />
-          </div>
-        )}
-        <Div pt="md" pb="lg">
-          <Heading size="TWO" bold>
-            {title}
-          </Heading>
-        </Div>
-      </Container>
-      <TextRightAligned text={intro}>
-        <Share />
-        <Meta postDate={postDate} author={author} />
-      </TextRightAligned>
-    </>
-  );
-};
+import { BlogPostHero } from "../components/PageHero";
 
 const Thumb = ({ featuredImage, title, url, align }) => {
   return (
@@ -110,7 +79,11 @@ const BlogPost = ({ data }) => {
   } = post;
 
   return (
-    <React.Fragment>
+    <Div
+      css={css`
+        padding-top: 150px;
+      `}
+    >
       <PageNav text={"обратно към блога"} url={"/blog"} />
       <BlogPostHero
         author={author}
@@ -121,7 +94,7 @@ const BlogPost = ({ data }) => {
       />
       {renderModularContent({ content: content })}
       <PrevNextNav prev={prevPost} next={nextPost} />
-    </React.Fragment>
+    </Div>
   );
 };
 

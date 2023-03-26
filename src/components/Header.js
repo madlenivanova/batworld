@@ -33,7 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      start: 200,
+      start: 100,
       onToggle: self => {
         const isit = self.isActive || self.progress === 1 ? true : false;
         setIsScrolled(isit);

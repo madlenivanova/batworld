@@ -64,9 +64,11 @@ export const FeaturedThumbnail = ({
           `}
         >
           <Div css={css``}>
-            <Heading size="THREE" tag="h3" bold mb="sm">
-              {title}
-            </Heading>
+            <Link to={`/blog/${slug}`}>
+              <Heading size="THREE" tag="h3" bold mb="sm">
+                {title}
+              </Heading>
+            </Link>
             <Meta postDate={postDate} author={author} />
           </Div>
           <GoToLink text="прочети" url={`/blog/${slug}`} />

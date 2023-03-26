@@ -6,7 +6,7 @@ import { ACCENT, DARK } from "../styles/colors";
 import Thumbnail, { FeaturedThumbnail } from "@components/PostThumbnail";
 import { Heading } from "@components/Typography";
 
-const PageHeader = ({ title }) => {
+export const PageHeader = ({ title }) => {
   return (
     <Div
       pb="lg"
