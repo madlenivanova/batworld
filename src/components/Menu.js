@@ -4,12 +4,13 @@ import { css } from "@emotion/react";
 import { Container, Div } from "@components/Markup";
 import { Heading, Text, Label } from "./Typography";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
-import { UilArrowUpRight, UilCaretRight } from "@iconscout/react-unicons";
+import { UilCaretRight } from "@iconscout/react-unicons";
 import { MenuContainer } from "./headerStyles";
 import LinkInternal from "./LinkInternal";
 import Scrollbars from "react-custom-scrollbars";
 import styled from "@emotion/styled";
 import { menuItems } from "./menuItems";
+import { useLocation } from "react-router-dom";
 
 const MenuItem = ({ keyTitle, subItems, seeAll }) => {
   return (
@@ -145,6 +146,12 @@ const MenuDesktopItem = ({ desktopTitle, url, subItems, open, toggleOpen }) => {
 
 export const MenuDesktop = ({ isScrolled }) => {
   const [open, setOpen] = useState(null);
+
+  // const location = useLocation();
+
+  // useEffect(() => {
+  //   setOpen(false);
+  // }, [location]);
 
   return (
     <nav

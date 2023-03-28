@@ -1,13 +1,5 @@
-import React, {
-  useEffect,
-  forwardRef,
-  useRef,
-  createRef,
-  useContext,
-} from "react";
-import { gsap } from "gsap/all";
+import React, { useEffect, useRef, createRef } from "react";
 import styled from "@emotion/styled";
-import { reverse } from "lodash";
 import {
   TransitionGroup,
   Transition as ReactTransition,
@@ -51,27 +43,13 @@ const Transition = ({ children, location }) => {
   const PANELS_COUNT = 3;
   const PANELS_COLORS = ["red", "blue", "orange"];
 
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
+
   panelRefs.current = Array(PANELS_COUNT)
     .fill()
     .map((_, i) => panelRefs.current[i] || createRef());
-
-  const createTimeline = () => {
-    const panels = reverse(panelRefs.current.map(panelRef => panelRef.current));
-    console.log(panels);
-    const tl = gsap.timeline({ paused: true }).to(panels, {
-      y: 0,
-      duration: 0.6,
-      stagger: {
-        amount: 0.45,
-        ease: "power3.easeInOut",
-      },
-      onComplete: () => {
-        console.log("ok");
-      },
-    });
-
-    return tl;
-  };
 
   const renderPanels = () =>
     Array(PANELS_COUNT)
@@ -81,10 +59,6 @@ const Transition = ({ children, location }) => {
           panel
         </Panel>
       ));
-
-  // useEffect(() => {
-  //   createTimeline().play();
-  // }, [location.pathname]);
 
   return (
     <TransitionGroup>
