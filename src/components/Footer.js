@@ -24,7 +24,7 @@ const StickyItem = ({ text, icon, url }) => (
         padding: 16px 16px;
         color: ${LIGHT};
         align-items: center;
-        width: 240px;
+        width: 220px;
         border-radius: 16px 0 0 16px;
         margin: 8px 0;
         transition: 0.16s all;
@@ -35,16 +35,16 @@ const StickyItem = ({ text, icon, url }) => (
       `}
     >
       {icon === "heart" ? (
-        <UilHeart color={LIGHT} size="24" />
+        <UilHeart color={LIGHT} size="32" />
       ) : (
-        <UilMedicalSquare color={LIGHT} size="24" />
+        <UilMedicalSquare color={LIGHT} size="32" />
       )}
       <Div
         css={css`
           margin-left: 16px;
         `}
       >
-        <Heading tag="h6" size="COPY" uppercase mr="xs">
+        <Heading tag="h6" size="COPY" uppercase>
           {text}
         </Heading>
       </Div>
