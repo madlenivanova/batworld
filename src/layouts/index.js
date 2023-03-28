@@ -5,20 +5,23 @@ import GlobalStyles from "@components/GlobalStyles";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import { Global, css } from "@emotion/react";
+import NavProvider from "@providers/NavProvider";
 
 const Layout = ({ children, location }) => {
   return (
     <>
       <GlobalFonts />
       <GlobalStyles />
-      <main
-        css={css`
-          overflow: hidden;
-        `}
-      >
-        <Header />
-        <Transition location={location}>{children}</Transition>
-      </main>
+      <NavProvider>
+        <main
+          css={css`
+            overflow: hidden;
+          `}
+        >
+          <Header />
+          <Transition location={location}>{children}</Transition>
+        </main>
+      </NavProvider>
       <Footer />
     </>
   );

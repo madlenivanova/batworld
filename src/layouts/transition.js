@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, createRef } from "react";
-import styled from "@emotion/styled";
+import React, { useEffect, useContext } from "react";
+import { NavContext } from "@providers/NavProvider";
 import {
   TransitionGroup,
   Transition as ReactTransition,
@@ -21,48 +21,15 @@ const getTransitionStyles = {
   },
 };
 
-const Panel = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${props => props.color};
-  transform: translate3d(0, 100%, 0);
-  opacity: 0.2;
-`;
-
-const PanelContainer = styled.div`
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-`;
-
 const Transition = ({ children, location }) => {
-  const panelRefs = useRef([]);
-  const PANELS_COUNT = 3;
-  const PANELS_COLORS = ["red", "blue", "orange"];
+  const { setNavOpen } = useContext(NavContext);
 
   useEffect(() => {
-    console.log(location);
+    setNavOpen(false);
   }, [location]);
-
-  panelRefs.current = Array(PANELS_COUNT)
-    .fill()
-    .map((_, i) => panelRefs.current[i] || createRef());
-
-  const renderPanels = () =>
-    Array(PANELS_COUNT)
-      .fill()
-      .map((_, i) => (
-        <Panel ref={panelRefs.current[i]} color={PANELS_COLORS[i]}>
-          panel
-        </Panel>
-      ));
 
   return (
     <TransitionGroup>
-      <PanelContainer>{renderPanels()}</PanelContainer>
       <ReactTransition
         key={location.pathname}
         timeout={{
