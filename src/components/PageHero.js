@@ -37,15 +37,15 @@ export const PageHero = ({ title, intro, featuredImage }) => {
           }
         `}
       >
-        <Div
-          pt="md"
-          pb="lg"
-          css={css`
-            position: relative;
-            z-index: 2;
-          `}
-        >
-          <Container>
+        <Container>
+          <Div
+            pt="md"
+            pb="md"
+            css={css`
+              position: relative;
+              z-index: 2;
+            `}
+          >
             <Heading
               size="TWO"
               bold
@@ -55,8 +55,8 @@ export const PageHero = ({ title, intro, featuredImage }) => {
             >
               {title}
             </Heading>
-          </Container>
-        </Div>
+          </Div>
+        </Container>
       </Div>
       <TextRightAligned text={intro}>
         <Share />
