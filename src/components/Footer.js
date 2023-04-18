@@ -1,11 +1,8 @@
-import { graphql } from "gatsby";
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import { Div, Container } from "@components/Markup";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
 import React from "react";
-import Logo from "./Logo";
 import fulllogo from "../images/bw-bulgaria-logo-02.png";
 import { Text, Heading } from "@components/Typography";
 import { UilHeart } from "@iconscout/react-unicons";
@@ -61,6 +58,10 @@ const Sticky = () => {
         top: 50%;
         transform: translate3d(0, -50%, 0);
         z-index: 2;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
       `}
     >
       <StickyItem text="намерих прилеп" icon={"medical"} />

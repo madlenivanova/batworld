@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { Link } from "gatsby";
 import { css } from "@emotion/react";
 import { Container, Div } from "@components/Markup";
 import { Heading } from "./Typography";
 import { Squeeze as Hamburger } from "hamburger-react";
 import { DARK, ACCENT, LIGHT } from "../styles/colors";
-
+import { NavContext } from "@providers/NavProvider";
 import Logo from "./Logo";
-import { MenuDesktop } from "./Menu";
+import { MenuDesktop, Menu } from "./Menu";
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +29,7 @@ const Dms = () => (
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const { mobileNavOpen, setMobileNavOpen } = useContext(NavContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
@@ -58,11 +60,11 @@ const Header = () => {
         css={css`
           position: relative;
           z-index: 2;
-          color: ${isOpen || isScrolled ? LIGHT : DARK};
+          color: ${mobileNavOpen || isScrolled ? LIGHT : DARK};
 
           svg.batworld-logo {
             height: 100%;
-            fill: ${isOpen || isScrolled ? LIGHT : DARK};
+            fill: ${mobileNavOpen || isScrolled ? LIGHT : DARK};
 
             .cls-1 {
               fill: ${ACCENT};
@@ -77,9 +79,15 @@ const Header = () => {
           css={css`
             height: ${isScrolled ? "90px" : "120px"};
             transition: 0.15s all;
+
+            @media (max-width: 767px) {
+              height: ${isScrolled ? "60px" : "90px"};
+            }
           `}
         >
-          <Logo w={isScrolled ? "60px" : "90px"} />
+          <Link to={"/"}>
+            <Logo w={isScrolled ? "60px" : "90px"} />
+          </Link>
           <Div
             flex
             jc="space-between"
@@ -90,18 +98,26 @@ const Header = () => {
             {/* <Div flex ai="center">
               <Dms />
             </Div> */}
-            {/* <Hamburger
-              toggled={isOpen}
-              toggle={setOpen}
-              distance="sm"
-              size="36"
-              color={isOpen || isScrolled ? LIGHT : DARK}
-            /> */}
+            <div
+              css={css`
+                @media (min-width: 768px) {
+                  display: none;
+                }
+              `}
+            >
+              <Hamburger
+                toggled={mobileNavOpen}
+                toggle={setMobileNavOpen}
+                distance="sm"
+                size="36"
+                color={mobileNavOpen || isScrolled ? LIGHT : DARK}
+              />
+            </div>
             <MenuDesktop isScrolled={isScrolled} />
           </Div>
         </Div>
       </Container>
-      {/* <Menu isOpen={isOpen} /> */}
+      <Menu />
     </div>
   );
 };

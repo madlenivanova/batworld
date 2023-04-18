@@ -15,6 +15,20 @@ const LogoContainer = styled.div`
     max-height: 100%;
     min-width: ${props => props.w};
     max-width: ${props => props.w};
+
+    @media (max-width: 767px) {
+      width: 45px !important;
+      max-width: 45px !important;
+      min-width: 45px !important;
+      height: 45px !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    width: 45px !important;
+    max-width: 45px !important;
+    min-width: 45px !important;
+    height: 45px !important;
   }
 `;
 

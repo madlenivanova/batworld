@@ -25,6 +25,7 @@ const Transition = ({ children, location }) => {
   const { setNavOpen } = useContext(NavContext);
 
   useEffect(() => {
+    console.log("change", location);
     setNavOpen(false);
   }, [location]);
 

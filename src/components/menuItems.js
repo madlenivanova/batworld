@@ -16,7 +16,6 @@ export const menuItems = [
   {
     desktopTitle: "За прилепите",
     keyTitle: "Въпроси и отговори",
-    seeAll: true,
     subItems: [
       {
         keyTitle: "Въпроси и отговори",
@@ -48,8 +47,7 @@ export const menuItems = [
   },
   {
     desktopTitle: "Блог",
-    keyTitle: "Последно от блога",
-    seeAll: true,
+    keyTitle: "Блог",
     url: "/blog",
   },
 ];
