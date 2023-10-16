@@ -11,6 +11,7 @@ import renderModularContent from "@components/renderModularContent";
 import { BlogPostHero } from "../components/PageHero";
 
 const Thumb = ({ featuredImage, title, url, align }) => {
+  console.log(url, align);
   return (
     <Div
       css={css`
@@ -58,8 +59,8 @@ const PrevNextNav = ({ next, prev }) => {
             border-top: 1px solid ${DARK};
           `}
         >
-          <Thumb {...prev} />
-          <Thumb {...next} align={"right"} />
+          <Thumb {...prev} url={next.pageSlug} />
+          <Thumb {...next} url={next.pageSlug} align={"right"} />
         </Div>
       </Container>
     </Div>
