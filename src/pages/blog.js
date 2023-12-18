@@ -42,7 +42,7 @@ const Blog = ({ data }) => {
 
   return (
     <Div>
-      <PageHeader title={"<span>Batworld</span><br />Блог"} />
+      <PageHeader title={"<span>Bat World</span><br />Блог"} />
       <Container size="xl">
         <RowsContainer>
           {posts.map((post, i) =>

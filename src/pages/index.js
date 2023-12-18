@@ -9,7 +9,6 @@ import GoToLink from "@components/GoToLink";
 import HomepageLinks from "@components/HomepageLinks";
 
 const HomepageIntro = ({ featuredImage, text }) => {
-  // const renderStackImage = ({ fluid }) => {
 
   return (
     <Div
@@ -21,14 +20,13 @@ const HomepageIntro = ({ featuredImage, text }) => {
           transition: 0.1s all;
 
           &:hover {
-            color: black;
+            color: red;
           }
         }
       `}
     >
       <TextRightAligned
-        text={`Кратък текст, описващ с няколко изречения дейността на организацията. Това са само временни изречения, с които да видим как изглежда на страницата.
-        <br /><br />Ако намериш прилеп, не се страхувай от първо, второ трето. Прочети <a class="ok" href="#">какво да направиш, ако намериш прилеп</a> и как да разбереш дали съществото е в беда.`}
+        text={`<br /><br />Ако намериш прилеп, не се страхувай от първо, второ трето. Прочети <a class="ok" href="#">какво да направиш, ако намериш прилеп</a> и как да разбереш дали съществото е в беда.`}
       >
         <Div
           flex
@@ -38,8 +36,6 @@ const HomepageIntro = ({ featuredImage, text }) => {
             flex-direction: column;
           `}
         >
-          <SectionLabel text={"за нас"} />
-          <GoToLink text="прочети още" url={`/za-nas`} />
         </Div>
       </TextRightAligned>
     </Div>

@@ -65,7 +65,7 @@ const Sticky = () => {
       `}
     >
       <StickyItem text="намерих прилеп" icon={"medical"} />
-      <StickyItem text="подкрепи ни" icon={"heart"} />
+      <StickyItem text="подкрепи ни" icon={"heart"} url={"https://2022-10-batworld.netlify.app/donations"} />
     </div>
   );
 };
@@ -106,16 +106,16 @@ const Social = ({ icon, url }) => {
 const socials = [
   {
     icon: "fb",
-    url: "#",
+    url: "https://www.facebook.com/batworld.bg/",
   },
   {
     icon: "insta",
-    url: "#",
+    url: "https://www.instagram.com/bat.world.bulgaria/",
   },
-  {
-    icon: "in",
-    url: "#",
-  },
+//  {
+//    icon: "in",
+//    url: "#",
+//  },
 ];
 
 const Footer = () => {

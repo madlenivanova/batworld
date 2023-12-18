@@ -43,6 +43,10 @@ export const menuItems = [
         keyTitle: "Как да помогна?",
         url: "/join-us",
       },
+        {
+              keyTitle: "Test Merry",
+              url: "/merry",
+            },
     ],
   },
   {
