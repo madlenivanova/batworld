@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { Heading, Label } from "@components/Typography";
 import { Div } from "@components/Markup";
 import { Container } from "@components/Markup";
-import { ACCENT, LIGHT, DARK } from "../styles/colors";
+import { DARK } from "../styles/colors";
 
 export const ArcImage = ({ fluid }) => {
   return (

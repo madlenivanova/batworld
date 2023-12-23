@@ -1,6 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
-import { DARK, LIGHT } from "../styles/colors";
+import { DARK, LIGHT, ACCENT } from "../styles/colors";
 
 const GlobalStyles = () => (
   <Global
@@ -83,6 +83,15 @@ const GlobalStyles = () => (
       p {
         margin: 0px;
         font-weight: normal;
+
+        a {
+          color: ${DARK}!important;
+          text-decoration: underline;
+
+          &:hover {
+            color: ${ACCENT}!important;
+          }
+        }
       }
     `}
   />

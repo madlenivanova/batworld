@@ -33,7 +33,7 @@ const Share = () => {
   );
 };
 
-const Hero = ({ title, featuredImage, share, nav }) => {
+const Hero = ({ title, share, nav }) => {
   return (
     <Container size="xl">
       <Spacer />

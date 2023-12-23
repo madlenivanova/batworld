@@ -1,35 +1,137 @@
 import React from "react";
-import { Heading } from "@components/Typography";
+import { Heading, Label, Text } from "@components/Typography";
 import { graphql } from "gatsby";
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { Container, Div } from "@components/Markup";
-import { ACCENT } from "../styles/colors";
+import { ACCENT, LIGHT, DARK } from "../styles/colors";
 import { TextRightAligned, SectionLabel } from "../components/Layout";
 import GoToLink from "@components/GoToLink";
 import HomepageLinks from "@components/HomepageLinks";
 
-const HomepageIntro = ({ featuredImage, text }) => {
-  // const renderStackImage = ({ fluid }) => {
+const CtaButton = styled.a`
+  background: ${ACCENT};
+  color: ${LIGHT};
+  padding: 16px;
+  display: inline-block;
+  cursor: pointer;
+  &: hover {
+    background: ${DARK};
+  }
+`;
 
+const HeroBackgroundImage = styled.div`
+  height: 60vh;
+  width: 100%;
+  background-image: url("${props => props.featuredImage.fluid.src}");
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+
+  @media (min-width: 768px) {
+    height: 66.67vh;
+  }
+
+  @media (min-width: 1200px) {
+    height: 66.67vh;
+  }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: ${props =>
+    props.dark ? "rgba(34, 31, 25, 1)" : "rgba(247, 244, 239, 1)"};
+  background: linear-gradient(
+    180deg,
+    ${props => (props.dark ? "rgba(34, 31, 25, 0)" : "rgba(247, 244, 239, 0)")}
+      0%,
+    ${props => (props.dark ? "rgba(34, 31, 25, 1)" : "rgba(247, 244, 239, 1)")}
+      100%
+  );
+  opacity: 0.25;
+`;
+
+const HomepageBanner = ({ headline, text, cta, ctaUrl, backgroundImage }) => {
   return (
     <Div
+      flex
+      pb="md"
       pt="lg"
-      pb="lg"
+      ai="flex-end"
       css={css`
-        a.ok {
-          color: ${ACCENT};
-          transition: 0.1s all;
+        min-height: 60vh;
+        width: 100%;
+        background-image: url("${backgroundImage.fluid.src}");
+        background-size: cover;
+        background-position: top center;
+        position: relative;
 
-          &:hover {
-            color: black;
+        span {
+          color: ${ACCENT};
+        }
+
+        h3 {
+          max-width: 100%;
+          letter-spacing: -0.02em;
+          line-height: 0.9em;
+          color: ${LIGHT};
+
+          span {
+            color: ${ACCENT};
+          }
+
+          @media (min-width: 768px) {
+            max-width: 66.67%;
+          }
+
+          @media (min-width: 1200px) {
+            max-width: 50%;
+          }
+        }
+
+        p {
+          color: ${LIGHT};
+          @media (min-width: 768px) {
+            max-width: 66.67%;
+          }
+          @media (min-width: 1200px) {
+            max-width: 50%;
           }
         }
       `}
     >
-      <TextRightAligned
-        text={`Кратък текст, описващ с няколко изречения дейността на организацията. Това са само временни изречения, с които да видим как изглежда на страницата.
-        <br /><br />Ако намериш прилеп, не се страхувай от първо, второ трето. Прочети <a class="ok" href="#">какво да направиш, ако намериш прилеп</a> и как да разбереш дали съществото е в беда.`}
+      <Overlay dark={true} />
+      <Container
+        size="xl"
+        css={css`
+          position: relative;
+          z-index: 2;
+        `}
       >
+        <Heading
+          tag="h3"
+          size="THREE"
+          bold
+          dangerouslySetInnerHTML={{ __html: headline }}
+          mb="sm"
+        />
+        <Text mb="md">{text}</Text>
+        <CtaButton target="_blank" url={ctaUrl}>
+          <Label>{cta}</Label>
+        </CtaButton>
+      </Container>
+    </Div>
+  );
+};
+
+const HomepageIntro = ({ text }) => {
+  return (
+    <Div pt="lg" pb="lg">
+      <TextRightAligned text={text}>
         <Div
           flex
           jc="space-between"
@@ -48,32 +150,8 @@ const HomepageIntro = ({ featuredImage, text }) => {
 
 const HomepageHero = ({ featuredImage, headline }) => {
   return (
-    <div
-      css={css`
-        height: 100vh;
-        width: 100%;
-        background-image: url("${featuredImage.fluid.src}");
-        background-size: cover;
-        background-position: top center;
-        position: relative;
-      `}
-    >
-      <div
-        css={css`
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background: rgb(247, 244, 239);
-          background: linear-gradient(
-            180deg,
-            rgba(247, 244, 239, 0) 0%,
-            rgba(247, 244, 239, 1) 100%
-          );
-          opacity: 0.25;
-        `}
-      ></div>
+    <HeroBackgroundImage featuredImage={featuredImage}>
+      <Overlay />
       <Div
         flex
         pb="md"
@@ -103,7 +181,7 @@ const HomepageHero = ({ featuredImage, headline }) => {
           />
         </Container>
       </Div>
-    </div>
+    </HeroBackgroundImage>
   );
 };
 
@@ -132,21 +210,29 @@ const hplinks = [
 ];
 
 const IndexPage = ({ data }) => {
-  const { headline, featuredImage } = data.datoCmsHomepage;
-  const src = featuredImage?.fluid?.src;
+  const {
+    headline,
+    featuredImage,
+    introParagraph,
+    bannerBackgroundImage,
+    bannerHeadline,
+    bannerText,
+    bannerCta,
+    bannerCtaUrl,
+  } = data.datoCmsHomepage;
+
   return (
     <>
       <HomepageHero headline={headline} featuredImage={featuredImage} />
-      <HomepageIntro
-        featuredImage={featuredImage}
-        text={`Bat World Sanctuary is on the front line to end the mistreatment of bats.
-              Each year we rescue hundreds of bats who might otherwise die. 
-              Lifetime sanctuary is given to non-releasable bats, including those that are orphaned, 
-              injured, and rescued from the exotic pet trade, zoos and research facilities.<br /><br />
-              Bat World was founded in 1994 and is a 501c3 non-profit, accredited organization with the 
-              Global Federation of Animal Sanctuaries.`}
+      <HomepageIntro text={introParagraph} />
+      <HomepageBanner
+        backgroundImage={bannerBackgroundImage}
+        headline={bannerHeadline}
+        text={bannerText}
+        cta={bannerCta}
+        url={bannerCtaUrl}
       />
-      <HomepageLinks hplinks={hplinks} />
+      {/* <HomepageLinks hplinks={hplinks} /> */}
     </>
   );
 };
@@ -177,6 +263,17 @@ export const query = graphql`
           srcSet
         }
       }
+      introParagraph
+      bannerBackgroundImage {
+        fluid {
+          src
+          srcSet
+        }
+      }
+      bannerHeadline
+      bannerText
+      bannerCta
+      bannerCtaUrl
     }
     allDatoCmsQAndA {
       edges {
