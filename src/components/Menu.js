@@ -6,7 +6,7 @@ import { Text, Label } from "./Typography";
 import { DARK, LIGHT } from "../styles/colors";
 import { UilCaretRight } from "@iconscout/react-unicons";
 import { MenuContainer } from "./headerStyles";
-import Scrollbars from "react-custom-scrollbars";
+import Scrollbars from "react-custom-scrollbars-2";
 import styled from "@emotion/styled";
 import { menuItems } from "./menuItems";
 import { NavContext } from "@providers/NavProvider";
