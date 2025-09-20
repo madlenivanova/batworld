@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.3.0",
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/react-unicons-thinline": "^0.0.1",
+    "@titelmedia/bricks": "^0.2.20",
     "@vimeo/player": "^2.15.3",
     "babel-plugin-styled-components": "^1.13.2",
     "gatsby": "^3.9.1",
