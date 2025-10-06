@@ -112,12 +112,11 @@ const socials = [
     icon: "insta",
     url: "https://www.instagram.com/bat.world.bulgaria/",
   },
-//  {
-//    icon: "in",
-//    url: "#",
-//  },
+  {
+    icon: "in",
+    url: "https://www.linkedin.com/company/batworld-bg/",
+  },
 ];
-
 const Footer = () => {
   return (
     <>
@@ -161,8 +160,7 @@ const Footer = () => {
             >
               <Div>
                 <Text>+359 887 75 0525</Text>
-                <Text>hello@batworld.bg</Text>
-                <Text>София, ул. Георги Бенковски 20</Text>
+                <Text>bats@batworld.bg</Text>
               </Div>
               <Div flex mt="md">
                 {socials.map((social, index) => (
@@ -203,7 +201,7 @@ const Footer = () => {
               `}
             >
               Batworld Bulgaria е неправителствена организация, основана през
-              2014г. Всички права запазени.
+              2019г. Всички права запазени.
             </Text>
           </Div>
         </Container>
