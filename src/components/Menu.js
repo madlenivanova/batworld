@@ -207,9 +207,8 @@ export const Menu = () => {
                 border-bottom: 1px solid white;
               `}
             >
-              <Text>+359 888 123456</Text>
-              <Text>hello@batworld.bg</Text>
-              <Text>София, ул. Георги Бенковски 20</Text>
+              <Text>+359 nqkuv telefon</Text>
+              <Text>bats@batworld.bg</Text>
             </Div>
           </Div>
         </Container>
