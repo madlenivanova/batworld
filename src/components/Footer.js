@@ -160,7 +160,7 @@ const Footer = () => {
               `}
             >
               <Div>
-                <Text>+359 888 123456</Text>
+                <Text>+359 887 75 0525</Text>
                 <Text>hello@batworld.bg</Text>
                 <Text>София, ул. Георги Бенковски 20</Text>
               </Div>

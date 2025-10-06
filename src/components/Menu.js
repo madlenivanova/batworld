@@ -207,7 +207,7 @@ export const Menu = () => {
                 border-bottom: 1px solid white;
               `}
             >
-              <Text>+359 nqkuv telefon</Text>
+              <Text>+359 887 75 0525</Text>
               <Text>bats@batworld.bg</Text>
             </Div>
           </Div>
